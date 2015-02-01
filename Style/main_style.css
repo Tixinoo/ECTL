@@ -4,3 +4,6 @@
     Author     : Antoine NOSAL
 */
 
+#document {
+    border: solid black 1px;
+}
