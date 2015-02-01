@@ -20,18 +20,18 @@ class DataBase {
             
             // Création d'un tableau contenant les informations
             // contenue dans le fichier de configuration
-            $ini = parse_ini_file("etcl-db.ini");
+            $ini = parse_ini_file("ectl-db.ini");
             
             // Création du dsn depuis les informations recueillies
             $dsn= $ini['driver'] . ":host=" . $ini['host'] . ";dbname=" . $ini['dbname'];
             
             // Création de l'instance PDO
-            $seadilidb = new PDO($dsn, $ini['username'], $ini['password']);
+            $db = new PDO($dsn, $ini['username'], $ini['password']);
             
             // Configuration de l'encodage
-            $seadilidb->exec("SET CHARACTER SET utf8");
+            $db->exec("SET CHARACTER SET utf8");
             
-            return $seadilidb;
+            return $db;
         } catch (PDOException $e) {
             throw new Exception("Connection: $dsn ".$e->getMessage(). '<br/>');
         }
