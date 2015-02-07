@@ -16,13 +16,13 @@
         
         <br>
 
-        <!--
-        Menu avec tous les types de documents
-        -->
-        <nav>
+        <?php
+        include_once 'Content/nav.php';
+        ?>
         
-        </nav>
+        <br>
         
-        <div>
+        <div id="logoECTL">
             <h1>E-C-T-L</h1>
+            <i>Espace Collaborateur TRACTLUX</i>
         </div>

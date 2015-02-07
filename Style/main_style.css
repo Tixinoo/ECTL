@@ -4,6 +4,18 @@
     Author     : Antoine NOSAL
 */
 
+#connecting_bar {
+    border: solid black 1px;
+}
+
+#logoECTL {
+    border: solid black 1px;
+}
+
+#menu {
+    border: solid black 1px;
+}
+
 #document {
     border: solid black 1px;
 }
