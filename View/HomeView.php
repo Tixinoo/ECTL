@@ -11,7 +11,6 @@ class HomeView {
     public function defaultView() {
         include 'Content/header.php';
         include 'Content/home.html';
-        Self::documentsAllView();
         include 'Content/footer.html';
     }
     
