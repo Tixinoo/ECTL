@@ -4,6 +4,7 @@ Menu avec tous les types de documents
 
 <div id="menu">
     <h4>Menu</h4>
+    <a href="index.php" >Accueil ECTL</a>
     <nav>
         <?php
         $typeds = TypeD::findAll();
