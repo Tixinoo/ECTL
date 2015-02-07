@@ -16,6 +16,13 @@
         
         <br>
 
+        <!--
+        Menu avec tous les types de documents
+        -->
+        <nav>
+        
+        </nav>
+        
         <div>
             <h1>E-C-T-L</h1>
         </div>
