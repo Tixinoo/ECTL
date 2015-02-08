@@ -8,4 +8,4 @@ unset($_SESSION['password']);
 session_destroy();
 
 // Redirection vers la page d'accueil
-header("Location: ../ECTL.php");
+header("Location: ../login.php");

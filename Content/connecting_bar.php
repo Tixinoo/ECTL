@@ -2,8 +2,6 @@
     <?php 
 
     include_once 'Model/TypeU.php';
-    
-    session_start();
 
     // Barre de connexion
 
