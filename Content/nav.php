@@ -22,7 +22,7 @@ Menu avec tous les types de documents
     <?php
     if(in_array("1", $_SESSION['usertypes'])) {
         echo "<br>";
-        echo "<a href=\"\">Coordonnées Conducteurs</a>";
+        echo "<a href=\"index.php?a=coord\">Coordonnées Conducteurs</a>";
         echo "<br>";
         echo "<a href=\"\">Comptes Utilisateurs</a>";
     }

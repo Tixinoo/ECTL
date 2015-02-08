@@ -3,6 +3,7 @@
 include_once 'Controller.php';
 include_once 'View/HomeView.php';
 include_once 'View/DocumentsView.php';
+include_once 'View/UtilisateursView.php';
 
 class HomeController extends Controller {
 
@@ -11,7 +12,8 @@ class HomeController extends Controller {
             'default' => 'defaultAction',
             'home' => 'defaultAction',
             'typed' => 'typedAction',
-            'search' => 'searchAction'
+            'search' => 'searchAction',
+            'coord' => 'coordAction'
         );
     }
 
@@ -28,6 +30,11 @@ class HomeController extends Controller {
     public function typedAction() {
         $view = new DocumentsView();
         $view->typedView($_GET["idtyped"]);
+    }
+    
+    public function coordAction() {
+        $view = new UtilisateursView();
+        $view->coordView();
     }
 
 }
