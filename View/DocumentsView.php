@@ -24,26 +24,13 @@ class DocumentsView {
     public function documentView($document) {
         echo "<div id=\"document\">";
         echo "<div class=\"col-xs-6 col-sm-3 placeholder\">";
-        echo "<img src=\"Image/icon-pdf.png\" class=\"img-responsive\">";
+        echo "<h1><span class=\"glyphicon glyphicon-file\" aria-hidden=\"true\"></span></h1>";
+        /*echo "<img src=\"Image/icon-pdf.png\" class=\"img-responsive\">";*/
         echo "<h4>" . $document->nomD . "</h4>";
         echo "<span class=\"text-muted\"><i>" . $document->descD . "</i></span>";
-        /*echo "Titre : " . $document->nomD . "<br>";
-        echo "Description : " . $document->descD . "<br>";
-        echo "Lien : <a href=\"" . $document->urlD . "\"><img src=\"Image/icon-pdf.png\"></a><br>";*/
+        /*echo "Lien : <a href=\"" . $document->urlD . "\"><img src=\"Image/icon-pdf.png\"></a><br>";*/
         echo "</div>";
         echo "</div>";
     }              
                   
-    /**
-     * Affiche un document donné en paramètre
-     * @param Document $document Document à afficher
-     */
-    public function olddocumentView($document) {
-        echo "<div id=\"document\">";
-        echo "Titre : " . $document->nomD . "<br>";
-        echo "Description : " . $document->descD . "<br>";
-        echo "Lien : <a href=\"" . $document->urlD . "\"><img src=\"Image/icon-pdf.png\"></a><br>";
-        echo "</div>";
-    }
-    
 }
