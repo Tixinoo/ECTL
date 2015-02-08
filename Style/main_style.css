@@ -19,6 +19,10 @@
     border: solid black 1px;
 }
 
+#zoneResultats {
+    background-color: lightgrey;
+}
+
 #document {
     border: solid black 1px;
 }

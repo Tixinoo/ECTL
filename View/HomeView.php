@@ -2,6 +2,7 @@
 
 include_once 'Model/Document.php';
 include_once 'Model/TypeD.php';
+include_once 'View/DocumentsView.php';
 
 class HomeView {   
 
@@ -12,6 +13,20 @@ class HomeView {
         include 'Content/header.php';
         include 'Content/home.html';
         include 'Content/footer.html';
+    }
+    
+    public function searchView($keywords) {
+        include 'Content/header.php';
+        include 'Content/home.html';
+        echo "<br>";
+        echo "<div id=\"zoneResultats\">";
+        echo "Résultats de la recherche :";
+        $documents = Document::findByNom($keywords);
+        foreach ($documents as $document) {
+            DocumentsView::DocumentView($document);
+        }
+        echo "</div>";
+        include 'Content/footer.html';  
     }
     
     

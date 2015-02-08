@@ -10,7 +10,8 @@ class HomeController extends Controller {
         $this->tab_action = array(
             'default' => 'defaultAction',
             'home' => 'defaultAction',
-            'typed' => 'typedAction'
+            'typed' => 'typedAction',
+            'search' => 'searchAction'
         );
     }
 
@@ -19,6 +20,11 @@ class HomeController extends Controller {
         $view->defaultView();
     }
 
+    public function searchAction() {
+        $view = new HomeView();
+        $view->searchView($_GET["keywords"]);
+    }
+    
     public function typedAction() {
         $view = new DocumentsView();
         $view->typedView($_GET["idtyped"]);

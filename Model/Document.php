@@ -195,7 +195,7 @@ class Document {
                 // Remplissage d'un objet Document avec les informations contenues dans le tuple courant
                 $document = new Document();
                 $document->idD = $row['idD'];
-                $document->name = $row['name'];
+                $document->nomD = $row['nomD'];
                 $document->descD = $row['descD'];
                 $document->contenuD = $row['contenuD'];
                 $document->urlD = $row['urlD'];
