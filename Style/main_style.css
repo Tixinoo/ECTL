@@ -3,6 +3,10 @@
     Created on : 1 févr. 2015, 17:23:37
 */
 
+body {
+    font-family: Open Sans;
+}
+
 #connecting_bar {
     border: solid black 1px;
 }

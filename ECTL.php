@@ -1,4 +1,4 @@
-<div id="connecting_bar">
+<div>
     <?php 
 
     include_once 'Model/TypeU.php';

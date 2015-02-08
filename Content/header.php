@@ -5,6 +5,7 @@
         <meta name="author" content="ECTL-Team" />
         <title>E-C-T-L</title>
         <link rel="stylesheet" href="Style/main_style.css" />
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     </head>
 

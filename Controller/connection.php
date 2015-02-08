@@ -19,10 +19,8 @@ if(isset($_POST['username'], $_POST['password'])) {
     $user = Utilisateur::findByPseudoU($un);
     
     // Si le mot de passe indiqué est le bon
-    echo "pw: " . $pw;
-    echo "pw2: " . $user->mdpU;
     if(($pw) == $user->mdpU) {
-        $a = session_start();
+        //$a = session_start();
         // On enregistre en tant que variables de sessions, son nom d'utilisateur et son id
         $_SESSION['username'] = $un;
         $_SESSION['userid'] = $user->idU;
@@ -32,4 +30,4 @@ if(isset($_POST['username'], $_POST['password'])) {
 }
 
 // Redirection vers la page d'accueil
-//header("Location: ../index.php?a=home");
+header("Location: ../index.php?a=home");
