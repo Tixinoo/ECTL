@@ -10,7 +10,9 @@ Menu avec tous les types de documents
         $typeds = TypeD::findAll();
         foreach ($typeds as $typed) {
             echo "<a href=";
-            echo "\"toto\"";
+            echo "\"index.php?a=typed&idtyped=";
+            echo $typed->idTypeD;
+            echo "\"";
             echo ">";
             echo $typed->nomTypeD;
             echo "</a><br>";
