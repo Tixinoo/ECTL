@@ -25,7 +25,7 @@ class DocumentsView {
         echo "<div id=\"document\">";
         echo "Titre : " . $document->nomD . "<br>";
         echo "Description : " . $document->descD . "<br>";
-        echo "Lien : <a href=\"" . $document->urlD . "\">ici</a><br>";
+        echo "Lien : <a href=\"" . $document->urlD . "\"><img src=\"Image/icon-pdf.png\"></a><br>";
         echo "</div>";
     }
     
