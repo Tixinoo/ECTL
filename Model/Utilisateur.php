@@ -17,11 +17,11 @@ class Utilisateur {
     /**
      * retourne un attribut suivant son nom
      * s'il existe
-     * @param $attr_name nom de l'attribut
+     * @param $attr_pseudoU nom de l'attribut
      */
-    public function __get($attr_name) {
-        if (property_exists(__CLASS__, $attr_name)) {
-            return $this->$attr_name;
+    public function __get($attr_pseudoU) {
+        if (property_exists(__CLASS__, $attr_pseudoU)) {
+            return $this->$attr_pseudoU;
         }
     }
 
@@ -29,12 +29,12 @@ class Utilisateur {
      * modifie un attribut suivant son nom
      * et une nouvelle valeur
      * s'il exsite
-     * @param $attr_name nom de l'attribut
+     * @param $attr_pseudoU nom de l'attribut
      * @param $attr_val nouvelle valeur de l'attribut
      */
-    public function __set($attr_name, $attr_val) {
-        if (property_exists(__CLASS__, $attr_name)) {
-            $this->$attr_name = $attr_val;
+    public function __set($attr_pseudoU, $attr_val) {
+        if (property_exists(__CLASS__, $attr_pseudoU)) {
+            $this->$attr_pseudoU = $attr_val;
         }
     }
 
@@ -57,7 +57,7 @@ class Utilisateur {
             // Création de la requête préparée
             $query = "UPDATE Utilisateur SET pseudoU = :pseudoU , mdpU = :mdpU, nomU = :nomU, prenomU = :prenomU, telU = :telU, emailU = :emailU, urlAvatarU = :urlAvatarU WHERE idU = :id";
             $statement = $db->prepare($query);
-            $statement->bindParam(':pseudoU', $this->name);
+            $statement->bindParam(':pseudoU', $this->pseudoU);
             $statement->bindParam(':mdpU', $this->mdpU);
             $statement->bindParam(':nomU', $this->nomU);
             $statement->bindParam(':prenomU', $this->prenomU);
@@ -118,9 +118,9 @@ class Utilisateur {
             $db = DataBase::getConnection();
 
             // Création de la requête préparée
-            $query = "INSERT INTO Utilisateur (name,mdpU,nomU,prenomU,telU) VALUES(:pseudoU,:mdpU,:nomU,:prenomU,:telU)";
+            $query = "INSERT INTO Utilisateur (pseudoU,mdpU,nomU,prenomU,telU) VALUES(:pseudoU,:mdpU,:nomU,:prenomU,:telU)";
             $statement = $db->prepare($query);
-            $statement->bindParam(':pseudoU', $this->name);
+            $statement->bindParam(':pseudoU', $this->pseudoU);
             $statement->bindParam(':mdpU', $this->mdpU);
             $statement->bindParam(':nomU', $this->nomU);
             $statement->bindParam(':prenomU', $this->prenomU);
@@ -132,6 +132,34 @@ class Utilisateur {
         } catch (Exception $e) {
             $trace = $e->getTrace();
             echo "Erreur pendant insert: $trace";
+        }
+    }
+
+    public function idTypeUs() {
+        try {
+            // Récupération d'une connexion à la base
+            $db = DataBase::getConnection();
+
+            // Création de la requête préparée
+            $query = "SELECT * FROM UtilisateurType WHERE idU = :id";
+            $statement = $db->prepare($query);
+            $statement->bindParam(':id', $this->idU);
+
+            // Exécution de la requête préparée
+            $statement->execute();
+
+            $tab = Array();
+            // Tant que des lignes sont retournées
+            while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+                // Remplissage d'un tableau avec tous les types (sous forme de leur id) de l'utilisateur
+                $tab[] = $row['idTypeU'];
+            }
+
+            // Retour du tableau d'utilisateur
+            return $tab;
+        } catch (Exception $e) {
+            $trace = $e->getTrace();
+            echo "Erreur pendant findAll: $trace";
         }
     }
 
@@ -162,7 +190,7 @@ class Utilisateur {
             // Remplissage d'un objet Utilisateur avec les informations contenues dans le tuple
             $utilisateur = new Utilisateur();
             $utilisateur->idU = $row['idU'];
-            $utilisateur->name = $row['name'];
+            $utilisateur->pseudoU = $row['pseudoU'];
             $utilisateur->mdpU = $row['mdpU'];
             $utilisateur->nomU = $row['nomU'];
             $utilisateur->prenomU = $row['prenomU'];
@@ -178,39 +206,36 @@ class Utilisateur {
         }
     }
 
-    public static function findByNom($pseudoU) {
+    public static function findByPseudoU($pseudoU) {
         try {
             // Récupération d'une connexion à la base
             $db = DataBase::getConnection();
 
             // Création de la requête préparée
-            $query = "SELECT * FROM Utilisateur WHERE pseudoU LIKE :pseudoU";
+            $query = "SELECT * FROM Utilisateur WHERE pseudoU = :pseudoU";
             $statement = $db->prepare($query);
-            $str = "%" . $pseudoU . "%";
 
-            $statement->bindParam(':pseudoU', $str);
+            $statement->bindParam(':pseudoU', $pseudoU);
 
             // Exécution de la requête préparée
             $statement->execute();
 
-            $tab = Array();
-            // Tant que des lignes sont retournées
-            while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                // Remplissage d'un objet Utilisateur avec les informations contenues dans le tuple courant
-                $utilisateur = new Utilisateur();
-                $utilisateur->idU = $row['idU'];
-                $utilisateur->pseudoU = $row['pseudoU'];
-                $utilisateur->mdpU = $row['mdpU'];
-                $utilisateur->nomU = $row['nomU'];
-                $utilisateur->prenomU = $row['prenomU'];
-                $utilisateur->telU = $row['telU'];
-                $utilisateur->emailU = $row['emailU'];
-                $utilisateur->urlAvatarU = $row['urlAvatarU'];
-                $tab[] = $utilisateur;
-            }
+            // Récupération du tuple correspondant à l'id en paramètre
+            $row = $statement->fetch(PDO::FETCH_ASSOC);
 
-            // Retour du tableau de tracks
-            return $tab;
+            // Remplissage d'un objet Utilisateur avec les informations contenues dans le tuple
+            $utilisateur = new Utilisateur();
+            $utilisateur->idU = $row['idU'];
+            $utilisateur->pseudoU = $row['pseudoU'];
+            $utilisateur->mdpU = $row['mdpU'];
+            $utilisateur->nomU = $row['nomU'];
+            $utilisateur->prenomU = $row['prenomU'];
+            $utilisateur->telU = $row['telU'];
+            $utilisateur->emailU = $row['emailU'];
+            $utilisateur->urlAvatarU = $row['urlAvatarU'];
+
+            // Retour de l'utilisateur
+            return $utilisateur;
         } catch (Exception $e) {
             $trace = $e->getTrace();
             echo "Erreur pendant findByName: $trace";
