@@ -11,7 +11,7 @@ class DocumentsView {
     public function typedView($idTypeD) {
         include 'Content/header.php';
         $documents = Document::findByIdTypeD($idTypeD);
-        echo "<div class=\"row placeholders\">";
+        echo "<div class=\"row placeholders\"><br>";
         foreach ($documents as $document) {
             Self::DocumentView($document);
         }
@@ -24,7 +24,7 @@ class DocumentsView {
         echo "<div class=\"col-xs-6 col-sm-3 placeholder\">";
         echo "<img src=\"Image/icon-pdf.png\" class=\"img-responsive\">";
         echo "<h4>" . $document->nomD . "</h4>";
-        echo "<span class=\"text-muted\">" . $document->descD . "</span>";
+        echo "<span class=\"text-muted\"><i>" . $document->descD . "</i></span>";
         /*echo "Titre : " . $document->nomD . "<br>";
         echo "Description : " . $document->descD . "<br>";
         echo "Lien : <a href=\"" . $document->urlD . "\"><img src=\"Image/icon-pdf.png\"></a><br>";*/
