@@ -12,7 +12,7 @@ body {
 }
 
 #logoECTL {
-    border-bottom: solid black 1px;
+    border-bottom: solid black 0px;
 }
 
 #menu {
@@ -20,11 +20,11 @@ body {
 }
 
 #pageAccueil {
-    border: solid black 1px;
+    border: solid black 0px;
 }
 
 #zoneResultats {
-    background-color: whitesmoke;
+    background-color: white;
 }
 
 #document {
