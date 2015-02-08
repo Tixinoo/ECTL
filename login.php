@@ -30,6 +30,10 @@
         echo "<input type=\"password\" name=\"password\" value=\"toto\"/>\n";
         echo "<input type=\"submit\" value=\"Se connecter\"/>\n";
         echo "</form>\n";
+        
+        echo "<br>";
+        
+        echo "<a href=\"signin.php\">S'inscrire</a>";
 
     }
     ?>
