@@ -1,6 +1,8 @@
 <div id="connecting_bar">
     <?php 
 
+    include_once 'Model/TypeU.php';
+    
     session_start();
 
     // Barre de connexion
@@ -10,6 +12,12 @@
         
         // On affiche un message, son nom d'utilisateur et un bouton pour se déconnecter
         echo "Vous êtes connectés en tant que " . $_SESSION['username'];
+        foreach ($_SESSION['usertypes'] as $idtypeu) {
+            echo " (";
+            $TypeU = TypeU::findById($idtypeu);
+            echo $TypeU->nomTypeU;
+            echo ")";
+        }
         echo "<form action=\"Controller/disconnection.php\" method=\"GET\">\n";
         echo "<input type=\"submit\" value=\"Se déconnecter\"/>\n";
         echo "</form>\n";
