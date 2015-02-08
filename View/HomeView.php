@@ -14,17 +14,19 @@ class HomeView {
         include 'Content/home.html';
         include 'Content/footer.html';
     }
-    
+
     public function searchView($keywords) {
         include 'Content/header.php';
         include 'Content/home.html';
         echo "<br>";
         echo "<div id=\"zoneResultats\">";
-        echo "Résultats de la recherche :";
+        echo "<h1 class=\"page-header\">Résultats de la recherche</h1>";
+        echo "<div class=\"row placeholders\">";
         $documents = Document::findByNom($keywords);
         foreach ($documents as $document) {
             DocumentsView::DocumentView($document);
         }
+        echo "</div>";
         echo "</div>";
         include 'Content/footer.html';  
     }

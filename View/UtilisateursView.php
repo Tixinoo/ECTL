@@ -10,9 +10,27 @@ class UtilisateursView {
  
     public function coordView() {
         include 'Content/header.php';
-        echo "Coordonnées Utilisateurs";
+        echo "<h2>Coordonnées Utilisateurs</h2>";
         $utilisateurs = Utilisateur::findAll();
-        echo "<table border=\"1px\">";
+        echo "<div class=\"table-responsive\">";
+        echo "<table class=\"table table-striped\">";
+        echo "<thead>";
+            echo "<tr>";
+                echo "<th>";
+                echo "Nom";
+                echo "</th>";
+                echo "<th>";
+                echo "Prénom";
+                echo "</th>";
+                echo "<th>";
+                echo "Email";
+                echo "</th>";
+                echo "<th>";
+                echo "Téléphone";
+                echo "</th>";
+            echo "</tr>";
+        echo "</thead>";
+        echo "<tbody>";
         foreach ($utilisateurs as $utilisateur) {
             echo "<tr>";
                 echo "<td>";
@@ -27,9 +45,11 @@ class UtilisateursView {
                 echo "<td>";
                 echo $utilisateur->telU;
                 echo "</td>";                
-            echo "<tr>";
+            echo "</tr>";
         }
-        echo"</table>";
+        echo "</tbody>";
+        echo "</table>";
+        echo "</div>";
         include 'Content/footer.html';
     }
     
