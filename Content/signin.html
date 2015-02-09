@@ -1,0 +1,31 @@
+<div class="container">
+
+    <form class="form-signin" action="Controller/registration.php" method="POST">
+        <h2 class="form-signin-heading">ECTL : Inscription</h2>
+        <label for="inputPseudoU" class="sr-only">Identifiant</label>
+        <input name="pseudoU" type="text" id="inputPseudoU" class="form-control" placeholder="Identifiant" required autofocus>
+        <label for="inputMdpU" class="sr-only">Mot de passe</label>
+        <input name="mdpU" type="password" id="inputMdpU" class="form-control" placeholder="Mot de passe" required>
+        <label for="inputNomU" class="sr-only">Nom</label>
+        <input name="nomU" type="text" id="inputNomU" class="form-control" placeholder="Nom" required>
+        <label for="inputPrenomU" class="sr-only">Prénom</label>
+        <input name="prenomU" type="text" id="inputPrenomU" class="form-control" placeholder="Prénom" required>
+        <label for="inputEmailU" class="sr-only">Email</label>
+        <input name="emailU" type="text" id="inputEmailU" class="form-control" placeholder="Adresse e-mail" required>
+        <label for="inputTelU" class="sr-only">Téléphone</label>
+        <input name="telU" type="text" id="inputTelU" class="form-control" placeholder="Téléphone">
+        <br>
+        <label for="inputCodeI" class="sr-only">Code Inscription</label>
+        <input name="codeI" type="text" id="inputCodeI" class="form-control" placeholder="Code Inscription">
+        <br>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Rejoindre l'Espace<br>Collaborateur TRACTLUX</button>
+    </form>
+    
+    <br>
+    
+    <div class="form-signin">
+        <button class="btn btn-lg btn-primary btn-block" onclick="location.href='login.php'">Déjà inscrit ?</button>
+    </div>
+    
+    
+</div>

@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="fr">
+
 <?php
 
 include_once 'Controller/HomeController.php';
