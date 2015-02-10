@@ -9,7 +9,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php">E-C-T-L</a>
+                <a class="navbar-brand" href="index.php">Espace Collaborateur TRACTLUX</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -29,7 +29,7 @@
                             echo "<i>" . $TypeU->nomTypeU . "</i>";
                             echo ")";
                         }
-                        echo "  <img src=\"" . $_SESSION['urlAvatarU'] . "\" width=\"30\"/></a></li>";
+                        echo "  <img src=\"" . $_SESSION['urlAvatarU'] . "\" height=\"30\"/></a></li>";
 
                         echo "<li><a href=\"#\">";
                         echo "<form action=\"Controller/disconnection.php\" method=\"GET\">\n";
