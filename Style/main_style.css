@@ -35,6 +35,16 @@ footer {
     border-top: solid black 1px;
 }
 
+.form input[type=submit]{
+
+    background:url(Image/icon-searchbutton.png) top right no-repeat;
+    width:220px;
+    height: 70px;
+    padding: 0 0 0 10px;
+    cursor: pointer;
+    border:0;
+}
+
 /* PDF in easy-modal */
 
 .iframe-container {    
@@ -42,7 +52,7 @@ footer {
     padding-top: 30px;
     overflow: hidden;
 }
- 
+
 .iframe-container iframe,
 .iframe-container object,
 .iframe-container embed {

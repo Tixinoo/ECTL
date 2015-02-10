@@ -29,7 +29,7 @@
                             echo $TypeU->nomTypeU;
                             echo ")";
                         }
-                        echo "</a></li>";
+                        echo "  <img src=\"Image/icon-user.jpg\" width=\"30\"/></a></li>";
 
                         echo "<li><a href=\"#\">";
                         echo "<form action=\"Controller/disconnection.php\" method=\"GET\">\n";
