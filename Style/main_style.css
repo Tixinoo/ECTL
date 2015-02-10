@@ -35,14 +35,17 @@ footer {
     border-top: solid black 1px;
 }
 
-.form input[type=submit]{
+.btn-disconnect {
+    color: #2D4885;
+}
 
-    background:url(Image/icon-searchbutton.png) top right no-repeat;
-    width:220px;
-    height: 70px;
-    padding: 0 0 0 10px;
-    cursor: pointer;
-    border:0;
+.navbar-inverse .navbar-nav > li > a {
+    color: white;
+}
+
+.navbar-inverse {
+    background-color: #2D4885;
+    border-color: #080808;
 }
 
 /* PDF in easy-modal */

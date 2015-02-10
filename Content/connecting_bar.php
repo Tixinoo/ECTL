@@ -18,22 +18,22 @@
 
                     // Barre de connexion
                     // Si l'utilisateur est connecté
-                    if (isset($_SESSION['username'])) {
+                    if (isset($_SESSION['pseudoU'])) {
 
                         // On affiche un message, son nom d'utilisateur et un bouton pour se déconnecter
                         echo "<li><a href=\"#\">";
-                        echo "Vous êtes connectés en tant que " . $_SESSION['username'];
-                        foreach ($_SESSION['usertypes'] as $idtypeu) {
+                        echo "Vous êtes connectés en tant que <b>" . $_SESSION['prenomU'] . " " . $_SESSION['nomU'] . "</b>";
+                        foreach ($_SESSION['typeUs'] as $idtypeu) {
                             echo " (";
                             $TypeU = TypeU::findById($idtypeu);
-                            echo $TypeU->nomTypeU;
+                            echo "<i>" . $TypeU->nomTypeU . "</i>";
                             echo ")";
                         }
-                        echo "  <img src=\"Image/icon-user.jpg\" width=\"30\"/></a></li>";
+                        echo "  <img src=\"" . $_SESSION['urlAvatarU'] . "\" width=\"30\"/></a></li>";
 
                         echo "<li><a href=\"#\">";
                         echo "<form action=\"Controller/disconnection.php\" method=\"GET\">\n";
-                        echo "<input type=\"submit\" value=\"Se déconnecter\"/>\n";
+                        echo "<input class=\"btn-disconnect\" type=\"submit\" value=\"Se déconnecter\"/>\n";
                         echo "</form>\n";
                         echo "</a></li>";
                     }
@@ -53,11 +53,11 @@
 
     // Barre de connexion
     // Si l'utilisateur est connecté
-    if (isset($_SESSION['username'])) {
+    if (isset($_SESSION['pseudoU'])) {
 
         // On affiche un message, son nom d'utilisateur et un bouton pour se déconnecter
-        echo "Vous êtes connectés en tant que " . $_SESSION['username'];
-        foreach ($_SESSION['usertypes'] as $idtypeu) {
+        echo "Vous êtes connectés en tant que " . $_SESSION['pseudoU'];
+        foreach ($_SESSION['typeUs'] as $idtypeu) {
             echo " (";
             $TypeU = TypeU::findById($idtypeu);
             echo $TypeU->nomTypeU;
@@ -70,7 +70,7 @@
 
         // Sinon, on affiche des champs et un bouton pour qu'il puisse se connecter
         echo "<form action=\"Controller/connection.php\" method=\"POST\">\n";
-        echo "<input type=\"text\" name=\"username\" value=\"Tixinoo\"/>\n";
+        echo "<input type=\"text\" name=\"pseudoU\" value=\"Tixinoo\"/>\n";
         echo "<input type=\"password\" name=\"password\" value=\"toto\"/>\n";
         echo "<input type=\"submit\" value=\"Se connecter\"/>\n";
         echo "</form>\n";

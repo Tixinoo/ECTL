@@ -7,7 +7,7 @@ include_once 'Controller/HomeController.php';
 
 session_start();
 
-if (isset($_SESSION['username'])) {
+if (isset($_SESSION['pseudoU'])) {
 
     $sc = new HomeController();
 

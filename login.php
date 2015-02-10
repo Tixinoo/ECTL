@@ -11,7 +11,7 @@
     session_start();
 
     // Si l'utilisateur est connecté
-    if (isset($_SESSION['username'])) {
+    if (isset($_SESSION['pseudoU'])) {
 
         // Redirection vers la page d'accueil
         header("Location: ../index.php?a=home");

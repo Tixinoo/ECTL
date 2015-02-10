@@ -14,10 +14,10 @@ class HomeView {
         include 'Content/home.html';
         include 'Content/footer.html';
     }
-
+    
     public function searchView($keywords) {
         include 'Content/header.php';
-        include 'Content/home.html';
+        include 'Content/search.html';
         echo "<br>";
         echo "<div id=\"zoneResultats\">";
         echo "<h1 class=\"page-header\">Résultats de la recherche</h1>";
