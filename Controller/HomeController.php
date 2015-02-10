@@ -25,7 +25,11 @@ class HomeController extends Controller {
 
     public function searchAction() {
         $view = new HomeView();
-        $view->searchView($_GET["keywords"]);
+        $kw = "";
+        if(isset($_GET["keywords"])) {
+            $kw = $_GET["keywords"];
+        }
+        $view->searchView($kw);
     }
     
     public function typedAction() {
