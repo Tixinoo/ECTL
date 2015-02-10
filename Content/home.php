@@ -3,8 +3,6 @@
 <div id="pageAccueil">
     <h1 class="page-header"><img src="Image/icon-home.png" width="35"/> Accueil<small> - Bienvenue dans votre espace !</small></h1>
 
-    <br>
-
     <h3 class="sub-header"><img src="Image/icon-news.png" width="50"/>News</h3>
     <div id="news">
         <?php
@@ -17,8 +15,6 @@
         echo "</div>";
         ?>
     </div>
-
-    <br>
 
     <h3 class="sub-header"><img src="Image/icon-selection.png" width="50"/>Sélection de documents</h3>
     <div id="selectionDocuments">

@@ -38,6 +38,18 @@ body {
     text-align: right;
 }
 
+.document {
+    border: solid #888888 0px;
+    border-radius: 0px;
+    box-shadow: 6px 6px 4px 4px #888888;
+}
+
+#news {
+    border: solid #888888 0px;
+    border-radius: 0px;
+    box-shadow: 6px 6px 4px 4px #888888;
+}
+
 /* footer style */
 
 footer {
