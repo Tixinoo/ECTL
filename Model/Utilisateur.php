@@ -118,13 +118,15 @@ class Utilisateur {
             $db = DataBase::getConnection();
 
             // Création de la requête préparée
-            $query = "INSERT INTO Utilisateur (pseudoU,mdpU,nomU,prenomU,telU) VALUES(:pseudoU,:mdpU,:nomU,:prenomU,:telU)";
+            $query = "INSERT INTO Utilisateur (pseudoU,mdpU,nomU,prenomU,telU,emailU,urlAvatarU) VALUES(:pseudoU,:mdpU,:nomU,:prenomU,:telU,:emailU,:urlAvatarU)";
             $statement = $db->prepare($query);
             $statement->bindParam(':pseudoU', $this->pseudoU);
             $statement->bindParam(':mdpU', $this->mdpU);
             $statement->bindParam(':nomU', $this->nomU);
             $statement->bindParam(':prenomU', $this->prenomU);
             $statement->bindParam(':telU', $this->telU);
+            $statement->bindParam(':emailU', $this->emailU);
+            $statement->bindParam(':urlAvatarU', $this->urlAvatarU);
 
             // Exécution de la requête préparée
             $res = $statement->execute();

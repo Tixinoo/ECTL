@@ -5,7 +5,7 @@ include_once '../Model/Utilisateur.php';
 $nb_erreurs = 0;
 $message = "";
 $inscriptionOK = true;
-        
+
     //Test de la longueur du pseudo
     if (!isset($_POST["pseudoU"]) || strlen($_POST["pseudoU"]) <= 5){
         $inscriptionOK = false;
@@ -63,7 +63,8 @@ $inscriptionOK = true;
         }
     }*/
 
-
+    $urlAvatarU = "Image/icon-user.png";
+    
     //Ajout de l'utilisateur dans la base
     if ($inscriptionOK){
         echo "<p> Félicitations ! Votre inscription s'est réalisée avec succès !<br>Bienvenue dans l'ECTL !</p>";
@@ -74,6 +75,7 @@ $inscriptionOK = true;
         $utilisateur->prenomU = $_POST["prenomU"];
         $utilisateur->emailU = $emailU;
         $utilisateur->telU = $_POST["telU"];
+        $utilisateur->urlAvatarU = $urlAvatarU;
         $utilisateur->insert();
     } else {
         echo "<p>Votre formulaire d'inscription contient les ".$nb_erreurs." erreurs suivantes: </p>";
