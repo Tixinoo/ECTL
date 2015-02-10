@@ -14,13 +14,15 @@ Menu avec tous les types de documents
             <?php
             $typeds = TypeD::findAll();
             foreach ($typeds as $typed) {
-                echo "<li><a href=";
-                echo "\"index.php?a=typed&idtyped=";
-                echo $typed->idTypeD;
-                echo "\"";
-                echo "><img src=\"Image/icon-documents.png\" width=\"15\"/> ";
-                echo $typed->nomTypeD;
-                echo "</a></li>";
+                if($typed->nomTypeD != "News") {
+                    echo "<li><a href=";
+                    echo "\"index.php?a=typed&idtyped=";
+                    echo $typed->idTypeD;
+                    echo "\"";
+                    echo "><img src=\"Image/icon-documents.png\" width=\"15\"/> ";
+                    echo $typed->nomTypeD;
+                    echo "</a></li>";
+                }
             }
             ?>
         </ul>

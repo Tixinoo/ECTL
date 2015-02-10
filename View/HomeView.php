@@ -12,7 +12,7 @@ class HomeView {
 
     public function defaultView() {
         include 'Content/header.php';
-        include 'Content/home.html';
+        include 'Content/home.php';
         include 'Content/footer.html';
     }
 
