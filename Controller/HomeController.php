@@ -14,7 +14,8 @@ class HomeController extends Controller {
             'typed' => 'typedAction',
             'search' => 'searchAction',
             'coord' => 'coordAction',
-            'facebook' => 'facebookAction'
+            'facebook' => 'facebookAction',
+            'siteweb' => 'sitewebAction'
         );
     }
 
@@ -45,6 +46,11 @@ class HomeController extends Controller {
     public function facebookAction() {
         $view = new HomeView();
         $view->facebookView();
+    }
+    
+    public function sitewebAction() {
+        $view = new HomeView();
+        $view->sitewebView();
     }
 
 }

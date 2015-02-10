@@ -30,7 +30,7 @@
                     <div id="logoECTL">
                         <center>
                             <h1>Espace Collaborateur</h1>
-                            <img width="400px" src="http://www.tractlux.com/images/design/logo.jpg">
+                            <img width="350px" src="http://www.tractlux.com/images/design/logo.jpg">
                         </center>
                     </div>
 

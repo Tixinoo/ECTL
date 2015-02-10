@@ -40,6 +40,12 @@ class HomeView {
         include 'Content/footer.html';
     }
 
+    public function sitewebView() {
+        include 'Content/header.php';
+        include 'Content/tractlux.com.html';
+        include 'Content/footer.html';
+    }
+
     /*     * ************** MÉTHODES DE TEST *************** */
 
     /**
