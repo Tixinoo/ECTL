@@ -3,6 +3,11 @@
     Created on : 1 févr. 2015, 17:23:37
 */
 
+html {
+    position: relative;
+    min-height: 100%;
+}
+
 body {
     font-family: Roboto;
 }
@@ -59,12 +64,12 @@ footer {
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 40px;
-  background-color: #f5f5f5;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 40px;
+    background-color: #f5f5f5;
 }
 
 /* ***** */

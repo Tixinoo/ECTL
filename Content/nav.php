@@ -31,7 +31,7 @@ Menu avec tous les types de documents
             echo "<h3 class=\"sub-header\">Employés</h3>";
             echo "<ul class=\"nav nav-sidebar\">";
             echo "<li><a href=\"index.php?a=coord\"><img src=\"Image/icon-details.png\" width=\"15\"/> Coordonnées Employés</a></li>";
-            echo "<li><a href=\"\"><img src=\"Image/icon-users.png\" width=\"15\"/> Comptes Utilisateurs</a></li>";
+            echo "<li><a href=\"index.php?a=adduser\"><img src=\"Image/icon-users.png\" width=\"15\"/> Comptes Utilisateurs</a></li>";
             echo "</ul>";
         }
         ?>

@@ -53,4 +53,10 @@ class UtilisateursView {
         include 'Content/footer.html';
     }
     
+    public function addUserView() {
+        include 'Content/header.php';
+        include 'Content/add_user.html';
+        include 'Content/footer.html';
+    }
+    
 }
