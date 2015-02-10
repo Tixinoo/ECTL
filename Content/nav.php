@@ -28,7 +28,7 @@ Menu avec tous les types de documents
             ?>
         </ul>
         <ul class="nav nav-sidebar">
-            <li><a href="index.php?a=facebook" target="_blank">Facebook</a></li>
+            <li><a href="index.php?a=facebook">Facebook</a></li>
             <li><a href="http://tractlux.com/" target="_blank">Retour au site</a></li>
         </ul>
     </div>
