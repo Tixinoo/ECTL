@@ -11,7 +11,7 @@ class DocumentsView {
     public function typedView($idTypeD) {
         include 'Content/header.php';
         $typed = TypeD::findById($idTypeD);
-        echo "<h1 class=\"page-header\">" . $typed->nomTypeD . "</h1>";
+        echo "<h1 class=\"page-header\"><img src=\"Image/icon-documents.png\"/>" . $typed->nomTypeD . "</h1>";
         $documents = Document::findByIdTypeD($idTypeD);
         echo "<div class=\"row placeholders\"><br>";
         foreach ($documents as $document) {

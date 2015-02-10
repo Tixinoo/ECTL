@@ -14,7 +14,7 @@
         include_once 'Content/connecting_bar.php';
         ?>
 
-        <br>
+
 
 
         <div class="container-fluid">

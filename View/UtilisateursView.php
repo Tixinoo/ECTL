@@ -10,7 +10,7 @@ class UtilisateursView {
  
     public function coordView() {
         include 'Content/header.php';
-        echo "<h2>Coordonnées Utilisateurs</h2>";
+        echo "<h1 class=\"page-header\"><img src=\"Image/icon-details2.png\"/> Coordonnées Utilisateurs</h1>";
         $utilisateurs = Utilisateur::findAll();
         echo "<div class=\"table-responsive\">";
         echo "<table class=\"table table-striped\">";
@@ -23,10 +23,10 @@ class UtilisateursView {
                 echo "Prénom";
                 echo "</th>";
                 echo "<th>";
-                echo "Email";
+                echo "<img src=\"Image/icon-email.png\" width=\"25\"/>";
                 echo "</th>";
                 echo "<th>";
-                echo "Téléphone";
+                echo "<img src=\"Image/icon-telephone.png\" width=\"25\"/>";
                 echo "</th>";
             echo "</tr>";
         echo "</thead>";
