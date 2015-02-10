@@ -31,7 +31,11 @@ class HomeView {
         include 'Content/footer.html';  
     }
     
-    
+    public function facebookView() {
+        include 'Content/header.php';
+        include 'Content/facebook.html';
+        include 'Content/footer.html';
+    }
 
     
 /* *************** MÉTHODES DE TEST *************** */
@@ -49,5 +53,5 @@ class HomeView {
             echo $typed->nomTypeD; 
         }
     }
-    
+
 }

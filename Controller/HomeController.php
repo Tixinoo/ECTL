@@ -13,7 +13,8 @@ class HomeController extends Controller {
             'home' => 'defaultAction',
             'typed' => 'typedAction',
             'search' => 'searchAction',
-            'coord' => 'coordAction'
+            'coord' => 'coordAction',
+            'facebook' => 'facebookAction'
         );
     }
 
@@ -35,6 +36,11 @@ class HomeController extends Controller {
     public function coordAction() {
         $view = new UtilisateursView();
         $view->coordView();
+    }
+    
+    public function facebookAction() {
+        $view = new HomeView();
+        $view->facebookView();
     }
 
 }
