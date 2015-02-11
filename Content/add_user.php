@@ -8,7 +8,7 @@
             <h3 class="page-header"><img src="Image/icon-adduser.png" width="20"/>  Ajouter<small> - Permettre une inscription</small></h3>
         </div>
         <div class="col-sm-12">
-            <form class="form-horizontal" action="addinguser.php" method="POST">
+            <form class="form-horizontal" action="Controller/addinguser.php" method="POST">
                 <div class="form-group">
                     <label for="inputCodeI" class="col-sm-4 control-label">Nouveau Code</label>
                     <div class="col-sm-8">
@@ -73,10 +73,13 @@
             <h3 class="page-header"><img src="Image/icon-recentusers.png" width="20"/>  Récents inscrits<small> - Nouveaux utilisateurs</small></h3>
         </div>
         <div class="col-sm-12">
-<?php
-include_once 'View/UtilisateursView.php';
-UtilisateursView::futurUsersView();
-?>
+            <center><img src="Image/icon-notyet.png" width="50"/><br>Fonctionnalité non disponible</center>
+            <!-- PAS ENCORE IMPLÉMENTÉE
+            <?php
+            include_once 'View/UtilisateursView.php';
+            UtilisateursView::futurUsersView();
+            ?>
+            -->
         </div>
     </div>
 </div>

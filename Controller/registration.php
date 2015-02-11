@@ -61,7 +61,8 @@ $inscriptionOK = true;
               $message .= "<p>- Le nom d'utilisateur ".$pseudo." est déjà pris !</p>";
               $nb_erreurs++;
         }
-    }*/
+    }
+    */
 
     $urlAvatarU = "Image/icon-user.png";
     
