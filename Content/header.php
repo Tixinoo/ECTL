@@ -14,9 +14,6 @@
         include_once 'Content/connecting_bar.php';
         ?>
 
-
-
-
         <div class="container-fluid">
 
             <div class="row">
