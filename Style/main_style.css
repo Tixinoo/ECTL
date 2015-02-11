@@ -17,7 +17,13 @@ body {
 }
 
 #logoECTL {
+    font-family: 'Roboto';
+    color: #254A84;
     border-bottom: solid black 0px;
+}
+
+#logoECTL img {
+    padding-top: 24px;
 }
 
 #menu {
@@ -53,6 +59,15 @@ body {
     border: solid #888888 0px;
     border-radius: 0px;
     box-shadow: 6px 6px 4px 4px #888888;
+}
+
+/* disable webkit datepicker */
+input::-webkit-calendar-picker-indicator{
+    display: none;
+}
+
+input[type="date"]::-webkit-input-placeholder{ 
+    visibility: hidden !important;
 }
 
 /* footer style */

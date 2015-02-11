@@ -1,5 +1,3 @@
-
-
 <div id="pageAccueil">
     <h1 class="page-header"><img src="Image/icon-home.png" width="35"/> Accueil<small> - Bienvenue dans votre espace !</small></h1>
 
