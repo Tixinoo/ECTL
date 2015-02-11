@@ -12,13 +12,13 @@
                 <div class="form-group">
                     <label for="inputCodeI" class="col-sm-4 control-label">Nouveau Code</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="inputCodeI" placeholder="Code d'inscription">
+                        <input name="codeI" type="text" class="form-control" id="inputCodeI" placeholder="Code d'inscription">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputValiditeI" class="col-sm-4 control-label">Valide jusqu'au</label>
                     <div class="col-sm-8">
-                        <input type="date" class="form-control datepicker" id="inputValiditeI">
+                        <input name="validiteI" type="date" class="form-control datepicker" id="inputValiditeI">
                     </div>
                 </div>
                 <div class="form-group">

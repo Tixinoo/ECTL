@@ -2,13 +2,13 @@
 
 include_once 'DataBase.php';
 
-class Document {
+class Inscription {
 
     /**
-     * Attributs d'un document
-     * (correspondent aux colonnes de la table 'Document')
+     * Attributs d'un inscription
+     * (correspondent aux colonnes de la table 'Inscription')
      */
-    private $idD, $nomD, $descD, $contenuD, $urlD, $publication_idp;
+    private $idI, $codeI, $validiteI, $idU, $idTypeU;
 
     public function __construct() {
         
@@ -39,15 +39,15 @@ class Document {
     }
 
     /**
-     * met à jour le tuple de la table 'Document'
+     * met à jour le tuple de la table 'Inscription'
      * qui correspond à l'objet courant
-     * (même idD)
+     * (même idI)
      * @return Booléen à TRUE en cas de succés, FALSE en cas d'échec
      * @throws Exception si problème pendant exécution de la méthode
      */
     public function update() {
         try {
-            if (!isset($this->idD)) {
+            if (!isset($this->idI)) {
                 throw new Exception(__CLASS__ . " : Clé primaire non définie : update impossible");
             }
 
@@ -55,14 +55,13 @@ class Document {
             $db = DataBase::getConnection();
 
             // Création de la requête préparée
-            $query = "UPDATE Document SET nomD = :nomD , descD = :descD, contenuD = :contenuD, urlD = :urlD, publication_idp = :publication_idp WHERE idD = :id";
+            $query = "UPDATE Inscription SET codeI = :codeI , validiteI = :validiteI, idU = :idU, idTypeU = :idTypeU WHERE idI = :id";
             $statement = $db->prepare($query);
-            $statement->bindParam(':nomD', $this->name);
-            $statement->bindParam(':descD', $this->descD);
-            $statement->bindParam(':contenuD', $this->contenuD);
-            $statement->bindParam(':urlD', $this->urlD);
-            $statement->bindParam(':publication_idp', $this->publication_idp);
-            $statement->bindParam(':id', $this->idD);
+            $statement->bindParam(':codeI', $this->name);
+            $statement->bindParam(':validiteI', $this->validiteI);
+            $statement->bindParam(':idU', $this->idU);
+            $statement->bindParam(':idTypeU', $this->idTypeU);
+            $statement->bindParam(':id', $this->idI);
 
             // Exécution de la requête préparée
             $res = $statement->execute();
@@ -74,15 +73,15 @@ class Document {
     }
 
     /**
-     * supprime le tuple de la table 'Document'
+     * supprime le tuple de la table 'Inscription'
      * qui correspond à l'objet courant
-     * (même idD)
+     * (même idI)
      * @return Booléen à TRUE en cas de succés, FALSE en cas d'échec
      * @throws Exception si problème pendant exécution de la méthode
      */
     public function delete() {
         try {
-            if (!isset($this->idD)) {
+            if (!isset($this->idI)) {
                 throw new Exception(__CLASS__ . " : Clé primaire non définie : delete impossible");
             }
 
@@ -90,9 +89,9 @@ class Document {
             $db = DataBase::getConnection();
 
             // Création de la requête préparée
-            $query = "DELETE Document WHERE idD = :id";
+            $query = "DELETE Inscription WHERE idI = :id";
             $statement = $db->prepare($query);
-            $statement->bindParam(':id', $this->idD);
+            $statement->bindParam(':id', $this->idI);
 
             // Exécution de la requête préparée
             $res = $statement->execute();
@@ -104,9 +103,9 @@ class Document {
     }
 
     /**
-     * insère le tuple de la table 'Document'
+     * insère le tuple de la table 'Inscription'
      * qui correspond à l'objet courant
-     * (même idD)
+     * (même idI)
      * @return Booléen à TRUE en cas de succés, FALSE en cas d'échec
      * @throws Exception si problème pendant exécution de la méthode
      */
@@ -116,16 +115,16 @@ class Document {
             $db = DataBase::getConnection();
 
             // Création de la requête préparée
-            $query = "INSERT INTO Document (name,descD,contenuD,urlD,publication_idp) VALUES(:nomD,:descD,:contenuD,:urlD,:publication_idp)";
+            $query = "INSERT INTO Inscription (codeI,validiteI,idU,idTypeU) VALUES(:codeI,:validiteI,:idU,:idTypeU)";
             $statement = $db->prepare($query);
-            $statement->bindParam(':nomD', $this->name);
-            $statement->bindParam(':descD', $this->descD);
-            $statement->bindParam(':contenuD', $this->contenuD);
-            $statement->bindParam(':urlD', $this->urlD);
-            $statement->bindParam(':publication_idp', $this->publication_idp);
+            $statement->bindParam(':codeI', $this->codeI);
+            $statement->bindParam(':validiteI', $this->validiteI);
+            $statement->bindParam(':idU', $this->idU);
+            $statement->bindParam(':idTypeU', $this->idTypeU);
 
             // Exécution de la requête préparée
             $res = $statement->execute();
+            echo $res;
             return $res;
         } catch (Exception $e) {
             $trace = $e->getTrace();
@@ -134,12 +133,12 @@ class Document {
     }
 
     /**
-     * retourne dans un objet Document
+     * retourne dans un objet Inscription
      * les informations de la base
-     * relative au document dont l'id
+     * relative au inscription dont l'id
      * est celui donné en paramètre
      * @param $id identifiant de l'ariste dans la base
-     * @return un objet Document rempli avec les informations contenues dans la base
+     * @return un objet Inscription rempli avec les informations contenues dans la base
      */
     public static function findById($id) {
         try {
@@ -147,7 +146,7 @@ class Document {
             $db = DataBase::getConnection();
 
             // Création de la requête préparée
-            $query = "SELECT * FROM Document WHERE idD = :id";
+            $query = "SELECT * FROM Inscription WHERE idI = :id";
             $statement = $db->prepare($query);
             $statement->bindParam(':id', $id);
 
@@ -157,34 +156,33 @@ class Document {
             // Récupération du tuple correspondant à l'id en paramètre
             $row = $statement->fetch(PDO::FETCH_ASSOC);
 
-            // Remplissage d'un objet Document avec les informations contenues dans le tuple
-            $document = new Document();
-            $document->idD = $row['idD'];
-            $document->name = $row['name'];
-            $document->descD = $row['descD'];
-            $document->contenuD = $row['contenuD'];
-            $document->urlD = $row['urlD'];
-            $document->publication_idp = $row['publication_idp'];
+            // Remplissage d'un objet Inscription avec les informations contenues dans le tuple
+            $inscription = new Inscription();
+            $inscription->idI = $row['idI'];
+            $inscription->codeI = $row['codeI'];
+            $inscription->validiteI = $row['validiteI'];
+            $inscription->idU = $row['idU'];
+            $inscription->idTypeU = $row['idTypeU'];
 
-            // Retour de l'document
-            return $document;
+            // Retour de l'inscription
+            return $inscription;
         } catch (Exception $e) {
             $trace = $e->getTrace();
             echo "Erreur pendant findById: $trace";
         }
     }
 
-    public static function findByNom($nomD) {
+    public static function findByCode($codeI) {
         try {
             // Récupération d'une connexion à la base
             $db = DataBase::getConnection();
 
             // Création de la requête préparée
-            $query = "SELECT * FROM Document WHERE nomD LIKE :nomD";
+            $query = "SELECT * FROM Inscription WHERE codeI LIKE :codeI";
             $statement = $db->prepare($query);
-            $str = "%" . $nomD . "%";
+            $str = "%" . $codeI . "%";
 
-            $statement->bindParam(':nomD', $str);
+            $statement->bindParam(':codeI', $str);
 
             // Exécution de la requête préparée
             $statement->execute();
@@ -192,15 +190,14 @@ class Document {
             $tab = Array();
             // Tant que des lignes sont retournées
             while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                // Remplissage d'un objet Document avec les informations contenues dans le tuple courant
-                $document = new Document();
-                $document->idD = $row['idD'];
-                $document->nomD = $row['nomD'];
-                $document->descD = $row['descD'];
-                $document->contenuD = $row['contenuD'];
-                $document->urlD = $row['urlD'];
-                $document->publication_idp = $row['publication_idp'];
-                $tab[] = $document;
+                // Remplissage d'un objet Inscription avec les informations contenues dans le tuple courant
+                $inscription = new Inscription();
+                $inscription->idI = $row['idI'];
+                $inscription->codeI = $row['codeI'];
+                $inscription->validiteI = $row['validiteI'];
+                $inscription->idU = $row['idU'];
+                $inscription->idTypeU = $row['idTypeU'];
+                $tab[] = $inscription;
             }
 
             // Retour du tableau de tracks
@@ -212,9 +209,9 @@ class Document {
     }
 
     /**
-     * retourne dans un tableau d'objets Document
-     * tous les documents contenus dans la base
-     * @return un tableau d'objets Document rempli avec les documents contenues dans la base
+     * retourne dans un tableau d'objets Inscription
+     * tous les inscriptions contenus dans la base
+     * @return un tableau d'objets Inscription rempli avec les inscriptions contenues dans la base
      */
     public static function findAll() {
         try {
@@ -222,7 +219,7 @@ class Document {
             $db = DataBase::getConnection();
 
             // Création de la requête préparée
-            $query = "SELECT * FROM Document";
+            $query = "SELECT * FROM Inscription";
             $statement = $db->prepare($query);
 
             // Exécution de la requête préparée
@@ -231,18 +228,17 @@ class Document {
             $tab = Array();
             // Tant que des lignes sont retournées
             while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                // Remplissage d'un objet Document avec les informations contenues dans le tuple courant
-                $document = new Document();
-                $document->idD = $row['idD'];
-                $document->nomD = $row['nomD'];
-                $document->descD = $row['descD'];
-                $document->contenuD = $row['contenuD'];
-                $document->urlD = $row['urlD'];
-                $document->publication_idp = $row['publication_idp'];
-                $tab[] = $document;
+                // Remplissage d'un objet Inscription avec les informations contenues dans le tuple courant
+                $inscription = new Inscription();
+                $inscription->idI = $row['idI'];
+                $inscription->codeI = $row['codeI'];
+                $inscription->validiteI = $row['validiteI'];
+                $inscription->idU = $row['idU'];
+                $inscription->idTypeU = $row['idTypeU'];
+                $tab[] = $inscription;
             }
 
-            // Retour du tableau d'document
+            // Retour du tableau d'inscription
             return $tab;
         } catch (Exception $e) {
             $trace = $e->getTrace();
@@ -251,19 +247,19 @@ class Document {
     }
     
     /**
-     * retourne dans un tableau d'objets Document
-     * tous les documents contenus dans la base
-     * @return un tableau d'objets Document rempli avec les documents contenues dans la base
+     * retourne dans un tableau d'objets Inscription
+     * tous les inscriptions contenus dans la base
+     * @return un tableau d'objets Inscription rempli avec les inscriptions contenues dans la base
      */
-    public static function findByIdTypeD($idtyped) {
+    public static function findByIdTypeU($idtypeu) {
         try {
             // Récupération d'une connexion à la base
             $db = DataBase::getConnection();
 
             // Création de la requête préparée
-            $query = "SELECT * FROM Document NATURAL JOIN DocumentType WHERE idTypeD = :id";
+            $query = "SELECT * FROM Inscription NATURAL JOIN TypeU WHERE idTypeU = :id";
             $statement = $db->prepare($query);
-            $statement->bindParam(':id', $idtyped);
+            $statement->bindParam(':id', $idtypeu);
             
             // Exécution de la requête préparée
             $statement->execute();
@@ -271,22 +267,21 @@ class Document {
             $tab = Array();
             // Tant que des lignes sont retournées
             while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                // Remplissage d'un objet Document avec les informations contenues dans le tuple courant
-                $document = new Document();
-                $document->idD = $row['idD'];
-                $document->nomD = $row['nomD'];
-                $document->descD = $row['descD'];
-                $document->contenuD = $row['contenuD'];
-                $document->urlD = $row['urlD'];
-                $document->publication_idp = $row['publication_idp'];
-                $tab[] = $document;
+                // Remplissage d'un objet Inscription avec les informations contenues dans le tuple courant
+                $inscription = new Inscription();
+                $inscription->idI = $row['idI'];
+                $inscription->codeI = $row['codeI'];
+                $inscription->validiteI = $row['validiteI'];
+                $inscription->idU = $row['idU'];
+                $inscription->idTypeU = $row['idTypeU'];
+                $tab[] = $inscription;
             }
 
-            // Retour du tableau d'document
+            // Retour du tableau d'inscription
             return $tab;
         } catch (Exception $e) {
             $trace = $e->getTrace();
-            echo "Erreur pendant findByIdTypeD: $trace";
+            echo "Erreur pendant findByIdTypeU: $trace";
         }
     }
 
