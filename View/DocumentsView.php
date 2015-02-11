@@ -18,7 +18,7 @@ class DocumentsView {
             Self::DocumentView($document);
         }
         echo "</div>";
-        include 'Content/footer.html';
+        include 'Content/footer.php';
     }
     
     public function documentView($document) {

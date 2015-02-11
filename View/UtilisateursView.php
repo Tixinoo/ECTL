@@ -50,7 +50,7 @@ class UtilisateursView {
         echo "</tbody>";
         echo "</table>";
         echo "</div>";
-        include 'Content/footer.html';
+        include 'Content/footer.php';
     }
 
     public function futurUsersView() {
@@ -97,7 +97,7 @@ class UtilisateursView {
     public function addUserView() {
         include 'Content/header.php';
         include 'Content/add_user.php';
-        include 'Content/footer.html';
+        include 'Content/footer.php';
     }
     
 }

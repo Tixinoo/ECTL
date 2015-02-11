@@ -13,7 +13,7 @@ class HomeView {
     public function defaultView() {
         include 'Content/header.php';
         include 'Content/home.php';
-        include 'Content/footer.html';
+        include 'Content/footer.php';
     }
 
     public function searchView($keywords) {
@@ -31,19 +31,19 @@ class HomeView {
             echo "</div>";
             echo "</div>";
         }
-        include 'Content/footer.html';
+        include 'Content/footer.php';
     }
 
     public function facebookView() {
         include 'Content/header.php';
         include 'Content/facebook.html';
-        include 'Content/footer.html';
+        include 'Content/footer.php';
     }
 
     public function sitewebView() {
         include 'Content/header.php';
         include 'Content/tractlux.com.html';
-        include 'Content/footer.html';
+        include 'Content/footer.php';
     }
 
     /*     * ************** MÉTHODES DE TEST *************** */

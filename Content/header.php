@@ -5,10 +5,6 @@
     ?>
 
     <body>
-        
-        <?php
-        include_once 'Content/script.html';
-        ?>
 
         <?php
         include_once 'Content/connecting_bar.php';
