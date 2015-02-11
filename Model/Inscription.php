@@ -124,7 +124,6 @@ class Inscription {
 
             // Exécution de la requête préparée
             $res = $statement->execute();
-            echo $res;
             return $res;
         } catch (Exception $e) {
             $trace = $e->getTrace();
