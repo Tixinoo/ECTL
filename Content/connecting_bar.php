@@ -33,7 +33,7 @@
 
                         echo "<li><a href=\"#\">";
                         echo "<form action=\"Controller/disconnection.php\" method=\"GET\">\n";
-                        echo "<input class=\"btn-disconnect\" type=\"submit\" value=\"Se déconnecter\"/>\n";
+                        echo "<input class=\"btn btn-disconnect\" type=\"submit\" value=\"Se déconnecter\"/>\n";
                         echo "</form>\n";
                         echo "</a></li>";
                     }
