@@ -180,19 +180,17 @@ class TypeD {
             // Exécution de la requête préparée
             $statement->execute();
 
-            $tab = Array();
-            // Tant que des lignes sont retournées
-            while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                // Remplissage d'un objet TypeD avec les informations contenues dans le tuple courant
-                $typeD = new TypeD();
-                $typeD->idTypeD = $row['idTypeD'];
-                $typeD->nomTypeD = $row['nomTypeD'];
-                $typeD->descTypeD = $row['descTypeD'];
-                $tab[] = $typeD;
-            }
+            // Récupération du tuple correspondant à l'id en paramètre
+            $row = $statement->fetch(PDO::FETCH_ASSOC);
+
+            // Remplissage d'un objet TypeD avec les informations contenues dans le tuple courant
+            $typeD = new TypeD();
+            $typeD->idTypeD = $row['idTypeD'];
+            $typeD->nomTypeD = $row['nomTypeD'];
+            $typeD->descTypeD = $row['descTypeD'];
 
             // Retour du tableau de tracks
-            return $tab;
+            return $typeD;
         } catch (Exception $e) {
             $trace = $e->getTrace();
             echo "Erreur pendant findByName: $trace";

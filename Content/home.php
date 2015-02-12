@@ -11,7 +11,9 @@
     <div id="news">
         <?php
         include_once 'View/DocumentsView.php';
-        $news = Document::findByIdTypeD(4);
+        $idtypenews = TypeD::findByNom("News")->idTypeD;
+        $news = Document::findByIdTypeD($idtypenews);
+        $news = array_reverse($news);
         echo "<div class=\"row placeholders\"><br>";
         foreach ($news as $singleNews) {
             DocumentsView::singleNewsView($singleNews);
