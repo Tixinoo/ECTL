@@ -9,7 +9,8 @@ Menu avec tous les types de documents
             <li><a href="index.php"><img src="Image/icon-home.png" width="15"/> Accueil</a></li>
             <li><a href="index.php?a=search"><img src="Image/icon-search.png" width="15"/> Rechercher Documents</a></li>
         </ul>
-        <h3 class="sub-header">Documents</h3>
+        <h3 class="sub-header">Documents <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">+</button></h3>
+        
         <ul class="nav nav-sidebar">
             <?php
             $typeds = TypeD::findAll();
