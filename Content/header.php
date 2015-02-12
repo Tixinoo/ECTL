@@ -29,11 +29,23 @@
 
                     <br>
 
-                    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <!-- MODAL POUR L'AJOUT DE DOCUMENT -->
+                    <div class="modal fade bs-document-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <?php
                                 include_once 'Content/add_document.php';
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- MODAL POUR L'AJOUT DE CATÉGORIE -->
+                    <div class="modal fade bs-categorie-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <?php
+                                include_once 'Content/add_type.php';
                                 ?>
                             </div>
                         </div>

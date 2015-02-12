@@ -12,7 +12,7 @@ Menu avec tous les types de documents
         <h3 class="sub-header">Documents 
             <?php
             if (in_array("1", $_SESSION['typeUs'])) {
-                echo "<button type = \"button\" class = \"btn btn-primary\" data-toggle = \"modal\" data-target = \".bs-example-modal-lg\">+</button>";
+                echo "<button type = \"button\" class = \"btn btn-primary\" data-toggle = \"modal\" data-target = \".bs-document-modal-lg\">+</button>";
             }
             ?>
         </h3>
@@ -30,6 +30,27 @@ Menu avec tous les types de documents
                     echo $typed->nomTypeD;
                     echo "</a></li>";
                 }
+            }
+            ?>
+            <?php
+            if (in_array("1", $_SESSION['typeUs'])) {
+                echo "<center><button type = \"button\" class = \"btn btn-primary btn-sm\" data-toggle = \"modal\" data-target = \".bs-categorie-modal-lg\"><i>Ajouter une catégorie</i></button></center>";
+                /*
+                echo "<div class=\"col-sm-2\">";
+                echo "</div>";
+                echo "<div class=\"col-sm-9\">";
+                echo "<button type = \"button\" class = \"btn btn-primary btn-block\" data-toggle = \"modal\" data-target = \".bs-example-modal-lg\"><i>Ajouter une catégorie</i></button>";
+                echo "</div>";
+                echo "<div class=\"col-sm-2\">";
+                echo "</div>";
+
+                echo "<div class=\"col-sm-1\">";
+                echo "</div>";
+                echo "<div class=\"col-sm-9\">";
+                echo "<button type = \"button\" class = \"btn btn-primary btn-block\" data-toggle = \"modal\" data-target = \".bs-example-modal-lg\"><i>Ajouter un document</i></button>";
+                echo "</div>";
+                echo "<div class=\"col-sm-2\">";
+                echo "</div>";*/
             }
             ?>
         </ul>
