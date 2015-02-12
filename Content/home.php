@@ -24,6 +24,7 @@
 
     <h3 class="sub-header"><img src="Image/icon-selection.png" width="50"/>Sélection de documents</h3>
     <div id="selectionDocuments">
+        <center><img src="Image/icon-notyet.png" width="50"/><br>Fonctionnalité non disponible</center>
     </div>
 
     <br>

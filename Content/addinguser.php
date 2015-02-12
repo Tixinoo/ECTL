@@ -37,13 +37,9 @@ if ($inscriptionOK) {
     $inscription->idU = $idU;
     $inscription->idTypeU = $idTypeU;
     $inscription->insert();
-    include_once 'header.php';
     echo "<p> Félicitations ! Tout s'est déroulé avec succès !<br>Un nouvel utilisateur pourra rejoindre l'ECTL.<br> Les détails de cet ajout sont les suivants : <ul><li>Le nouvel utilisateur sera de type <b>" . $idTypeU . "</b></li> <li>Il devra s'inscrire avec le code <b>" . $codeI . "</b></li> <li>Il devra s'inscrire au plus tard le <b>" . $validiteI . "</b> (inclu)</li></p>";
-    include_once 'footer.php';
 } else {
-    include_once 'Content/header.php';
     echo "<p>Votre formulaire d'inscription contient les " . $nb_erreurs . " erreurs suivantes: </p>";
     echo $message;
-    include_once 'Content/footer.php';
 }
 ?>
