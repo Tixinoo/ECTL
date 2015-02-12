@@ -126,12 +126,37 @@ class Document {
 
             // Exécution de la requête préparée
             $res = $statement->execute();
+            
+            //    $document->idD = PDO::lastInsertId();
+            $this->idD = $db->lastInsertId();
+            
             return $res;
         } catch (Exception $e) {
             $trace = $e->getTrace();
             echo "Erreur pendant insert: $trace";
         }
     }
+    
+    public function insertType($idTypeD) {
+        try {
+            // Récupération d'une connexion à la base
+            $db = DataBase::getConnection();
+
+            // Création de la requête préparée
+            $query = "INSERT INTO DocumentType (idD,idTypeD) VALUES(:idD,:idTypeD)";
+            $statement = $db->prepare($query);
+            $statement->bindParam(':idD', $this->idD);
+            $statement->bindParam(':idTypeD', $idTypeD);
+
+            // Exécution de la requête préparée
+            $res = $statement->execute();
+            return $res;
+        } catch (Exception $e) {
+            $trace = $e->getTrace();
+            echo "Erreur pendant insertType: $trace";
+        }
+    }
+    
 
     /**
      * retourne dans un objet Document
