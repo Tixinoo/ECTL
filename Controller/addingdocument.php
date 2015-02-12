@@ -27,7 +27,7 @@ if (!isset($_POST["descD"]) || strlen($_POST["descD"]) <= 10) {
 //Test du contenu
 if (!isset($_POST["contenuD"]) || strlen($_POST["contenuD"]) <= 10) {
     $documentOK = false;
-    $message .= "<p>- Le contenu doit contenir au moins 5 caractères.</p>";
+    $message .= "<p>- Le contenu doit contenir au moins 10 caractères.</p>";
     $nb_erreurs++;
 } else {
     $contenuD = $_POST["contenuD"];
