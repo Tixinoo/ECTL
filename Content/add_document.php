@@ -1,7 +1,7 @@
 <div class="" style="padding: 10px;">
     <h3 class="sub-header"><img src="Image/icon-adddocument.png" width="40"/>Ajouter un document</h3>
     <br>
-    <form action="Controller/addingdocument.php" method="POST">
+    <form action="Controller/addingdocument.php" method="POST" enctype="multipart/form-data">
         <div class="form-group">
             <label for="inputNomD">Titre</label>
             <input name="nomD" type="text" class="form-control" id="inputNomD" placeholder="Entrez le titre du document">
@@ -16,7 +16,7 @@
         </div>
         <div class="form-group">
             <label for="inputFileD">Fichier</label>
-            <input type="file" id="inputFileD">
+            <input name="inputFileD" type="file" id="inputFileD">
             <p class="help-block">Veuillez envoyer un fichier au format PDF.</p>
         </div>
         <div class="form-group">
