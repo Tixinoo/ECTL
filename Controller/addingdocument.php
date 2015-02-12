@@ -44,7 +44,6 @@ if(isset($_POST["idTypeD"])) {
 
 /* ENVOI DU FICHIER */
 $dossier = "../Document/";
-print_r($_FILES);
 $fichier = $dossier . basename($_FILES["inputFileD"]["name"]);
 $envoiFichierOK = 1;
 $extension = pathinfo($fichier,PATHINFO_EXTENSION);

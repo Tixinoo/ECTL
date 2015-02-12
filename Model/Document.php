@@ -126,9 +126,43 @@ class Document {
 
             // Exécution de la requête préparée
             $res = $statement->execute();
-            
+
             //    $document->idD = PDO::lastInsertId();
             $this->idD = $db->lastInsertId();
+
+            $this->insertPublication();
+
+            return $res;
+        } catch (Exception $e) {
+            $trace = $e->getTrace();
+            echo "Erreur pendant insert: $trace";
+        }
+    }
+
+    public function insertPublication() {
+        try {
+            // Récupération d'une connexion à la base
+            $db = DataBase::getConnection();
+
+            session_start();
+
+            $dateP = date('Y/m/d H:i:s');
+            $commentP = "";
+            $idU = $_SESSION['idU'];
+
+            // Création de la requête préparée
+            $query = "INSERT INTO Publication (dateP,commentP,idU,document_idd) VALUES(:dateP,:commentP,:idU,:document_idd)";
+            $statement = $db->prepare($query);
+            $statement->bindParam(':dateP', $dateP);
+            $statement->bindParam(':commentP', $commentP);
+            $statement->bindParam(':idU', $idU);
+            $statement->bindParam(':document_idd', $this->idD);
+
+            // Exécution de la requête préparée
+            $res = $statement->execute();
+            
+            //Mise à jour du document
+            $db->exec("UPDATE Document SET publication_idp='" . $db->lastInsertId() . "' WHERE idD='" . $this->idD . "'");
             
             return $res;
         } catch (Exception $e) {
@@ -136,7 +170,7 @@ class Document {
             echo "Erreur pendant insert: $trace";
         }
     }
-    
+
     public function insertType($idTypeD) {
         try {
             // Récupération d'une connexion à la base
@@ -156,7 +190,6 @@ class Document {
             echo "Erreur pendant insertType: $trace";
         }
     }
-    
 
     /**
      * retourne dans un objet Document
@@ -274,7 +307,7 @@ class Document {
             echo "Erreur pendant findAll: $trace";
         }
     }
-    
+
     /**
      * retourne dans un tableau d'objets Document
      * tous les documents contenus dans la base
@@ -289,7 +322,7 @@ class Document {
             $query = "SELECT * FROM Document NATURAL JOIN DocumentType WHERE idTypeD = :id";
             $statement = $db->prepare($query);
             $statement->bindParam(':id', $idtyped);
-            
+
             // Exécution de la requête préparée
             $statement->execute();
 
@@ -306,6 +339,38 @@ class Document {
                 $document->publication_idp = $row['publication_idp'];
                 $tab[] = $document;
             }
+
+            // Retour du tableau d'document
+            return $tab;
+        } catch (Exception $e) {
+            $trace = $e->getTrace();
+            echo "Erreur pendant findByIdTypeD: $trace";
+        }
+    }
+
+    public function findPublication() {
+        try {
+            // Récupération d'une connexion à la base
+            $db = DataBase::getConnection();
+
+            // Création de la requête préparée
+            $query = "SELECT * FROM Publication WHERE idP = :id";
+            $statement = $db->prepare($query);
+            $statement->bindParam(':id', $this->publication_idp);
+
+            // Exécution de la requête préparée
+            $statement->execute();
+
+            $tab = Array();
+
+            // Récupération du tuple correspondant à l'id en paramètre
+            $row = $statement->fetch(PDO::FETCH_ASSOC);
+
+            // Remplissage d'un tableau contenant les informations de la publication
+            $tab["idP"] = $row['idP'];
+            $tab["dateP"] = $row['dateP'];
+            $tab["commentP"] = $row['commentP'];
+            $tab["idU"] = $row['idU'];
 
             // Retour du tableau d'document
             return $tab;

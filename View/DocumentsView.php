@@ -36,7 +36,7 @@ class DocumentsView {
     public function singleNewsView($singleNews) {      
         echo "<div class=\"col-xs-24 col-sm-12 singleNews\">";
         echo "<div class=\"col-xs-4 col-sm-2\">";
-        echo "<img src=\"Image/icon-attention.png\" width=\"25\"/><h4>" . "10/02/2015" . "</h4>";
+        echo "<img src=\"Image/icon-attention.png\" width=\"25\"/><h4>" . $singleNews->findPublication()["dateP"] . "</h4>";
         echo "</div>";
         echo "<div class=\"col-xs-20 col-sm-10 left\">";
         echo "<h3 class=\"page-header\">" . $singleNews->nomD . "</h3>";
