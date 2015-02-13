@@ -22,14 +22,12 @@ class DocumentsView {
     }
     
     public static function documentView($document) {
-        echo "<div id=\"document\">";
-        echo "<div class=\"col-xs-6 col-sm-3 placeholder\">";
+        echo "<div id=\"document\" class=\"col-xs-6 col-sm-3 placeholder\">";
         echo "<a class=\"view-pdf\" href=\"" . $document->urlD . "\"><h1><span class=\"glyphicon glyphicon-file\" aria-hidden=\"true\"></span></h1>";
         /*echo "<img src=\"Image/icon-pdf.png\" class=\"img-responsive\">";*/
         echo "<h4>" . $document->nomD . "</h4></a>";
         echo "<span class=\"text-muted\"><i>" . $document->descD . "</i></span>";
         /*echo "Lien : <a href=\"" . $document->urlD . "\"><img src=\"Image/icon-pdf.png\"></a><br>";*/
-        echo "</div>";
         echo "</div>";
     }
     

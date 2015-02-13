@@ -2,7 +2,14 @@
     Style principal de l'application
     Created on : 1 févr. 2015, 17:23:37
 */
+.row.equal [class*="col-"]{
+    margin-bottom: -99999px;
+    padding-bottom: 99999px;
+}
 
+.row.equal{
+    overflow: hidden; 
+}
 html {
     position: relative;
     min-height: 100%;
@@ -41,6 +48,11 @@ body {
 }
 
 #document {
+    /* Required for text-overflow to do anything */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: "...";
+    height: 150px;
 }
 
 .left {
