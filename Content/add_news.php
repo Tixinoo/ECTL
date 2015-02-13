@@ -31,6 +31,6 @@
             ?>
         </div>
         <br>
-        <button type="submit" class="btn btn-primary btn-block">Ajouter la news</button>
+        <button type="submit" class="btn btn-access btn-block">Ajouter la news</button>
     </form>
 </div>

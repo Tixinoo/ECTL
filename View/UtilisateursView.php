@@ -57,17 +57,20 @@ class UtilisateursView {
     public function futurUsersView() {
         $utilisateurs = Inscription::findAll();
         echo "<div class=\"table-responsive\">";
-        echo "<table class=\"table table-striped\">";
+        echo "<table class=\"table table-hover\">";
         echo "<thead>";
             echo "<tr>";
                 echo "<th>";
-                echo "Code Inscription";
+                echo "Code";
                 echo "</th>";
                 echo "<th>";
                 echo "Validité";
                 echo "</th>";
                 echo "<th>";
                 echo "Type d'Utilisateur";
+                echo "</th>";
+                echo "<th class=\"text-center\">";
+                echo "<img src=\"Image/icon-delete.png\" width=\"25\"/>";
                 echo "</th>";
             echo "</tr>";
         echo "</thead>";
@@ -82,7 +85,10 @@ class UtilisateursView {
                 echo "</td>";
                 echo "<td>";
                 echo TypeU::findById($utilisateur->idTypeU)->nomTypeU;
-                echo "</td>";             
+                echo "</td>";
+                echo "<td class=\"text-center\">";
+                echo "<button type=\"button\" class=\"btn btn-danger\">Supprimer</button>";
+                echo "</td>";
             echo "</tr>";
         }
         echo "</tbody>";

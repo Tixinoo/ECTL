@@ -40,6 +40,6 @@
             ?>
         </div>
         <br>
-        <button type="submit" class="btn btn-primary btn-block">Ajouter le document</button>
+        <button type="submit" class="btn btn-success btn-block">Ajouter le document</button>
     </form>
 </div>

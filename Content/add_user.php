@@ -45,7 +45,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-8">
-                        <button type="submit" class="btn btn-primary btn-block">Ajouter un nouveau code</button>
+                        <button type="submit" class="btn btn-success btn-block">Ajouter un nouveau code</button>
                     </div>
                 </div>
             </form>

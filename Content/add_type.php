@@ -10,6 +10,6 @@
             <label for="inputDescTypeD">Description</label>
             <input name="descTypeD" type="text" class="form-control" id="inputDescTypeD" placeholder="Décrivez la catégorie">
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Ajouter la catégorie</button>
+        <button type="submit" class="btn btn-success btn-block">Ajouter la catégorie</button>
     </form>
 </div>

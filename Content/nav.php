@@ -35,22 +35,6 @@ Menu avec tous les types de documents
             <?php
             if (in_array("1", $_SESSION['typeUs'])) {
                 echo "<center><button type = \"button\" class = \"btn btn-primary btn-sm\" data-toggle = \"modal\" data-target = \".bs-categorie-modal-lg\"><i>Ajouter une catégorie</i></button></center>";
-                /*
-                  echo "<div class=\"col-sm-2\">";
-                  echo "</div>";
-                  echo "<div class=\"col-sm-9\">";
-                  echo "<button type = \"button\" class = \"btn btn-primary btn-block\" data-toggle = \"modal\" data-target = \".bs-example-modal-lg\"><i>Ajouter une catégorie</i></button>";
-                  echo "</div>";
-                  echo "<div class=\"col-sm-2\">";
-                  echo "</div>";
-
-                  echo "<div class=\"col-sm-1\">";
-                  echo "</div>";
-                  echo "<div class=\"col-sm-9\">";
-                  echo "<button type = \"button\" class = \"btn btn-primary btn-block\" data-toggle = \"modal\" data-target = \".bs-example-modal-lg\"><i>Ajouter un document</i></button>";
-                  echo "</div>";
-                  echo "<div class=\"col-sm-2\">";
-                  echo "</div>"; */
             }
             ?>
         </ul>
