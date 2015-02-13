@@ -16,8 +16,11 @@ if (!isset($_POST["codeI"]) || strlen($_POST["codeI"]) <= 5) {
 }
 
 //Test de la date
+echo "toto;";
 $validiteI = $_POST["validiteI"];
-$validiteI = date_parse($validiteI); // or date_parse_from_format("d/m/Y", $date);
+$validiteI = date_parse_from_format("d/m/Y", $validiteI); // or date_parse_from_format("d/m/Y", $date);
+print_r($validiteI);
+echo "titi";
 if (checkdate($validiteI['month'], $validiteI['day'], $validiteI['year'])) {
     $validiteI = $validiteI['year'] . "-" . $validiteI['month'] . "-" . $validiteI['day'];
 } else {

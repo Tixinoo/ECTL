@@ -21,7 +21,7 @@ class DocumentsView {
         include 'Content/footer.php';
     }
     
-    public function documentView($document) {
+    public static function documentView($document) {
         echo "<div id=\"document\">";
         echo "<div class=\"col-xs-6 col-sm-3 placeholder\">";
         echo "<a class=\"view-pdf\" href=\"" . $document->urlD . "\"><h1><span class=\"glyphicon glyphicon-file\" aria-hidden=\"true\"></span></h1>";
@@ -33,7 +33,7 @@ class DocumentsView {
         echo "</div>";
     }
     
-    public function singleNewsView($singleNews) {
+    public static function singleNewsView($singleNews) {
         echo "<div class=\"col-xs-24 col-sm-12 singleNews\">";
         echo "<div class=\"col-xs-4 col-sm-2\">";
         echo "<img src=\"Image/icon-attention.png\" width=\"25\"/><h4>" . date("d/m/Y", strtotime($singleNews->findPublication()["dateP"])) . "</h4>";

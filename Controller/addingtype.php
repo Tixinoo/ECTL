@@ -7,7 +7,7 @@ $message = "";
 $typedOK = true;
 
 //Test du nom
-if (!isset($_POST["nomTypeD"]) || strlen($_POST["nomTypeD"]) <= 5) {
+if (!isset($_POST["nomTypeD"]) || strlen($_POST["nomTypeD"]) <= 3) {
     $typedOK = false;
     $message .= "<p>- Le titre doit contenir au moins 5 caractères.</p>";
     $nb_erreurs++;
