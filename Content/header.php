@@ -39,7 +39,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- MODAL POUR L'AJOUT DE NEWS -->
                     <div class="modal fade bs-news-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
@@ -50,7 +50,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- MODAL POUR L'AJOUT DE CATÉGORIE -->
                     <div class="modal fade bs-categorie-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">

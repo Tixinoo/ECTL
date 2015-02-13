@@ -1,10 +1,10 @@
 <!--
 Menu avec tous les types de documents
 -->
+<div class="col-sm-3 col-md-2 sidebar">
+    <div id="menu" class="navbar-collapse collapse">
 
-<div id="menu">
 
-    <div class="col-sm-3 col-md-2 sidebar">
         <ul class="nav nav-sidebar">
             <li><a href="index.php"><img src="Image/icon-home.png" width="15"/> Accueil</a></li>
             <li><a href="index.php?a=search"><img src="Image/icon-search.png" width="15"/> Rechercher Documents</a></li>
@@ -36,21 +36,21 @@ Menu avec tous les types de documents
             if (in_array("1", $_SESSION['typeUs'])) {
                 echo "<center><button type = \"button\" class = \"btn btn-primary btn-sm\" data-toggle = \"modal\" data-target = \".bs-categorie-modal-lg\"><i>Ajouter une catégorie</i></button></center>";
                 /*
-                echo "<div class=\"col-sm-2\">";
-                echo "</div>";
-                echo "<div class=\"col-sm-9\">";
-                echo "<button type = \"button\" class = \"btn btn-primary btn-block\" data-toggle = \"modal\" data-target = \".bs-example-modal-lg\"><i>Ajouter une catégorie</i></button>";
-                echo "</div>";
-                echo "<div class=\"col-sm-2\">";
-                echo "</div>";
+                  echo "<div class=\"col-sm-2\">";
+                  echo "</div>";
+                  echo "<div class=\"col-sm-9\">";
+                  echo "<button type = \"button\" class = \"btn btn-primary btn-block\" data-toggle = \"modal\" data-target = \".bs-example-modal-lg\"><i>Ajouter une catégorie</i></button>";
+                  echo "</div>";
+                  echo "<div class=\"col-sm-2\">";
+                  echo "</div>";
 
-                echo "<div class=\"col-sm-1\">";
-                echo "</div>";
-                echo "<div class=\"col-sm-9\">";
-                echo "<button type = \"button\" class = \"btn btn-primary btn-block\" data-toggle = \"modal\" data-target = \".bs-example-modal-lg\"><i>Ajouter un document</i></button>";
-                echo "</div>";
-                echo "<div class=\"col-sm-2\">";
-                echo "</div>";*/
+                  echo "<div class=\"col-sm-1\">";
+                  echo "</div>";
+                  echo "<div class=\"col-sm-9\">";
+                  echo "<button type = \"button\" class = \"btn btn-primary btn-block\" data-toggle = \"modal\" data-target = \".bs-example-modal-lg\"><i>Ajouter un document</i></button>";
+                  echo "</div>";
+                  echo "<div class=\"col-sm-2\">";
+                  echo "</div>"; */
             }
             ?>
         </ul>

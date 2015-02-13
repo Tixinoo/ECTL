@@ -9,6 +9,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
                 <a class="navbar-brand" href="index.php">Espace Collaborateur TRACTLUX</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
@@ -45,37 +51,5 @@
             </div>
         </div>
     </nav>
-
-
-    <!-- OLD
-    <?php
-    include_once 'Model/TypeU.php';
-
-    // Barre de connexion
-    // Si l'utilisateur est connecté
-    if (isset($_SESSION['pseudoU'])) {
-
-        // On affiche un message, son nom d'utilisateur et un bouton pour se déconnecter
-        echo "Vous êtes connectés en tant que " . $_SESSION['pseudoU'];
-        foreach ($_SESSION['typeUs'] as $idtypeu) {
-            echo " (";
-            $TypeU = TypeU::findById($idtypeu);
-            echo $TypeU->nomTypeU;
-            echo ")";
-        }
-        echo "<form action=\"Controller/disconnection.php\" method=\"GET\">\n";
-        echo "<input type=\"submit\" value=\"Se déconnecter\"/>\n";
-        echo "</form>\n";
-    } else {
-
-        // Sinon, on affiche des champs et un bouton pour qu'il puisse se connecter
-        echo "<form action=\"Controller/connection.php\" method=\"POST\">\n";
-        echo "<input type=\"text\" name=\"pseudoU\" value=\"Tixinoo\"/>\n";
-        echo "<input type=\"password\" name=\"password\" value=\"toto\"/>\n";
-        echo "<input type=\"submit\" value=\"Se connecter\"/>\n";
-        echo "</form>\n";
-    }
-    ?>
-    -->
 
 </div>
