@@ -24,7 +24,7 @@
         a.createModal = function (b) {
             defaults = {title: "", message: "Your Message Goes Here!", closeButton: true, scrollable: false};
             var b = a.extend({}, defaults, b);
-            var c = (b.scrollable === true) ? 'style="max-height: 900px;overflow-y: auto;"' : "";
+            var c = (b.scrollable === true) ? 'style="max-height: 200px;overflow-y: auto;"' : "";
             html = '<div class="modal fade" id="myModal">';
             html += '<div class="modal-dialog">';
             html += '<div class="modal-content">';
@@ -39,7 +39,7 @@
             html += "</div>";
             html += '<div class="modal-footer">';
             if (b.closeButton === true) {
-                html += '<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>'
+                html += '<button type="button" class="btn btn-primary btn-block" data-dismiss="modal">Close</button>'
             }
             html += "</div>";
             html += "</div>";
@@ -58,9 +58,10 @@
     $(function () {
         $('.view-pdf').on('click', function () {
             var pdf_link = $(this).attr('href');
-            var iframe = '<div class="iframe-container"><iframe src="' + pdf_link + '"></iframe></div>'
+            var title = $(this).attr('nom');
+            var iframe = '<div class="iframe-container"><iframe name="' + title + '" src="' + pdf_link + '"></iframe></div>'
             $.createModal({
-                title: 'Document (PDF)',
+                title: title,
                 message: iframe,
                 closeButton: true,
                 scrollable: false

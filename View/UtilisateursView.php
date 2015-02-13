@@ -1,6 +1,7 @@
 <?php
 
 include_once 'Model/Utilisateur.php';
+include_once 'Model/Inscription.php';
 include_once 'Model/TypeU.php';
 
 class UtilisateursView {   
@@ -13,7 +14,7 @@ class UtilisateursView {
         echo "<h1 class=\"page-header\"><img src=\"Image/icon-details.png\"/> Coordonnées des Employés</h1>";
         $utilisateurs = Utilisateur::findAll();
         echo "<div class=\"table-responsive\">";
-        echo "<table class=\"table table-striped\">";
+        echo "<table class=\"table table-striped table-hover\">";
         echo "<thead>";
             echo "<tr>";
                 echo "<th>";
@@ -54,22 +55,19 @@ class UtilisateursView {
     }
 
     public function futurUsersView() {
-        $utilisateurs = Utilisateur::findAll();
+        $utilisateurs = Inscription::findAll();
         echo "<div class=\"table-responsive\">";
         echo "<table class=\"table table-striped\">";
         echo "<thead>";
             echo "<tr>";
                 echo "<th>";
-                echo "Nom";
+                echo "Code Inscription";
                 echo "</th>";
                 echo "<th>";
-                echo "Prénom";
+                echo "Validité";
                 echo "</th>";
                 echo "<th>";
-                echo "<img src=\"Image/icon-email.png\" width=\"25\"/>";
-                echo "</th>";
-                echo "<th>";
-                echo "<img src=\"Image/icon-telephone.png\" width=\"25\"/>";
+                echo "Type d'Utilisateur";
                 echo "</th>";
             echo "</tr>";
         echo "</thead>";
@@ -77,17 +75,14 @@ class UtilisateursView {
         foreach ($utilisateurs as $utilisateur) {
             echo "<tr>";
                 echo "<td>";
-                echo $utilisateur->nomU;
+                echo $utilisateur->codeI;
                 echo "</td>";
                 echo "<td>";
-                echo $utilisateur->prenomU;
+                echo $utilisateur->validiteI;
                 echo "</td>";
                 echo "<td>";
-                echo $utilisateur->emailU;
-                echo "</td>"; 
-                echo "<td>";
-                echo $utilisateur->telU;
-                echo "</td>";                
+                echo TypeU::findById($utilisateur->idTypeU)->nomTypeU;
+                echo "</td>";             
             echo "</tr>";
         }
         echo "</tbody>";
