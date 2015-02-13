@@ -1,6 +1,7 @@
 <?php
 
 include_once '../Model/Utilisateur.php';
+include_once '../Model/Inscription.php';
 
 $nb_erreurs = 0;
 $message = "";
@@ -62,6 +63,35 @@ if (!isset($_POST["emailU"]) || !filter_var($_POST["emailU"], FILTER_VALIDATE_EM
   }
  */
 
+//Test du code d'inscription
+if (!isset($_POST["codeI"])) {
+    $inscriptionOK = false;
+    $message .= "<p>- Le code d'inscription est invalide !</p>";
+    $nb_erreurs++;
+} else {
+    $codeI = $_POST["codeI"];
+    //Test de l'existance et de la validité du code
+    $inscription_temp = Inscription::findByCode($codeI);
+    print_r($inscription_temp);
+    if (isset($inscription_temp)) {
+        $current_date = date('Y-m-d');
+        $validiteI_date = $inscription_temp->validiteI;
+        echo "toto";
+        if ($current_date > $validiteI_date) {
+            $inscriptionOK = false;
+            $message .= "<p>- Le code d'inscription n'est plus valable !</p>";
+            $nb_erreurs++;
+        } else {
+            print_r($inscription_temp);
+            $idTypeU = $inscription_temp->idTypeU;
+        }
+    } else {
+        $inscriptionOK = false;
+        $message .= "<p>- Le code d'inscription est invalide !</p>";
+        $nb_erreurs++;
+    }
+}
+
 $urlAvatarU = "Image/icon-user.png";
 
 //Ajout de l'utilisateur dans la base
@@ -76,6 +106,7 @@ if ($inscriptionOK) {
     $utilisateur->telU = $_POST["telU"];
     $utilisateur->urlAvatarU = $urlAvatarU;
     $utilisateur->insert();
+    $utilisateur->insertType($idTypeU);
 } else {
     echo "<p>Votre formulaire d'inscription contient les " . $nb_erreurs . " erreurs suivantes: </p>";
     echo $message;

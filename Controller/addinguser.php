@@ -29,7 +29,15 @@ if (checkdate($validiteI['month'], $validiteI['day'], $validiteI['year'])) {
     $nb_erreurs++;
 }
 
-$idTypeU = "1";
+//Test du type
+if(isset($_POST["idTypeU"])) {
+    $idTypeU = $_POST["idTypeU"];
+} else {
+    $documentOK = false;
+    $message .= "<p>- Le type n'est pas correct.</p>";
+    $nb_erreurs++;
+}
+
 $idU = "1";
 
 //Ajout de l'inscription dans la base

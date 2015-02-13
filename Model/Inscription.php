@@ -175,32 +175,32 @@ class Inscription {
         try {
             // Récupération d'une connexion à la base
             $db = DataBase::getConnection();
-
+            
             // Création de la requête préparée
-            $query = "SELECT * FROM Inscription WHERE codeI LIKE :codeI";
+            $query = "SELECT * FROM Inscription WHERE codeI = :codeI";
             $statement = $db->prepare($query);
-            $str = "%" . $codeI . "%";
 
-            $statement->bindParam(':codeI', $str);
+            $statement->bindParam(':codeI', $codeI);
 
             // Exécution de la requête préparée
             $statement->execute();
 
-            $tab = Array();
-            // Tant que des lignes sont retournées
-            while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                // Remplissage d'un objet Inscription avec les informations contenues dans le tuple courant
-                $inscription = new Inscription();
-                $inscription->idI = $row['idI'];
-                $inscription->codeI = $row['codeI'];
-                $inscription->validiteI = $row['validiteI'];
-                $inscription->idU = $row['idU'];
-                $inscription->idTypeU = $row['idTypeU'];
-                $tab[] = $inscription;
-            }
+            // Récupération du tuple correspondant à l'id en paramètre
+            $row = $statement->fetch(PDO::FETCH_ASSOC);
 
+            // Remplissage d'un objet Inscription avec les informations contenues dans le tuple courant
+            $inscription = new Inscription();
+            $inscription->idI = $row['idI'];
+            $inscription->codeI = $row['codeI'];
+            $inscription->validiteI = $row['validiteI'];
+            $inscription->idU = $row['idU'];
+            $inscription->idTypeU = $row['idTypeU'];
+
+            print_r($inscription);
+            echo "toto<br>";
+            
             // Retour du tableau de tracks
-            return $tab;
+            return $inscription;
         } catch (Exception $e) {
             $trace = $e->getTrace();
             echo "Erreur pendant findByName: $trace";
@@ -244,7 +244,7 @@ class Inscription {
             echo "Erreur pendant findAll: $trace";
         }
     }
-    
+
     /**
      * retourne dans un tableau d'objets Inscription
      * tous les inscriptions contenus dans la base
@@ -259,7 +259,7 @@ class Inscription {
             $query = "SELECT * FROM Inscription NATURAL JOIN TypeU WHERE idTypeU = :id";
             $statement = $db->prepare($query);
             $statement->bindParam(':id', $idtypeu);
-            
+
             // Exécution de la requête préparée
             $statement->execute();
 

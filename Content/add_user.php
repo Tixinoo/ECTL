@@ -24,26 +24,28 @@
                 <div class="form-group">
                     <label for="inputTypeU" class="col-sm-4 control-label">Type de l'utilisateur</label>
                     <div class="col-sm-8">
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="typeU" id="typeAdmin" value="admin">Administrateur
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="typeU" id="typeConduc" value="conduc">Conducteur
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="typeU" id="typeEmpl" value="empl">Employé
-                            </label>
-                        </div>
+                    <?php
+                    $typeUs = TypeU::findAll();
+                    foreach ($typeUs as $typeU) {
+                        if ($typeU->nomTypeU != "News") {
+                            echo "<div class=\"radio\">";
+                            echo "<label>";
+                            echo "<input type=\"radio\" name=\"idTypeU\" id=idTypeU\"";
+                            echo $typeU->idTypeU;
+                            echo "\" value=\"";
+                            echo $typeU->idTypeU;
+                            echo "\">";
+                            echo $typeU->nomTypeU;
+                            echo "</label>";
+                            echo "</div>";
+                        }
+                    }
+                    ?>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-4 col-sm-8">
-                        <button type="submit" class="btn btn-default btn-block">Ajouter un nouveau code</button>
+                        <button type="submit" class="btn btn-primary btn-block">Ajouter un nouveau code</button>
                     </div>
                 </div>
             </form>

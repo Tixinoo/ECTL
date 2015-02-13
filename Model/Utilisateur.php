@@ -136,6 +136,26 @@ class Utilisateur {
             echo "Erreur pendant insert: $trace";
         }
     }
+    
+    public function insertType($idtypeU) {
+        try {
+            // Récupération d'une connexion à la base
+            $db = DataBase::getConnection();
+
+            // Création de la requête préparée
+            $query = "INSERT INTO DocumentType (idD,idtypeU) VALUES(:idD,:idtypeU)";
+            $statement = $db->prepare($query);
+            $statement->bindParam(':idD', $this->idU);
+            $statement->bindParam(':idtypeU', $idtypeU);
+
+            // Exécution de la requête préparée
+            $res = $statement->execute();
+            return $res;
+        } catch (Exception $e) {
+            $trace = $e->getTrace();
+            echo "Erreur pendant insertType: $trace";
+        }
+    }
 
     public function idTypeUs() {
         try {
