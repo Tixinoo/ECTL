@@ -525,7 +525,38 @@ class Document {
             return $tab;
         } catch (Exception $e) {
             $trace = $e->getTrace();
-            echo "Erreur pendant findByIdTypeD: $trace";
+            echo "Erreur pendant findSuppression: $trace";
+        }
+    }
+    
+    public function findSuppression() {
+        try {
+            // Récupération d'une connexion à la base
+            $db = DataBase::getConnection();
+            // Création de la requête préparée
+            $query = "SELECT * FROM Suppression WHERE idD = :id";
+            $statement = $db->prepare($query);
+            $statement->bindParam(':id', $this->idD);
+
+            // Exécution de la requête préparée
+            $statement->execute();
+
+            $tab = Array();
+
+            // Récupération du tuple correspondant à l'id en paramètre
+            $row = $statement->fetch(PDO::FETCH_ASSOC);
+            
+            // Remplissage d'un tableau contenant les informations de la publication
+            $tab["idS"] = $row['idS'];
+            $tab["dateS"] = $row['dateS'];
+            $tab["commentS"] = $row['commentS'];
+            $tab["idU"] = $row['idU'];
+            
+            // Retour du tableau d'document
+            return $tab;
+        } catch (Exception $e) {
+            $trace = $e->getTrace();
+            echo "Erreur pendant findSuppression: $trace";
         }
     }
 

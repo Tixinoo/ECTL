@@ -13,8 +13,8 @@
         <div id="suppressionsRecentes">
             <h3 class="sub-header"><img src="Image/icon-delete.png" width="40"/>Suppressions</h3>
             <?php
-            include_once 'View/UtilisateursView.php';
-            UtilisateursView::futurUsersView();
+            include_once 'View/DocumentsView.php';
+            DocumentsView::suppressionsView();
             ?>  
         </div>
     </div>

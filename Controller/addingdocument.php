@@ -34,7 +34,7 @@ if (!isset($_POST["contenuD"]) || strlen($_POST["contenuD"]) <= -1) {
 }
 
 //Test du type
-if(isset($_POST["idTypeD"])) {
+if (isset($_POST["idTypeD"])) {
     $idTypeD = $_POST["idTypeD"];
 } else {
     $documentOK = false;
@@ -43,39 +43,43 @@ if(isset($_POST["idTypeD"])) {
 }
 
 /* ENVOI DU FICHIER */
-$dossier = "../Document/";
+if ($documentOK) {
+    $dossier = "../Document/";
 //$fichier = $dossier . basename($_FILES["inputFileD"]["name"]);
-$fichier = $dossier . str_replace(" ", "-", $nomD) . ".pdf";
-$envoiFichierOK = 1;
-$extension = pathinfo($fichier,PATHINFO_EXTENSION);
+    $fichier = $dossier . str_replace(" ", "-", $nomD) . ".pdf";
+    $envoiFichierOK = 1;
+    $extension = pathinfo($fichier, PATHINFO_EXTENSION);
 
 // Test de l'existance du fichier
-if (file_exists($fichier)) {
-    $envoiFichierOK = 0;
-}
+    if (file_exists($fichier)) {
+        $envoiFichierOK = 0;
+    }
 
 // Test de la taille (20Mo = 20971520b)
-if ($_FILES["inputFileD"]["size"] > 20971520) {
-    $envoiFichierOK = 0;
-}
+    if ($_FILES["inputFileD"]["size"] > 20971520) {
+        $envoiFichierOK = 0;
+    }
 // Test du format
-if($extension != "pdf") {
-    $envoiFichierOK = 0;
-}
+    if ($extension != "pdf") {
+        $envoiFichierOK = 0;
+    }
 
 // Test final
-if ($envoiFichierOK == 0) {
-    $message .= "<li>Le fichier sélectionné n'est pas correct.</li>";
-} else {
-    if (move_uploaded_file($_FILES["inputFileD"]["tmp_name"], $fichier)) {
-        echo "Le fichier ". basename( $_FILES["inputFileD"]["name"]). " a été correctement importé dans l'ECTL.";
+    if ($envoiFichierOK == 0) {
+        $message .= "<li>Le fichier sélectionné n'est pas correct.</li>";
     } else {
-        $message .= "<li>Un problème est survenur lors de l'envoi du fichier.</li>";
+        if (move_uploaded_file($_FILES["inputFileD"]["tmp_name"], $fichier)) {
+            echo "Le fichier " . basename($_FILES["inputFileD"]["name"]) . " a été correctement importé dans l'ECTL.";
+        } else {
+            $message .= "<li>Un problème est survenur lors de l'envoi du fichier.</li>";
+        }
     }
 }
 /* FIN ENVOI FICHIER */
 
-$urlD = "Document/" . str_replace(" ", "-", $nomD) . ".pdf";
+if ($documentOK) {
+    $urlD = "Document/" . str_replace(" ", "-", $nomD) . ".pdf";
+}
 
 //Ajout de l'inscription dans la base
 if ($documentOK) {
@@ -108,5 +112,4 @@ if ($documentOK) {
     echo "</body>";
     echo "</html>";
 }
-
 ?>

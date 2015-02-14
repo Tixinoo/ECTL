@@ -90,6 +90,76 @@ class DocumentsView {
         echo "</table>";
         echo "</div>";
     }
+    
+    public static function SuppressionsView() {
+        $corbeille_id = TypeD::findByNom("Corbeille")->idTypeD;
+        $documents = Document::findByIdTypeD($corbeille_id);
+        echo "<div class=\"table-responsive\">";
+        echo "<table class=\"table table-striped table-hover\">";
+        echo "<thead>";
+            echo "<tr>";
+                echo "<th>";
+                echo "Date";
+                echo "</th>";
+                echo "<th>";
+                echo "Heure";
+                echo "</th>";
+                echo "<th>";
+                echo "Utilisateur";
+                echo "</th>";
+                echo "<th>";
+                echo "Document";
+                echo "</th>";
+                echo "<th>";
+                echo "Description/Contenu";
+                echo "</th>";
+            echo "</tr>";
+        echo "</thead>";
+        echo "<tbody>";
+        foreach ($documents as $document) {
+            $suppression = $document->findSuppression();
+            echo "<tr>";
+                echo "<td>";  //date("d/m/Y", strtotime($singleNews->findPublication()["dateP"]))
+                echo date("d/m/Y", strtotime($suppression['dateS']));
+                echo "</td>";
+                echo "<td>";
+                echo date("h:i:s", strtotime($suppression['dateS']));
+                echo "</td>";
+                echo "<td>";
+                echo Utilisateur::findById($suppression['idU'])->nomU . " " . Utilisateur::findById($suppression['idU'])->prenomU;;
+                echo "</td>";
+                echo "<td>";
+                $typed = $document->idTypeDs()[0];
+                $news_id = TypeD::findByNom("News")->idTypeD;
+                switch($typed) {
+                    case $news_id:
+                        echo $document->nomD;
+                        break;
+                    default:
+                        echo "<a class=\"view-pdf\" href=\"" . $document->urlD . "\" nom=\"" . $document->nomD . "\">" . $document->nomD . "</a>";
+                        break;
+                }
+                echo "</td>";
+                echo "<td>";
+                $typed = $document->idTypeDs()[0];
+                $news_id = TypeD::findByNom("News")->idTypeD;
+                echo "<div style=\"font-size: 0.9em;\">";
+                switch($typed) {
+                    case $news_id:
+                        echo $document->contenuD;
+                        break;
+                    default:
+                        echo $document->descD;
+                        break;
+                }
+                echo "</div>";
+                echo "</td>";                 
+            echo "</tr>";
+        }
+        echo "</tbody>";
+        echo "</table>";
+        echo "</div>";
+    }
 
     public function futurUsersView() {
         $inscriptions = Inscription::findAll();

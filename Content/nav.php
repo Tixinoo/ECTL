@@ -65,6 +65,7 @@ Menu avec tous les types de documents
             echo "<ul class=\"nav nav-sidebar\">";
             echo "<li><a href=\"index.php?a=coord\"><img src=\"Image/icon-details.png\" width=\"15\"/> Coordonnées Employés</a></li>";
             echo "<li><a href=\"index.php?a=adduser\"><img src=\"Image/icon-users.png\" width=\"15\"/> Comptes Utilisateurs</a></li>";
+            echo "<li><a href=\"index.php?a=recentActions\"><img src=\"Image/icon-action.png\" width=\"15\"/> Historiques Actions</a></li>";
             echo "</ul>";
         }
         ?>
