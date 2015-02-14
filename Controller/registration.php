@@ -88,6 +88,15 @@ if (!isset($_POST["codeI"])) {
     }
 }
 
+//Test du téléphone
+if (!isset($_POST["telU"]) || strlen($_POST["telU"]) <= -1) {
+    $inscriptionOK = false;
+    $message .= "<p>- Votre numéro de téléphone doit contenir au moins 0 caractère.</p>";
+    $nb_erreurs++;
+} else {
+    $telU = $_POST["telU"];
+}
+
 $urlAvatarU = "Image/icon-user.png";
 
 //Ajout de l'utilisateur dans la base
@@ -99,7 +108,7 @@ if ($inscriptionOK) {
     $utilisateur->nomU = $_POST["nomU"];
     $utilisateur->prenomU = $_POST["prenomU"];
     $utilisateur->emailU = $emailU;
-    $utilisateur->telU = $_POST["telU"];
+    $utilisateur->telU = $telU;
     $utilisateur->urlAvatarU = $urlAvatarU;
     $utilisateur->insert();
     $utilisateur->insertType($idTypeU);
