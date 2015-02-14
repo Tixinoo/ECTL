@@ -59,10 +59,11 @@ class DocumentsView {
         echo "<div class=\"col-xs-20 col-sm-10 left\">";
         echo "<h3 class=\"page-header\">" . $singleNews->nomD;
         if (in_array("1", $_SESSION['typeUs'])) {
-
+            $typeCorbeille = TypeD::findByNom("Corbeille");
+            $corbeille_id = $typeCorbeille->idTypeD;
             echo "<form style=\"display:inline; position: absolute; right: 0;\" action=\"index.php\" method=\"GET\">";
-
             echo "<input type=\"hidden\" name=\"a\" value=\"deleteD\">";
+            echo "<input type=\"hidden\" name=\"idC\" value=\"" . $corbeille_id . "\">";            
             echo "<input type=\"hidden\" name=\"idD\" value=\"" . $singleNews->idD . "\">";
             echo "<button type=\"submit\" class=\"btn btn-danger btn-xs\">Supprimer</button>";
 

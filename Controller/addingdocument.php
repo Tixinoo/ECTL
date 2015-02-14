@@ -75,8 +75,7 @@ if ($envoiFichierOK == 0) {
 }
 /* FIN ENVOI FICHIER */
 
-$urlD = "Document/" . $_FILES["inputFileD"]["name"];
-$publication_idp = "0";
+$urlD = "Document/" . str_replace(" ", "-", $nomD) . ".pdf";
 
 //Ajout de l'inscription dans la base
 if ($documentOK) {
@@ -85,7 +84,6 @@ if ($documentOK) {
     $document->descD = $descD;
     $document->contenuD = $contenuD;
     $document->urlD = $urlD;
-    //$document->publication_idp = $publication_idp;
     $document->insert();
     $document->insertType($idTypeD);
     header("Location: ../index.php");

@@ -25,8 +25,14 @@ class HomeView {
             echo "<h3 class=\"page-header\"><img src=\"Image/icon-results.png\" width=\"40\"/>Résultats de la recherche</h3>";
             echo "<div class=\"row placeholders\">";
             $documents = Document::findByNom($keywords);
+            $news_id = TypeD::findByNom("News")->idTypeD;
+            $corbeille_id = TypeD::findByNom("Corbeille")->idTypeD;
             foreach ($documents as $document) {
-                DocumentsView::DocumentView($document);
+                if (!in_array($corbeille_id, $document->idTypeDs())) {
+                    if (!in_array($news_id, $document->idTypeDs())) {
+                        DocumentsView::DocumentView($document);
+                    }
+                }
             }
             echo "</div>";
             echo "</div>";
@@ -45,7 +51,7 @@ class HomeView {
         include 'Content/tractlux.com.html';
         include 'Content/footer.php';
     }
-    
+
     public function accountSettingsView() {
         include 'Content/header.php';
         include 'Content/accountsettings.php';

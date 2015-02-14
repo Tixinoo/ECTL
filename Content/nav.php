@@ -16,12 +16,21 @@ Menu avec tous les types de documents
             <?php
             if (in_array("1", $_SESSION['typeUs'])) {
                 echo "<center><button type = \"button\" class = \"btn btn-primary btn-sm\" data-toggle = \"modal\" data-target = \".bs-document-modal-lg\">Ajouter un document</button></center>";
+                $typeCorbeille = TypeD::findByNom("Corbeille");
+                echo "<li><a href=";
+                echo "\"index.php?a=typed&idtyped=";
+                echo $typeCorbeille->idTypeD;
+                echo "\"";
+                echo "><img src=\"Image/icon-documents.png\" width=\"15\"/> ";
+                echo $typeCorbeille->nomTypeD;
+                echo "</a></li>";
             }
             ?>
             <?php
+            //(!in_array($news_id, $document->idTypeDs()))
             $typeds = TypeD::findAll();
             foreach ($typeds as $typed) {
-                if ($typed->nomTypeD != "News") {
+                if (($typed->nomTypeD != "News") && ($typed->nomTypeD != "Corbeille")) {
                     echo "<li><a href=";
                     echo "\"index.php?a=typed&idtyped=";
                     echo $typed->idTypeD;
@@ -50,7 +59,7 @@ Menu avec tous les types de documents
             echo "<li><a href=\"index.php?a=accountSettings\"><img src=\"" . $_SESSION['urlAvatarU'] . "\" height=\"15\"/> Paramètres</a></li>";
             ?>
         </ul>
-                <?php
+        <?php
         if (in_array("1", $_SESSION['typeUs'])) {
             echo "<h3 class=\"sub-header\">Administration</h3>";
             echo "<ul class=\"nav nav-sidebar\">";
