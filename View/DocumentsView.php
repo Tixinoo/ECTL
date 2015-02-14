@@ -3,11 +3,12 @@
 include_once 'Model/Document.php';
 include_once 'Model/TypeD.php';
 
-class DocumentsView {   
+class DocumentsView {
 
     function __construct() {
+        
     }
- 
+
     public function typedView($idTypeD) {
         include 'Content/header.php';
         $typed = TypeD::findById($idTypeD);
@@ -20,17 +21,27 @@ class DocumentsView {
         echo "</div>";
         include 'Content/footer.php';
     }
-    
+
     public static function documentView($document) {
         echo "<div id=\"document\" class=\"col-xs-6 col-sm-3 placeholder test\">";
-        echo "<a class=\"view-pdf\" href=\"" . $document->urlD . "\" nom=\"" . $document->nomD . "\"><h1><span class=\"glyphicon glyphicon-file\" aria-hidden=\"true\"></span></h1>";
-        /*echo "<img src=\"Image/icon-pdf.png\" class=\"img-responsive\">";*/
-        echo "<h4>" . $document->nomD . "</h4></a>";
-        echo "<div ><p>" . $document->descD . "</p></div>";
-        /*echo "Lien : <a href=\"" . $document->urlD . "\"><img src=\"Image/icon-pdf.png\"></a><br>";*/
+        echo "<a class=\"view-pdf\" href=\"" . $document->urlD . "\" nom=\"" . $document->nomD . "\">";
+        echo "<h1 style=\"display:inline;\">";
+        //echo "<img src=\"Image/icon-pdf.png\" width=\"35\"/></a>";
+        echo "<span class=\"glyphicon glyphicon-file\" aria-hidden=\"true\">";
+        echo "</span>";
+        echo "</h1></a>";
+        if (in_array("1", $_SESSION['typeUs'])) {
+            echo "<form style=\"margin-left:5px; margin-top: -15px; display:inline;\" action=\"index.php\" method=\"GET\">";
+            echo "<input type=\"hidden\" name=\"a\" value=\"deleteD\">";
+            echo "<input type=\"hidden\" name=\"idD\" value=\"" . $document->idD . "\">";
+            echo "<button type=\"submit\" class=\"btn btn-danger btn-xs\">-</button>";
+            echo "</form>";
+        }
+        echo "<a class=\"view-pdf\" href=\"" . $document->urlD . "\" nom=\"" . $document->nomD . "\"><h4>" . $document->nomD . "</h4></a>";
+        echo "<div><p>" . $document->descD . "</p></div>";
         echo "</div>";
     }
-    
+
     public static function singleNewsView($singleNews) {
         echo "<div class=\"col-xs-24 col-sm-12 singleNews\">";
         echo "<div class=\"col-xs-4 col-sm-2\">";
@@ -43,7 +54,7 @@ class DocumentsView {
         echo "</div>";
         echo "<div class=\"col-xs-24 col-sm-12 left\">";
         echo "<br>";
-        echo "</div>";        
+        echo "</div>";
     }
-                  
+
 }
