@@ -143,9 +143,9 @@ class Utilisateur {
             $db = DataBase::getConnection();
 
             // Création de la requête préparée
-            $query = "INSERT INTO DocumentType (idD,idtypeU) VALUES(:idD,:idtypeU)";
+            $query = "INSERT INTO UtilisateurType (idU, idtypeU) VALUES(:idU, :idtypeU)";
             $statement = $db->prepare($query);
-            $statement->bindParam(':idD', $this->idU);
+            $statement->bindParam(':idU', $this->idU);
             $statement->bindParam(':idtypeU', $idtypeU);
 
             // Exécution de la requête préparée

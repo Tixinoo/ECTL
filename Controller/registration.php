@@ -54,7 +54,7 @@ if (!isset($_POST["emailU"]) || !filter_var($_POST["emailU"], FILTER_VALIDATE_EM
 //Test de l'existance du pseudo
 if ($inscriptionOK) {
     $pseudoU_temp = Utilisateur::findByPseudoU($pseudoU);
-    if (isset($pseudoU_temp)) {
+    if ($pseudoU_temp->pseudoU == $pseudoU) {
         $inscriptionOK = false;
         $message .= "<p>- Le pseudonyme saisie est déjà utilisé !</p>";
         $nb_erreurs++;

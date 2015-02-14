@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `Document` (
   `nomD` varchar(30) DEFAULT NULL,
   `descD` text,
   `contenuD` longtext,
-  `urlD` varchar(50) DEFAULT NULL,
+  `urlD` varchar(250) DEFAULT NULL,
   `publication_idp` int(11) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
@@ -189,6 +189,8 @@ CREATE TABLE IF NOT EXISTS `TypeU` (
 
 INSERT INTO `TypeU` (`idTypeU`, `nomTypeU`, `descTypeU`) VALUES
 (1, 'Administrateur', 'Administrateur de l''espace collaborateur.');
+INSERT INTO `ectl-db`.`TypeU` (`idTypeU`, `nomTypeU`, `descTypeU`) VALUES 
+(2, 'Conducteur', 'Conducteur de la société TRACTLUX.');
 
 -- --------------------------------------------------------
 
@@ -204,7 +206,7 @@ CREATE TABLE IF NOT EXISTS `Utilisateur` (
   `prenomU` varchar(30) DEFAULT NULL,
   `telU` varchar(30) DEFAULT NULL,
   `emailU` varchar(50) DEFAULT NULL,
-  `urlAvatarU` varchar(50) DEFAULT NULL
+  `urlAvatarU` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
@@ -212,7 +214,7 @@ CREATE TABLE IF NOT EXISTS `Utilisateur` (
 --
 
 INSERT INTO `Utilisateur` (`idU`, `pseudoU`, `mdpU`, `nomU`, `prenomU`, `telU`, `emailU`, `urlAvatarU`) VALUES
-(1, 'Antoine', 'totototo1', 'Nosal', 'Antoine', '+33632281849', 'antoine.nosal@gmail.com', 'https://media.licdn.com/mpr/mpr/shrink_500_500/p/3');
+(1, 'Antoine', 'totototo1', 'Nosal', 'Antoine', '+33632281849', 'antoine.nosal@gmail.com', 'https://media.licdn.com/mpr/mpr/shrink_500_500/p/3/005/09b/372/027fd62.jpg');
 
 -- --------------------------------------------------------
 
