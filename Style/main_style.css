@@ -23,15 +23,9 @@ body {
     border: solid black 1px;
 }
 
-#logoECTL {
-    font-family: 'Roboto';
+.logoECTL {
+    font-family: 'Oxygen';
     color: #254A84;
-    border-bottom: solid black 0px;
-    /*
-    border: solid #888888 0px;
-    border-radius: 0px;
-    box-shadow: 3px 3px 2px 2px #888888;
-    */
 }
 
 #logoECTL img {

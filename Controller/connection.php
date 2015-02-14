@@ -11,9 +11,8 @@ if(isset($_SESSION['pseudoU'])) {
 }
 
 if(isset($_POST['pseudoU'], $_POST['mdpU'])) {
-echo "hey";
     $pseudoU = $_POST['pseudoU'];
-    $mdpU = $_POST['mdpU'];
+    $mdpU = md5($_POST['mdpU']);
     
     // On récupère l'utilisateur
     $utilisateur = Utilisateur::findByPseudoU($pseudoU);

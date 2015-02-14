@@ -98,9 +98,9 @@ if (!isset($_POST["prenomU"]) || strlen($_POST["prenomU"]) <= 0) {
     $prenomU = $_POST["prenomU"];
 }
 
-if (!isset($_POST["urlAvatarU"]) || !filter_var($_POST["urlAvatarU"], FILTER_VALIDATE_URL)) {
+if (!isset($_POST["urlAvatarU"]) || !(filter_var($_POST["urlAvatarU"], FILTER_VALIDATE_URL) || ($_POST["urlAvatarU"] == "Image/icon-user.png") )) {
     $miseajourOK = false;
-    $message .= "<i>L'URL de la photo de profil saisi est invalide !</i>";
+    $message .= "<li>L'URL de la photo de profil saisi est invalide !</li>";
     $nb_erreurs++;
 } else {
     $urlAvatarU = $_POST["urlAvatarU"];

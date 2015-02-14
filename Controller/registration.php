@@ -8,9 +8,9 @@ $message = "";
 $inscriptionOK = true;
 
 //Test de la longueur du pseudo
-if (!isset($_POST["pseudoU"]) || strlen($_POST["pseudoU"]) <= 5) {
+if (!isset($_POST["pseudoU"]) || strlen($_POST["pseudoU"]) <= 2) {
     $inscriptionOK = false;
-    $message .= "<li>Votre nom d'utilisateur doit contenir au moins 5 caractères.</li>";
+    $message .= "<li>Votre nom d'utilisateur doit contenir au moins 3 caractères.</li>";
     $nb_erreurs++;
 } else {
     $pseudoU = $_POST["pseudoU"];
@@ -18,9 +18,9 @@ if (!isset($_POST["pseudoU"]) || strlen($_POST["pseudoU"]) <= 5) {
 
 
 //Test de la longueur du mot de passe
-if (!isset($_POST['mdpU']) || strlen($_POST['mdpU']) <= 5) {
+if (!isset($_POST['mdpU']) || strlen($_POST['mdpU']) <= 2) {
     $inscriptionOK = false;
-    $message .= "<li>Votre mot de passe doit contenir au moins 5 caractères !</li>";
+    $message .= "<li>Votre mot de passe doit contenir au moins 3 caractères !</li>";
     $nb_erreurs++;
 }
 
@@ -121,14 +121,48 @@ if ($inscriptionOK) {
     echo "<p> Félicitations ! Votre inscription s'est réalisée avec succès !<br>Bienvenue dans l'ECTL !</li>";
     $utilisateur = new Utilisateur();
     $utilisateur->pseudoU = $pseudoU;
-    $utilisateur->mdpU = $mdpU;
+    $utilisateur->mdpU = md5($mdpU);
     $utilisateur->nomU = $nomU;
-    $utilisateur->prenomU = $$prenomU;
+    $utilisateur->prenomU = $prenomU;
     $utilisateur->emailU = $emailU;
     $utilisateur->telU = $telU;
     $utilisateur->urlAvatarU = $urlAvatarU;
     $utilisateur->insert();
     $utilisateur->insertType($idTypeU);
+
+    $to = $utilisateur->emailU;
+    $subject = "Bienvenue dans l'ECTL";
+
+    $message .= "<html>";
+    $message .= "<head>";
+    $message .= "<meta charset=\"utf-8\">";
+    $message .= "<title>Erreur ECTL</title>";
+    $message .= "<link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>";
+    $message .= "</head";
+    $message .= "<body>";
+    $message .= "<div style=\"font-family: Oxygen; padding: 30px;\">";
+    $message .= "<h1 style=\"border-bottom: solid black 1px;\">Merci d'avoir rejoint l'Espace Collaborateur TRACTLUX</h1><ul>";
+    $message .= "toto";
+    $message .= "</ul>";
+    $message .= "<center>";
+    $message .= "<a href=''><button><h2>Accéder à l'ECTL</h2></button></a></h2>";
+    $message .= "</center>";
+    $message .= "</div>";
+    $message .= "</body>";
+    $message .= "</html>";
+
+// Always set content-type when sending HTML email
+    $headers = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+// More headers
+    $headers .= 'From: <antoine.nosal@outlook.com>' . "\r\n";
+    $headers .= 'Cc: antoine9412@gmail.com' . "\r\n";
+
+    mail($to, $subject, $message, $headers);
+
+
+    header("Location: ../index.php");
 } else {
     echo "<html>";
     echo "<head>";
