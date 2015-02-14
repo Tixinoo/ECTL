@@ -31,10 +31,12 @@ class DocumentsView {
         echo "</span>";
         echo "</h1></a>";
         if (in_array("1", $_SESSION['typeUs'])) {
-            $corbeille_id = "5";
+            $typeCorbeille = TypeD::findByNom("Corbeille");
+            $corbeille_id = $typeCorbeille->idTypeD;
             echo "<form style=\"margin-left:5px; margin-top: -15px; display:inline;\" action=\"index.php\" method=\"GET\">";
-            if (in_array($corbeille_id, $document->idTypeDs()) != $corbeille_id) {
+            if (!in_array($corbeille_id, $document->idTypeDs())) {
                 echo "<input type=\"hidden\" name=\"a\" value=\"deleteD\">";
+                echo "<input type=\"hidden\" name=\"idC\" value=\"" . $corbeille_id . "\">";
                 echo "<input type=\"hidden\" name=\"idD\" value=\"" . $document->idD . "\">";
                 echo "<button type=\"submit\" class=\"btn btn-danger btn-xs\">Supprimer</button>";
             } else {

@@ -73,7 +73,7 @@ class Document {
         }
     }
 
-    public function moveToTrash() {
+    public function moveToTrash($idTypeCorbeille) {
         try {
             if (!isset($this->idD)) {
                 throw new Exception(__CLASS__ . " : Clé primaire non définie : delete impossible");
@@ -83,8 +83,9 @@ class Document {
             $db = DataBase::getConnection();
 
             // Création de la requête préparée
-            $query = "UPDATE DocumentType SET idTypeD = 5 WHERE idD = :id";
+            $query = "UPDATE DocumentType SET idTypeD = :idC WHERE idD = :id";
             $statement = $db->prepare($query);
+            $statement->bindParam(':idC', $idTypeCorbeille);
             $statement->bindParam(':id', $this->idD);
 
             // Exécution de la requête préparée
@@ -255,6 +256,35 @@ class Document {
 
             //Mise à jour du document
             $db->exec("UPDATE Document SET publication_idp='" . $db->lastInsertId() . "' WHERE idD='" . $this->idD . "'");
+
+            return $res;
+        } catch (Exception $e) {
+            $trace = $e->getTrace();
+            echo "Erreur pendant insert: $trace";
+        }
+    }
+    
+    public function insertSuppression() {
+        try {
+            // Récupération d'une connexion à la base
+            $db = DataBase::getConnection();
+
+            session_start();
+
+            $dateS = date('Y/m/d H:i:s');
+            $commentS = "";
+            $idU = $_SESSION['idU'];
+
+            // Création de la requête préparée
+            $query = "INSERT INTO Suppression (dateS,commentS,idU,idD) VALUES(:dateS,:commentS,:idU,:idD)";
+            $statement = $db->prepare($query);
+            $statement->bindParam(':dateS', $dateS);
+            $statement->bindParam(':commentS', $commentS);
+            $statement->bindParam(':idU', $idU);
+            $statement->bindParam(':idD', $this->idD);
+
+            // Exécution de la requête préparée
+            $res = $statement->execute();
 
             return $res;
         } catch (Exception $e) {

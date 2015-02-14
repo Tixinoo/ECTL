@@ -44,7 +44,8 @@ if(isset($_POST["idTypeD"])) {
 
 /* ENVOI DU FICHIER */
 $dossier = "../Document/";
-$fichier = $dossier . basename($_FILES["inputFileD"]["name"]);
+//$fichier = $dossier . basename($_FILES["inputFileD"]["name"]);
+$fichier = $dossier . str_replace(" ", "-", $nomD) . ".pdf";
 $envoiFichierOK = 1;
 $extension = pathinfo($fichier,PATHINFO_EXTENSION);
 

@@ -63,6 +63,7 @@ class HomeController extends Controller {
         $view = new UtilisateursView();
         $view->adduserView();
     }
+
     public function accountSettingsAction() {
         $view = new HomeView();
         $view->accountSettingsView();
@@ -77,13 +78,14 @@ class HomeController extends Controller {
     }
 
     public function deleteDAction() {
-        if ($_GET["idD"]) {
+        if ((isset($_GET["idD"])) && (isset($_GET["idC"]))) {
             $document = Document::findById($_GET['idD']);
-            $document->moveToTrash();
+            $document->moveToTrash($_GET['idC']);
+            $document->insertSuppression();
         }
         header("Location: index.php?a=typed&idtyped=" . $document->idTypeDs()[0]);
     }
-    
+
     public function deleteDefinitlyDAction() {
         if ($_GET["idD"]) {
             $document = Document::findById($_GET['idD']);
