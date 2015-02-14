@@ -24,7 +24,7 @@
             <?php
             $typeds = TypeD::findAll();
             foreach ($typeds as $typed) {
-                if ($typed->nomTypeD != "News") {
+                if ( ($typed->nomTypeD != "News") && ($typed->nomTypeD != "Corbeille") ) {
                     echo "<div class=\"radio\">";
                     echo "<label>";
                     echo "<input type=\"radio\" name=\"idTypeD\" id=idTypeD\"";
