@@ -105,15 +105,14 @@ input[type="date"]::-webkit-input-placeholder{
 
 footer {
     text-align: right;
-    padding-top: 10px;
-    padding-right: 10px;
+    padding-top: 5px;
 }
+
 
 .footer {
     position: absolute;
     bottom: 0;
     width: 100%;
-    /* Set the fixed height of the footer here */
     height: 40px;
     background-color: #f5f5f5;
 }
@@ -125,6 +124,10 @@ footer {
 }
 
 /* navbar style */
+
+.navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse {
+    max-height: 140px;
+}
 
 .navbar-inverse .navbar-nav > li > a {
     color: white;

@@ -4,7 +4,7 @@
 </div>
 <footer class="footer">
 
-© Antoine NOSAL & <img height="40px" src="http://www.tractlux.com/images/design/logo.jpg">
+© Antoine NOSAL & <img height="30px" src="Image/logo-tractlux-footer.jpg">, 2015/2016.
 </footer>
 
 <?php

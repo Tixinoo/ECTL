@@ -75,7 +75,7 @@
             <h3 class="page-header"><img src="Image/icon-recentusers.png" width="20"/>  Récents inscrits<small> - Nouveaux utilisateurs</small></h3>
         </div>
         <div class="col-sm-12">
-            <center><img src="Image/icon-notyet.png" width="50"/><br>Fonctionnalité non disponible</center>
+            <center><img src="Image/icon-notyet.png" width="50"/><br>Disponible prochainement</center>
             <!-- PAS ENCORE IMPLÉMENTÉE
             <?php
             include_once 'View/UtilisateursView.php';

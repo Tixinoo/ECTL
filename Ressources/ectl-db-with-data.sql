@@ -2,10 +2,10 @@
 -- version 4.2.11
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Feb 01, 2015 at 04:10 
--- Server version: 5.6.21
--- PHP Version: 5.6.3
+-- Client :  localhost
+-- Généré le :  Sam 14 Février 2015 à 05:23
+-- Version du serveur :  5.6.21
+-- Version de PHP :  5.6.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `ectl-db-test`
+-- Base de données :  `ectl-db`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Commentaire`
+-- Structure de la table `Commentaire`
 --
 
 CREATE TABLE IF NOT EXISTS `Commentaire` (
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `Commentaire` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Document`
+-- Structure de la table `Document`
 --
 
 CREATE TABLE IF NOT EXISTS `Document` (
@@ -47,23 +47,37 @@ CREATE TABLE IF NOT EXISTS `Document` (
   `contenuD` longtext,
   `urlD` varchar(50) DEFAULT NULL,
   `publication_idp` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `Document`
+--
+
+INSERT INTO `Document` (`idD`, `nomD`, `descD`, `contenuD`, `urlD`, `publication_idp`) VALUES
+(1, 'Nouvel Espace Collaborateur', NULL, 'Nous souhaitons la bienvenue à l''ensemble de nos collaborateurs dans ce tout nouvel espace. Vous y trouverez l''ensemble des documents que nous mettons à la disposition de nos conducteurs, les dernières nouvelles que nous leur faisons parvenir ainsi que nos différents portails sur le web. Bonne visite à tous de la part de toute l''équipe TRACTLUX :', NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `DocumentType`
+-- Structure de la table `DocumentType`
 --
 
 CREATE TABLE IF NOT EXISTS `DocumentType` (
 `idD` int(11) NOT NULL,
   `idTypeD` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `DocumentType`
+--
+
+INSERT INTO `DocumentType` (`idD`, `idTypeD`) VALUES
+(1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Droit`
+-- Structure de la table `Droit`
 --
 
 CREATE TABLE IF NOT EXISTS `Droit` (
@@ -78,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `Droit` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Inscription`
+-- Structure de la table `Inscription`
 --
 
 CREATE TABLE IF NOT EXISTS `Inscription` (
@@ -92,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `Inscription` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Modification`
+-- Structure de la table `Modification`
 --
 
 CREATE TABLE IF NOT EXISTS `Modification` (
@@ -106,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `Modification` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Publication`
+-- Structure de la table `Publication`
 --
 
 CREATE TABLE IF NOT EXISTS `Publication` (
@@ -115,12 +129,19 @@ CREATE TABLE IF NOT EXISTS `Publication` (
   `commentP` text,
   `idU` int(11) NOT NULL,
   `document_idd` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `Publication`
+--
+
+INSERT INTO `Publication` (`idP`, `dateP`, `commentP`, `idU`, `document_idd`) VALUES
+(1, '2015-02-14 00:00:00', NULL, 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Suppression`
+-- Structure de la table `Suppression`
 --
 
 CREATE TABLE IF NOT EXISTS `Suppression` (
@@ -134,31 +155,45 @@ CREATE TABLE IF NOT EXISTS `Suppression` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `TypeD`
+-- Structure de la table `TypeD`
 --
 
 CREATE TABLE IF NOT EXISTS `TypeD` (
 `idTypeD` int(11) NOT NULL,
   `nomTypeD` varchar(30) DEFAULT NULL,
   `descTypeD` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `TypeD`
+--
+
+INSERT INTO `TypeD` (`idTypeD`, `nomTypeD`, `descTypeD`) VALUES
+(1, 'News', 'Dernières nouvelles de la société TRACTLUX.');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `TypeU`
+-- Structure de la table `TypeU`
 --
 
 CREATE TABLE IF NOT EXISTS `TypeU` (
 `idTypeU` int(11) NOT NULL,
   `nomTypeU` varchar(30) DEFAULT NULL,
   `descTypeU` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `TypeU`
+--
+
+INSERT INTO `TypeU` (`idTypeU`, `nomTypeU`, `descTypeU`) VALUES
+(1, 'Administrateur', 'Administrateur de l''espace collaborateur.');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Utilisateur`
+-- Structure de la table `Utilisateur`
 --
 
 CREATE TABLE IF NOT EXISTS `Utilisateur` (
@@ -170,220 +205,221 @@ CREATE TABLE IF NOT EXISTS `Utilisateur` (
   `telU` varchar(30) DEFAULT NULL,
   `emailU` varchar(50) DEFAULT NULL,
   `urlAvatarU` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `Utilisateur`
+--
+
+INSERT INTO `Utilisateur` (`idU`, `pseudoU`, `mdpU`, `nomU`, `prenomU`, `telU`, `emailU`, `urlAvatarU`) VALUES
+(1, 'Antoine', 'totototo1', 'Nosal', 'Antoine', '+33632281849', 'antoine.nosal@gmail.com', 'https://media.licdn.com/mpr/mpr/shrink_500_500/p/3');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `UtilisateurType`
+-- Structure de la table `UtilisateurType`
 --
 
 CREATE TABLE IF NOT EXISTS `UtilisateurType` (
 `idU` int(11) NOT NULL,
   `idTypeU` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
--- Indexes for dumped tables
+-- Contenu de la table `UtilisateurType`
+--
+
+INSERT INTO `UtilisateurType` (`idU`, `idTypeU`) VALUES
+(1, 1);
+
+--
+-- Index pour les tables exportées
 --
 
 --
--- Indexes for table `Commentaire`
+-- Index pour la table `Commentaire`
 --
 ALTER TABLE `Commentaire`
  ADD PRIMARY KEY (`idC`), ADD KEY `FK_Commentaire_idU` (`idU`), ADD KEY `FK_Commentaire_idD` (`idD`);
 
 --
--- Indexes for table `Document`
+-- Index pour la table `Document`
 --
 ALTER TABLE `Document`
  ADD PRIMARY KEY (`idD`), ADD KEY `FK_Document_publication_idp` (`publication_idp`);
 
 --
--- Indexes for table `DocumentType`
+-- Index pour la table `DocumentType`
 --
 ALTER TABLE `DocumentType`
  ADD PRIMARY KEY (`idD`,`idTypeD`), ADD KEY `FK_DocumentType_idTypeD` (`idTypeD`);
 
 --
--- Indexes for table `Droit`
+-- Index pour la table `Droit`
 --
 ALTER TABLE `Droit`
  ADD PRIMARY KEY (`idTypeU`,`idTypeD`), ADD KEY `FK_Droit_idTypeD` (`idTypeD`);
 
 --
--- Indexes for table `Inscription`
+-- Index pour la table `Inscription`
 --
 ALTER TABLE `Inscription`
  ADD PRIMARY KEY (`idI`), ADD KEY `FK_Inscription_idU` (`idU`), ADD KEY `FK_Inscription_idTypeU` (`idTypeU`);
 
 --
--- Indexes for table `Modification`
+-- Index pour la table `Modification`
 --
 ALTER TABLE `Modification`
  ADD PRIMARY KEY (`idM`), ADD KEY `FK_Modification_idU` (`idU`), ADD KEY `FK_Modification_idD` (`idD`);
 
 --
--- Indexes for table `Publication`
+-- Index pour la table `Publication`
 --
 ALTER TABLE `Publication`
  ADD PRIMARY KEY (`idP`), ADD KEY `FK_Publication_idU` (`idU`), ADD KEY `FK_Publication_document_idd` (`document_idd`);
 
 --
--- Indexes for table `Suppression`
+-- Index pour la table `Suppression`
 --
 ALTER TABLE `Suppression`
  ADD PRIMARY KEY (`idS`), ADD KEY `FK_Suppression_idU` (`idU`), ADD KEY `FK_Suppression_idD` (`idD`);
 
 --
--- Indexes for table `TypeD`
+-- Index pour la table `TypeD`
 --
 ALTER TABLE `TypeD`
  ADD PRIMARY KEY (`idTypeD`);
 
 --
--- Indexes for table `TypeU`
+-- Index pour la table `TypeU`
 --
 ALTER TABLE `TypeU`
  ADD PRIMARY KEY (`idTypeU`);
 
 --
--- Indexes for table `Utilisateur`
+-- Index pour la table `Utilisateur`
 --
 ALTER TABLE `Utilisateur`
  ADD PRIMARY KEY (`idU`);
 
 --
--- Indexes for table `UtilisateurType`
+-- Index pour la table `UtilisateurType`
 --
 ALTER TABLE `UtilisateurType`
  ADD PRIMARY KEY (`idU`,`idTypeU`), ADD KEY `FK_UtilisateurType_idTypeU` (`idTypeU`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT pour les tables exportées
 --
 
 --
--- AUTO_INCREMENT for table `Commentaire`
+-- AUTO_INCREMENT pour la table `Commentaire`
 --
 ALTER TABLE `Commentaire`
 MODIFY `idC` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `Document`
+-- AUTO_INCREMENT pour la table `Document`
 --
 ALTER TABLE `Document`
-MODIFY `idD` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `idD` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `DocumentType`
+-- AUTO_INCREMENT pour la table `DocumentType`
 --
 ALTER TABLE `DocumentType`
-MODIFY `idD` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `idD` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `Droit`
+-- AUTO_INCREMENT pour la table `Droit`
 --
 ALTER TABLE `Droit`
 MODIFY `idTypeU` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `Inscription`
+-- AUTO_INCREMENT pour la table `Inscription`
 --
 ALTER TABLE `Inscription`
 MODIFY `idI` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `Modification`
+-- AUTO_INCREMENT pour la table `Modification`
 --
 ALTER TABLE `Modification`
 MODIFY `idM` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `Publication`
+-- AUTO_INCREMENT pour la table `Publication`
 --
 ALTER TABLE `Publication`
-MODIFY `idP` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `idP` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `Suppression`
+-- AUTO_INCREMENT pour la table `Suppression`
 --
 ALTER TABLE `Suppression`
 MODIFY `idS` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `TypeD`
+-- AUTO_INCREMENT pour la table `TypeD`
 --
 ALTER TABLE `TypeD`
-MODIFY `idTypeD` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `idTypeD` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `TypeU`
+-- AUTO_INCREMENT pour la table `TypeU`
 --
 ALTER TABLE `TypeU`
-MODIFY `idTypeU` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `idTypeU` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `Utilisateur`
+-- AUTO_INCREMENT pour la table `Utilisateur`
 --
 ALTER TABLE `Utilisateur`
-MODIFY `idU` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `idU` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `UtilisateurType`
+-- AUTO_INCREMENT pour la table `UtilisateurType`
 --
 ALTER TABLE `UtilisateurType`
-MODIFY `idU` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `idU` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
--- Constraints for dumped tables
+-- Contraintes pour les tables exportées
 --
 
 --
--- Constraints for table `Commentaire`
+-- Contraintes pour la table `Commentaire`
 --
 ALTER TABLE `Commentaire`
 ADD CONSTRAINT `FK_Commentaire_idD` FOREIGN KEY (`idD`) REFERENCES `Document` (`idD`),
 ADD CONSTRAINT `FK_Commentaire_idU` FOREIGN KEY (`idU`) REFERENCES `Utilisateur` (`idU`);
 
 --
--- Constraints for table `Document`
---
--- ALTER TABLE `Document`
--- ADD CONSTRAINT `FK_Document_publication_idp` FOREIGN KEY (`publication_idp`) REFERENCES `Publication` (`idP`);
-
---
--- Constraints for table `DocumentType`
+-- Contraintes pour la table `DocumentType`
 --
 ALTER TABLE `DocumentType`
 ADD CONSTRAINT `FK_DocumentType_idD` FOREIGN KEY (`idD`) REFERENCES `Document` (`idD`),
 ADD CONSTRAINT `FK_DocumentType_idTypeD` FOREIGN KEY (`idTypeD`) REFERENCES `TypeD` (`idTypeD`);
 
 --
--- Constraints for table `Droit`
---
--- ALTER TABLE `Droit`
--- ADD CONSTRAINT `FK_Droit_idTypeD` FOREIGN KEY (`idTypeD`) REFERENCES `TypeD` (`idTypeD`),
--- ADD CONSTRAINT `FK_Droit_idTypeU` FOREIGN KEY (`idTypeU`) REFERENCES `TypeU` (`idTypeU`);
-
---
--- Constraints for table `Inscription`
+-- Contraintes pour la table `Inscription`
 --
 ALTER TABLE `Inscription`
 ADD CONSTRAINT `FK_Inscription_idTypeU` FOREIGN KEY (`idTypeU`) REFERENCES `TypeU` (`idTypeU`),
 ADD CONSTRAINT `FK_Inscription_idU` FOREIGN KEY (`idU`) REFERENCES `Utilisateur` (`idU`);
 
 --
--- Constraints for table `Modification`
+-- Contraintes pour la table `Modification`
 --
 ALTER TABLE `Modification`
 ADD CONSTRAINT `FK_Modification_idD` FOREIGN KEY (`idD`) REFERENCES `Document` (`idD`),
 ADD CONSTRAINT `FK_Modification_idU` FOREIGN KEY (`idU`) REFERENCES `Utilisateur` (`idU`);
 
 --
--- Constraints for table `Publication`
+-- Contraintes pour la table `Publication`
 --
 ALTER TABLE `Publication`
 ADD CONSTRAINT `FK_Publication_document_idd` FOREIGN KEY (`document_idd`) REFERENCES `Document` (`idD`),
 ADD CONSTRAINT `FK_Publication_idU` FOREIGN KEY (`idU`) REFERENCES `Utilisateur` (`idU`);
 
 --
--- Constraints for table `Suppression`
+-- Contraintes pour la table `Suppression`
 --
 ALTER TABLE `Suppression`
 ADD CONSTRAINT `FK_Suppression_idD` FOREIGN KEY (`idD`) REFERENCES `Document` (`idD`),
 ADD CONSTRAINT `FK_Suppression_idU` FOREIGN KEY (`idU`) REFERENCES `Utilisateur` (`idU`);
 
 --
--- Constraints for table `UtilisateurType`
+-- Contraintes pour la table `UtilisateurType`
 --
 ALTER TABLE `UtilisateurType`
 ADD CONSTRAINT `FK_UtilisateurType_idTypeU` FOREIGN KEY (`idTypeU`) REFERENCES `TypeU` (`idTypeU`),

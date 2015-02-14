@@ -70,7 +70,6 @@ if (!isset($_POST["codeI"])) {
     $codeI = $_POST["codeI"];
     //Test de l'existance et de la validité du code
     $inscription_temp = Inscription::findByCode($codeI);
-    print_r($inscription_temp);
     if (isset($inscription_temp)) {
         $current_date = date('Y-m-d');
         $validiteI_date = $inscription_temp->validiteI;
@@ -80,7 +79,6 @@ if (!isset($_POST["codeI"])) {
             $message .= "<p>- Le code d'inscription n'est plus valable !</p>";
             $nb_erreurs++;
         } else {
-            print_r($inscription_temp);
             $idTypeU = $inscription_temp->idTypeU;
         }
     } else {
