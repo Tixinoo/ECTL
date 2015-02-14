@@ -7,25 +7,22 @@ $message = "";
 $inscriptionOK = true;
 
 //Test de la longueur du code
-if (!isset($_POST["codeI"]) || strlen($_POST["codeI"]) <= 5) {
+if (!isset($_POST["codeI"]) || strlen($_POST["codeI"]) <= 2) {
     $inscriptionOK = false;
-    $message .= "<p>- Le code d'inscription doit contenir au moins 5 caractères.</p>";
+    $message .= "<li>Le code d'inscription doit contenir au moins 3 caractères.</li>";
     $nb_erreurs++;
 } else {
     $codeI = $_POST["codeI"];
 }
 
 //Test de la date
-echo "toto;";
 $validiteI = $_POST["validiteI"];
 $validiteI = date_parse_from_format("d/m/Y", $validiteI); // or date_parse_from_format("d/m/Y", $date);
-print_r($validiteI);
-echo "titi";
 if (checkdate($validiteI['month'], $validiteI['day'], $validiteI['year'])) {
     $validiteI = $validiteI['year'] . "-" . $validiteI['month'] . "-" . $validiteI['day'];
 } else {
     $inscriptionOK = false;
-    $message .= "<p>- La date saisie est invalide !</p>";
+    $message .= "<li>La date saisie est invalide !</li>";
     $nb_erreurs++;
 }
 
@@ -34,7 +31,7 @@ if(isset($_POST["idTypeU"])) {
     $idTypeU = $_POST["idTypeU"];
 } else {
     $documentOK = false;
-    $message .= "<p>- Le type n'est pas correct.</p>";
+    $message .= "<li>Le type n'est pas correct.</li>";
     $nb_erreurs++;
 }
 
@@ -48,13 +45,26 @@ if ($inscriptionOK) {
     $inscription->idU = $idU;
     $inscription->idTypeU = $idTypeU;
     $inscription->insert();
-    include_once 'header.php';
-    echo "<p> Félicitations ! Tout s'est déroulé avec succès !<br>Un nouvel utilisateur pourra rejoindre l'ECTL.<br> Les détails de cet ajout sont les suivants : <ul><li>Le nouvel utilisateur sera de type <b>" . $idTypeU . "</b></li> <li>Il devra s'inscrire avec le code <b>" . $codeI . "</b></li> <li>Il devra s'inscrire au plus tard le <b>" . $validiteI . "</b> (inclu)</li></p>";
-    include_once 'footer.php';
+    header("Location: ../index.php?a=adduser");
+    // OLD:
+    //echo "<p> Félicitations ! Tout s'est déroulé avec succès !<br>Un nouvel utilisateur pourra rejoindre l'ECTL.<br> Les détails de cet ajout sont les suivants : <ul><li>Le nouvel utilisateur sera de type <b>" . $idTypeU . "</b></li> <li>Il devra s'inscrire avec le code <b>" . $codeI . "</b></li> <li>Il devra s'inscrire au plus tard le <b>" . $validiteI . "</b> (inclu)</li></li>";
 } else {
-    include_once 'Content/header.php';
-    echo "<p>Votre formulaire d'inscription contient les " . $nb_erreurs . " erreurs suivantes: </p>";
+    echo "<html>";
+    echo "<head>";
+    echo "<meta charset=\"utf-8\">";
+    echo "<title>Erreur ECTL</title>";
+    echo "<link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>";
+    echo "</head";
+    echo "<body>";
+    echo "<div style=\"font-family: Oxygen; padding: 30px;\">";
+    echo "<h1 style=\"border-bottom: solid black 1px;\">Votre formulaire contient les " . $nb_erreurs . " erreurs suivantes : </h1><ol>";
     echo $message;
-    include_once 'Content/footer.php';
+    echo "</ol>";
+    echo "<center>";
+    echo "<a href='../index.php?a=adduser'><button><h2>Remplir le formulaire à nouveau</h2></button></a></h2>";
+    echo "</center>";
+    echo "</div>";
+    echo "</body>";
+    echo "</html>";
 }
 ?>

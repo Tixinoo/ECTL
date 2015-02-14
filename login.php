@@ -18,9 +18,12 @@
         
     } else {
 
+        echo "<body>";
+        
         // Sinon, on affiche des champs et un bouton pour qu'il puisse se connecter
         include_once 'Content/login.html';
         
+        echo "</body>";        
     }
     ?>
 

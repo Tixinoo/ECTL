@@ -7,18 +7,18 @@ $message = "";
 $typedOK = true;
 
 //Test du nom
-if (!isset($_POST["nomTypeD"]) || strlen($_POST["nomTypeD"]) <= 3) {
+if (!isset($_POST["nomTypeD"]) || strlen($_POST["nomTypeD"]) <= 2) {
     $typedOK = false;
-    $message .= "<p>- Le titre doit contenir au moins 5 caractères.</p>";
+    $message .= "<li>Le titre doit contenir au moins 3 caractères.</li>";
     $nb_erreurs++;
 } else {
     $nomTypeD = $_POST["nomTypeD"];
 }
 
 //Test de la description
-if (!isset($_POST["descTypeD"]) || strlen($_POST["descTypeD"]) <= 10) {
+if (!isset($_POST["descTypeD"]) || strlen($_POST["descTypeD"]) <= 2) {
     $typedOK = false;
-    $message .= "<p>- La description doit contenir au moins 10 caractères.</p>";
+    $message .= "<li>La description doit contenir au moins 3 caractères.</li>";
     $nb_erreurs++;
 } else {
     $descTypeD = $_POST["descTypeD"];
@@ -30,10 +30,27 @@ if ($typedOK) {
     $typed->nomTypeD = $nomTypeD;
     $typed->descTypeD = $descTypeD;
     $typed->insert();
-    echo "<p> Félicitations ! Tout s'est déroulé avec succès !<br>Une nouvelle catégorie a été ajoutée dans l'ECTL.<br> Les détails de cet ajout sont les suivants : <ul><li>La nouvelle catégorie aura pour titre <b>" . $nomTypeD . "</b></li> <li>Sa description est la suivante : <b>" . $descTypeD . "</b></li></p>";
+    header("Location: ../index.php");
+    // OLD:
+    //echo "<p> Félicitations ! Tout s'est déroulé avec succès !<br>Une nouvelle catégorie a été ajoutée dans l'ECTL.<br> Les détails de cet ajout sont les suivants : <ul><li>La nouvelle catégorie aura pour titre <b>" . $nomTypeD . "</b></li> <li>Sa description est la suivante : <b>" . $descTypeD . "</b></li></li>";
 } else {
-    echo "<p>Votre formulaire d'ajout contient les " . $nb_erreurs . " erreurs suivantes: </p>";
+    echo "<html>";
+    echo "<head>";
+    echo "<meta charset=\"utf-8\">";
+    echo "<title>Erreur ECTL</title>";
+    echo "<link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>";
+    echo "</head";
+    echo "<body>";
+    echo "<div style=\"font-family: Oxygen; padding: 30px;\">";
+    echo "<h1 style=\"border-bottom: solid black 1px;\">Votre formulaire contient les " . $nb_erreurs . " erreurs suivantes : </h1><ol>";
     echo $message;
+    echo "</ol>";
+    echo "<center>";
+    echo "<a href='../index.php'><button><h2>Remplir le formulaire à nouveau</h2></button></a></h2>";
+    echo "</center>";
+    echo "</div>";
+    echo "</body>";
+    echo "</html>";
 }
 
 ?>

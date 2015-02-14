@@ -169,6 +169,8 @@ CREATE TABLE IF NOT EXISTS `TypeD` (
 --
 
 INSERT INTO `TypeD` (`idTypeD`, `nomTypeD`, `descTypeD`) VALUES
+(0, 'Corbeille', 'Documents supprimés');
+INSERT INTO `TypeD` (`idTypeD`, `nomTypeD`, `descTypeD`) VALUES
 (1, 'News', 'Dernières nouvelles de la société TRACTLUX.');
 
 -- --------------------------------------------------------
@@ -188,9 +190,11 @@ CREATE TABLE IF NOT EXISTS `TypeU` (
 --
 
 INSERT INTO `TypeU` (`idTypeU`, `nomTypeU`, `descTypeU`) VALUES
-(1, 'Administrateur', 'Administrateur de l''espace collaborateur.');
+(1, 'Administrateur', 'Administrateurs de l''espace collaborateur.');
 INSERT INTO `ectl-db`.`TypeU` (`idTypeU`, `nomTypeU`, `descTypeU`) VALUES 
-(2, 'Conducteur', 'Conducteur de la société TRACTLUX.');
+(2, 'Conducteur', 'Conducteurs de la société TRACTLUX.');
+INSERT INTO `ectl-db`.`TypeU` (`idTypeU`, `nomTypeU`, `descTypeU`) VALUES 
+(3, 'Client', 'Clients de la société TRACTLUX.');
 
 -- --------------------------------------------------------
 
@@ -201,7 +205,7 @@ INSERT INTO `ectl-db`.`TypeU` (`idTypeU`, `nomTypeU`, `descTypeU`) VALUES
 CREATE TABLE IF NOT EXISTS `Utilisateur` (
 `idU` int(11) NOT NULL,
   `pseudoU` varchar(20) DEFAULT NULL,
-  `mdpU` varchar(20) DEFAULT NULL,
+  `mdpU` varchar(150) DEFAULT NULL,
   `nomU` varchar(30) DEFAULT NULL,
   `prenomU` varchar(30) DEFAULT NULL,
   `telU` varchar(30) DEFAULT NULL,
@@ -214,7 +218,7 @@ CREATE TABLE IF NOT EXISTS `Utilisateur` (
 --
 
 INSERT INTO `Utilisateur` (`idU`, `pseudoU`, `mdpU`, `nomU`, `prenomU`, `telU`, `emailU`, `urlAvatarU`) VALUES
-(1, 'Antoine', 'totototo1', 'Nosal', 'Antoine', '+33632281849', 'antoine.nosal@gmail.com', 'https://media.licdn.com/mpr/mpr/shrink_500_500/p/3/005/09b/372/027fd62.jpg');
+(1, 'Antoine', '26749d7577019e59a44aaccff22f3ac8 ', 'Nosal', 'Antoine', '+33632281849', 'antoine.nosal@gmail.com', 'https://media.licdn.com/mpr/mpr/shrink_500_500/p/3/005/09b/372/027fd62.jpg');
 
 -- --------------------------------------------------------
 

@@ -4,6 +4,8 @@
     <?php
     include_once 'Content/head.html';
     ?>
+    
+    <body>
 
     <?php
     // formulaire d'inscription
@@ -12,5 +14,7 @@
     // Redirection vers la page de connexion
     //header("Location: ../index.php?a=home");
     ?>
+        
+    </body>
 
 </html>
