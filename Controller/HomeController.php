@@ -90,8 +90,8 @@ class HomeController extends Controller {
         if ($_GET["idD"]) {
             $document = Document::findById($_GET['idD']);
             $document->deleteTypes();
-            $document->deletePublication();
             $document->deleteSuppression();
+            $document->deletePublication();
             $document->delete();
         }
         header("Location: index.php");

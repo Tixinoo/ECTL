@@ -160,7 +160,7 @@ class Document {
             $db = DataBase::getConnection();
 
             // Création de la requête préparée
-            $query = $query = "DELETE FROM Publication WHERE idD = :id";
+            $query = $query = "DELETE FROM Publication WHERE document_idd = :id";
             $statement = $db->prepare($query);
             $statement->bindParam(':id', $this->idD);
 
