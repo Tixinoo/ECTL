@@ -195,9 +195,6 @@ class Inscription {
             $inscription->validiteI = $row['validiteI'];
             $inscription->idU = $row['idU'];
             $inscription->idTypeU = $row['idTypeU'];
-
-            print_r($inscription);
-            echo "toto<br>";
             
             // Retour du tableau de tracks
             return $inscription;
