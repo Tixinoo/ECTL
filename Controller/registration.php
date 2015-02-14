@@ -97,6 +97,24 @@ if (!isset($_POST["telU"]) || strlen($_POST["telU"]) <= -1) {
     $telU = $_POST["telU"];
 }
 
+//Test du nom
+if (!isset($_POST["nomU"]) || strlen($_POST["nomU"]) < 0) {
+    $inscriptionOK = false;
+    $message .= "<li>Votre nom doit contenir au moins 1 caractère.</li>";
+    $nb_erreurs++;
+} else {
+    $nomU = $_POST["nomU"];
+}
+
+//Test du prénom
+if (!isset($_POST["prenomU"]) || strlen($_POST["prenomU"]) < 0) {
+    $inscriptionOK = false;
+    $message .= "<li>Votre prénom doit contenir au moins 1 caractère.</li>";
+    $nb_erreurs++;
+} else {
+    $prenomU = $_POST["prenomU"];
+}
+
 $urlAvatarU = "Image/icon-user.png";
 
 //Ajout de l'utilisateur dans la base
@@ -105,8 +123,8 @@ if ($inscriptionOK) {
     $utilisateur = new Utilisateur();
     $utilisateur->pseudoU = $pseudoU;
     $utilisateur->mdpU = $mdpU;
-    $utilisateur->nomU = $_POST["nomU"];
-    $utilisateur->prenomU = $_POST["prenomU"];
+    $utilisateur->nomU = $nomU;
+    $utilisateur->prenomU = $$prenomU;
     $utilisateur->emailU = $emailU;
     $utilisateur->telU = $telU;
     $utilisateur->urlAvatarU = $urlAvatarU;

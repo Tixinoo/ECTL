@@ -72,12 +72,30 @@ if (!isset($_POST["emailU"]) || !filter_var($_POST["emailU"], FILTER_VALIDATE_EM
  */
 
 //Test du téléphone
-if (!isset($_POST["telU"]) || strlen($_POST["telU"]) <= -1) {
-    $inscriptionOK = false;
+if (!isset($_POST["telU"]) || strlen($_POST["telU"]) < -1) {
+    $miseajourOK = false;
     $message .= "<i>Votre numéro de téléphone doit contenir au moins 0 caractère.</i>";
     $nb_erreurs++;
 } else {
     $telU = $_POST["telU"];
+}
+
+//Test du nom
+if (!isset($_POST["nomU"]) || strlen($_POST["nomU"]) <= 0) {
+    $miseajourOK = false;
+    $message .= "<li>Votre nom doit contenir au moins 1 caractère.</li>";
+    $nb_erreurs++;
+} else {
+    $nomU = $_POST["nomU"];
+}
+
+//Test du prénom
+if (!isset($_POST["prenomU"]) || strlen($_POST["prenomU"]) <= 0) {
+    $miseajourOK = false;
+    $message .= "<li>Votre prénom doit contenir au moins 1 caractère.</li>";
+    $nb_erreurs++;
+} else {
+    $prenomU = $_POST["prenomU"];
 }
 
 if (!isset($_POST["urlAvatarU"]) || !filter_var($_POST["urlAvatarU"], FILTER_VALIDATE_URL)) {
@@ -93,16 +111,16 @@ if ($miseajourOK) {
     $utilisateur = Utilisateur::findById($_POST["idU"]);
     //$utilisateur->pseudoU = $pseudoU;
     //$utilisateur->mdpU = $mdpU;
-    //$utilisateur->nomU = $_POST["nomU"];
-    //$utilisateur->prenomU = $_POST["prenomU"];
+    $utilisateur->nomU = $nomU;
+    $utilisateur->prenomU = $prenomU;
     $utilisateur->emailU = $emailU;
     $utilisateur->telU = $telU;
     $utilisateur->urlAvatarU = $urlAvatarU;
     $utilisateur->update();
     
     //$_SESSION['pseudoU'] = $pseudoU;
-    //$_SESSION['nomU'] = $utilisateur->nomU;
-    //$_SESSION['prenomU'] = $utilisateur->prenomU;
+    $_SESSION['nomU'] = $utilisateur->nomU;
+    $_SESSION['prenomU'] = $utilisateur->prenomU;
     $_SESSION['telU'] = $utilisateur->telU;
     $_SESSION['emailU'] = $utilisateur->emailU;
     $_SESSION['urlAvatarU'] = $utilisateur->urlAvatarU;
@@ -121,7 +139,7 @@ if ($miseajourOK) {
     echo $message;
     echo "</ol>";
     echo "<center>";
-    echo "<a href='../index.php?a=adduser'><button><h2>Remplir le formulaire à nouveau</h2></button></a></h2>";
+    echo "<a href='../index.php?a=accountSettings'><button><h2>Remplir le formulaire à nouveau</h2></button></a></h2>";
     echo "</center>";
     echo "</div>";
     echo "</body>";

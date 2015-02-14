@@ -33,6 +33,26 @@
                         </div>
                     </fieldset>
                     <div class="form-group">
+                        <label for="inputNomU" class="col-sm-3 control-label">Nom</label>
+                        <div class="col-sm-8">
+                            <input name="nomU" type="text" class="form-control" id="inputNomU" value=
+                            <?php
+                            echo "\"" . $_SESSION["nomU"] . "\"";
+                            ?>
+                                   >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPrenomU" class="col-sm-3 control-label">Prénom</label>
+                        <div class="col-sm-8">
+                            <input name="prenomU" type="text" class="form-control" id="inputPrenomU" value=
+                            <?php
+                            echo "\"" . $_SESSION["prenomU"] . "\"";
+                            ?>
+                                   >
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="inputEmailU" class="col-sm-3 control-label">Adresse email</label>
                         <div class="col-sm-8">
                             <input name="emailU" type="text" class="form-control" id="inputEmailU" value=
