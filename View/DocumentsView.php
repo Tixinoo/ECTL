@@ -38,7 +38,7 @@ class DocumentsView {
             echo "</form>";
         }
         echo "<a class=\"view-pdf\" href=\"" . $document->urlD . "\" nom=\"" . $document->nomD . "\"><h4>" . $document->nomD . "</h4></a>";
-        echo "<div><p>" . $document->descD . "</p></div>";
+        echo "<div class=\"descDocument\"><p>" . $document->descD . "</p></div>";
         echo "</div>";
     }
 

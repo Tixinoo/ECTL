@@ -92,7 +92,7 @@ class Utilisateur {
             $db = DataBase::getConnection();
 
             // Création de la requête préparée
-            $query = "DELETE Utilisateur WHERE idU = :id";
+            $query = "DELETE FROM Utilisateur WHERE idU = :id";
             $statement = $db->prepare($query);
             $statement->bindParam(':id', $this->idU);
 

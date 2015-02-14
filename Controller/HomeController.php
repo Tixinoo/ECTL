@@ -18,7 +18,8 @@ class HomeController extends Controller {
             'facebook' => 'facebookAction',
             'siteweb' => 'sitewebAction',
             'adduser' => 'adduserAction',
-            'deleteI' => 'deleteIAction'
+            'deleteI' => 'deleteIAction',
+            'deleteD' => 'deleteDAction'
         );
     }
 
@@ -63,12 +64,29 @@ class HomeController extends Controller {
 
     public function deleteIAction() {
         if ($_GET["idI"]) {
-            echo"coucou";
             $inscription = Inscription::findById($_GET['idI']);
-            print_r($inscription);
             $inscription->delete();
         }
         header("Location: index.php?a=adduser");
+    }
+
+    public function deleteDAction() {
+        if ($_GET["idD"]) {
+            $document = Document::findById($_GET['idD']);
+            $document->moveToTrash();
+        }
+        header("Location: index.php?a=typed&idtyped=" . $document->idTypeDs()[0]);
+    }
+    
+    public function deleteDefinitlyDAction() {
+        if ($_GET["idD"]) {
+            $document = Document::findById($_GET['idD']);
+            $document->deleteTypes();
+            $document->deletePublication();
+            $document->deleteSuppression();
+            $document->delete();
+        }
+        header("Location: index.php");
     }
 
 }

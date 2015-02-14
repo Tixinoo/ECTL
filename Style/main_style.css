@@ -50,8 +50,8 @@ body {
 div.test {
 overflow: hidden;
 position: relative;
-max-height: 9.5em; /*display ellipsis after 3 lines*/
-min-height: 9.5em;
+max-height: 10.5em; /*display ellipsis after 3 lines*/
+min-height: 10.5em;
 }
 
 #document {
@@ -62,6 +62,12 @@ min-height: 9.5em;
     text-overflow: "...";
     height: 150px;
     	text-overflow: ellipsis;*/
+}
+
+.descDocument {
+    border-top: solid lightblue 1px;
+    font-size: 0.9em;
+    text-align: center;
 }
 
 .left {

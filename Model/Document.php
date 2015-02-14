@@ -73,6 +73,29 @@ class Document {
         }
     }
 
+    public function moveToTrash() {
+        try {
+            if (!isset($this->idD)) {
+                throw new Exception(__CLASS__ . " : Clé primaire non définie : delete impossible");
+            }
+
+            // Récupération d'une connexion à la base
+            $db = DataBase::getConnection();
+
+            // Création de la requête préparée
+            $query = "UPDATE DocumentType SET idTypeD = 5 WHERE idD = :id";
+            $statement = $db->prepare($query);
+            $statement->bindParam(':id', $this->idD);
+
+            // Exécution de la requête préparée
+            $res = $statement->execute();
+            return $res;
+        } catch (Exception $e) {
+            $trace = $e->getTrace();
+            echo "Erreur pendant delete: $trace";
+        }
+    }
+
     /**
      * supprime le tuple de la table 'Document'
      * qui correspond à l'objet courant
@@ -90,7 +113,76 @@ class Document {
             $db = DataBase::getConnection();
 
             // Création de la requête préparée
-            $query = "DELETE Document WHERE idD = :id";
+            $query = "DELETE FROM Document WHERE idD = :id";
+            $statement = $db->prepare($query);
+            $statement->bindParam(':id', $this->idD);
+
+            // Exécution de la requête préparée
+            $res = $statement->execute();
+            return $res;
+        } catch (Exception $e) {
+            $trace = $e->getTrace();
+            echo "Erreur pendant delete: $trace";
+        }
+    }
+
+    public function deleteTypes() {
+        try {
+            if (!isset($this->idD)) {
+                throw new Exception(__CLASS__ . " : Clé primaire non définie : delete impossible");
+            }
+
+            // Récupération d'une connexion à la base
+            $db = DataBase::getConnection();
+
+            // Création de la requête préparée
+            $query = $query = "DELETE FROM DocumentType WHERE idD = :id";
+            $statement = $db->prepare($query);
+            $statement->bindParam(':id', $this->idD);
+
+            // Exécution de la requête préparée
+            $res = $statement->execute();
+            return $res;
+        } catch (Exception $e) {
+            $trace = $e->getTrace();
+            echo "Erreur pendant delete: $trace";
+        }
+    }
+
+    public function deletePublication() {
+        try {
+            if (!isset($this->idD)) {
+                throw new Exception(__CLASS__ . " : Clé primaire non définie : delete impossible");
+            }
+
+            // Récupération d'une connexion à la base
+            $db = DataBase::getConnection();
+
+            // Création de la requête préparée
+            $query = $query = "DELETE FROM Publication WHERE idD = :id";
+            $statement = $db->prepare($query);
+            $statement->bindParam(':id', $this->idD);
+
+            // Exécution de la requête préparée
+            $res = $statement->execute();
+            return $res;
+        } catch (Exception $e) {
+            $trace = $e->getTrace();
+            echo "Erreur pendant delete: $trace";
+        }
+    }
+
+    public function deleteSuppression() {
+        try {
+            if (!isset($this->idD)) {
+                throw new Exception(__CLASS__ . " : Clé primaire non définie : delete impossible");
+            }
+
+            // Récupération d'une connexion à la base
+            $db = DataBase::getConnection();
+
+            // Création de la requête préparée
+            $query = $query = "DELETE FROM Suppression WHERE idD = :id";
             $statement = $db->prepare($query);
             $statement->bindParam(':id', $this->idD);
 
@@ -160,10 +252,10 @@ class Document {
 
             // Exécution de la requête préparée
             $res = $statement->execute();
-            
+
             //Mise à jour du document
             $db->exec("UPDATE Document SET publication_idp='" . $db->lastInsertId() . "' WHERE idD='" . $this->idD . "'");
-            
+
             return $res;
         } catch (Exception $e) {
             $trace = $e->getTrace();
@@ -188,6 +280,34 @@ class Document {
         } catch (Exception $e) {
             $trace = $e->getTrace();
             echo "Erreur pendant insertType: $trace";
+        }
+    }
+
+    public function idTypeDs() {
+        try {
+            // Récupération d'une connexion à la base
+            $db = DataBase::getConnection();
+
+            // Création de la requête préparée
+            $query = "SELECT * FROM DocumentType WHERE idD = :id";
+            $statement = $db->prepare($query);
+            $statement->bindParam(':id', $this->idD);
+
+            // Exécution de la requête préparée
+            $statement->execute();
+
+            $tab = Array();
+            // Tant que des lignes sont retournées
+            while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+                // Remplissage d'un tableau avec tous les types (sous forme de leur id) du document
+                $tab[] = $row['idTypeU'];
+            }
+
+            // Retour du tableau du document
+            return $tab;
+        } catch (Exception $e) {
+            $trace = $e->getTrace();
+            echo "Erreur pendant findAll: $trace";
         }
     }
 
