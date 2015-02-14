@@ -19,7 +19,8 @@ class HomeController extends Controller {
             'siteweb' => 'sitewebAction',
             'adduser' => 'adduserAction',
             'deleteI' => 'deleteIAction',
-            'deleteD' => 'deleteDAction'
+            'deleteD' => 'deleteDAction',
+            'deleteDefinitlyD' => 'deleteDefinitlyDAction'
         );
     }
 

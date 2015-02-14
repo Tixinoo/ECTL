@@ -4,7 +4,7 @@
     <h3 class="sub-header"><img src="Image/icon-news.png" width="50"/>News
         <?php
         if (in_array("1", $_SESSION['typeUs'])) {
-            echo "<button type = \"button\" class = \"btn btn-primary\" data-toggle = \"modal\" data-target = \".bs-news-modal-lg\">+</button>";
+            echo "<button type = \"button\" class = \"btn btn-primary btn-sm\" data-toggle = \"modal\" data-target = \".bs-news-modal-lg\">Ajouter une news</button>";
         }
         ?>
     </h3>

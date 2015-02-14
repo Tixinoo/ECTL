@@ -300,7 +300,7 @@ class Document {
             // Tant que des lignes sont retournées
             while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
                 // Remplissage d'un tableau avec tous les types (sous forme de leur id) du document
-                $tab[] = $row['idTypeU'];
+                $tab[] = $row['idTypeD'];
             }
 
             // Retour du tableau du document

@@ -10,14 +10,14 @@ Menu avec tous les types de documents
             <li><a href="index.php?a=search"><img src="Image/icon-search.png" width="15"/> Rechercher Documents</a></li>
         </ul>
         <h3 class="sub-header">Documents 
-            <?php
-            if (in_array("1", $_SESSION['typeUs'])) {
-                echo "<button type = \"button\" class = \"btn btn-primary\" data-toggle = \"modal\" data-target = \".bs-document-modal-lg\">+</button>";
-            }
-            ?>
         </h3>
 
         <ul class="nav nav-sidebar">
+            <?php
+            if (in_array("1", $_SESSION['typeUs'])) {
+                echo "<center><button type = \"button\" class = \"btn btn-primary btn-sm\" data-toggle = \"modal\" data-target = \".bs-document-modal-lg\">Ajouter un document</button></center>";
+            }
+            ?>
             <?php
             $typeds = TypeD::findAll();
             foreach ($typeds as $typed) {
@@ -34,7 +34,7 @@ Menu avec tous les types de documents
             ?>
             <?php
             if (in_array("1", $_SESSION['typeUs'])) {
-                echo "<center><button type = \"button\" class = \"btn btn-primary btn-sm\" data-toggle = \"modal\" data-target = \".bs-categorie-modal-lg\"><i>Ajouter une catégorie</i></button></center>";
+                echo "<center><button type = \"button\" class = \"btn btn-primary btn-sm\" data-toggle = \"modal\" data-target = \".bs-categorie-modal-lg\">Ajouter une catégorie</button></center>";
             }
             ?>
         </ul>

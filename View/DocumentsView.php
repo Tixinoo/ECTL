@@ -31,10 +31,17 @@ class DocumentsView {
         echo "</span>";
         echo "</h1></a>";
         if (in_array("1", $_SESSION['typeUs'])) {
+            $corbeille_id = "5";
             echo "<form style=\"margin-left:5px; margin-top: -15px; display:inline;\" action=\"index.php\" method=\"GET\">";
-            echo "<input type=\"hidden\" name=\"a\" value=\"deleteD\">";
-            echo "<input type=\"hidden\" name=\"idD\" value=\"" . $document->idD . "\">";
-            echo "<button type=\"submit\" class=\"btn btn-danger btn-xs\">-</button>";
+            if (in_array($corbeille_id, $document->idTypeDs()) != $corbeille_id) {
+                echo "<input type=\"hidden\" name=\"a\" value=\"deleteD\">";
+                echo "<input type=\"hidden\" name=\"idD\" value=\"" . $document->idD . "\">";
+                echo "<button type=\"submit\" class=\"btn btn-danger btn-xs\">Supprimer</button>";
+            } else {
+                echo "<input type=\"hidden\" name=\"a\" value=\"deleteDefinitlyD\">";
+                echo "<input type=\"hidden\" name=\"idD\" value=\"" . $document->idD . "\">";
+                echo "<button type=\"submit\" class=\"btn btn-danger btn-xs\">Détruire</button>";
+            }
             echo "</form>";
         }
         echo "<a class=\"view-pdf\" href=\"" . $document->urlD . "\" nom=\"" . $document->nomD . "\"><h4>" . $document->nomD . "</h4></a>";
