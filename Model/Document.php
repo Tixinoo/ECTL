@@ -502,11 +502,10 @@ class Document {
         try {
             // Récupération d'une connexion à la base
             $db = DataBase::getConnection();
-
             // Création de la requête préparée
             $query = "SELECT * FROM Publication WHERE document_idd = :id";
             $statement = $db->prepare($query);
-            $statement->bindParam(':id', $this->idD);
+            $statement->bindParam(':id', $this->publication_idp);
 
             // Exécution de la requête préparée
             $statement->execute();

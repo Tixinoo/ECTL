@@ -21,7 +21,8 @@ class HomeController extends Controller {
             'deleteI' => 'deleteIAction',
             'deleteD' => 'deleteDAction',
             'deleteDefinitlyD' => 'deleteDefinitlyDAction',
-            'accountSettings' => 'accountSettingsAction'
+            'accountSettings' => 'accountSettingsAction',
+            'recentActions' => 'recentActionsAction'
         );
     }
 
@@ -69,6 +70,11 @@ class HomeController extends Controller {
         $view->accountSettingsView();
     }
 
+    public function recentActionsAction() {
+        $view = new HomeView();
+        $view->recentActionsView();
+    }
+    
     public function deleteIAction() {
         if ($_GET["idI"]) {
             $inscription = Inscription::findById($_GET['idI']);

@@ -57,6 +57,12 @@ class HomeView {
         include 'Content/accountsettings.php';
         include 'Content/footer.php';
     }
+    
+    public function recentActionsView() {
+        include 'Content/header.php';
+        include 'Content/recentactions.php';
+        include 'Content/footer.php';
+    }
 
     /*     * ************** MÉTHODES DE TEST *************** */
 
