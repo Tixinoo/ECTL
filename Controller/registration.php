@@ -51,17 +51,15 @@ if (!isset($_POST["emailU"]) || !filter_var($_POST["emailU"], FILTER_VALIDATE_EM
     $emailU = $_POST["emailU"];
 }
 
-/*
-  //Test de l'existance du pseudo dans la base
-  if ($inscriptionOK){
-  $check = User::checkUsername($pseudo);
-  if ($check != 0){
-  $inscriptionOK = false;
-  $message .= "<p>- Le nom d'utilisateur ".$pseudo." est déjà pris !</p>";
-  $nb_erreurs++;
-  }
-  }
- */
+//Test de l'existance du pseudo
+if ($inscriptionOK) {
+    $pseudoU_temp = Utilisateur::findByPseudoU($pseudoU);
+    if (isset($pseudoU_temp)) {
+        $inscriptionOK = false;
+        $message .= "<p>- Le pseudonyme saisie est déjà utilisé !</p>";
+        $nb_erreurs++;
+    }
+}
 
 //Test du code d'inscription
 if (!isset($_POST["codeI"])) {
