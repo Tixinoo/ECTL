@@ -55,7 +55,7 @@ class UtilisateursView {
     }
 
     public function futurUsersView() {
-        $utilisateurs = Inscription::findAll();
+        $inscriptions = Inscription::findAll();
         echo "<div class=\"table-responsive\">";
         echo "<table class=\"table table-hover\">";
         echo "<thead>";
@@ -75,19 +75,23 @@ class UtilisateursView {
             echo "</tr>";
         echo "</thead>";
         echo "<tbody>";
-        foreach ($utilisateurs as $utilisateur) {
+        foreach ($inscriptions as $inscription) {
             echo "<tr>";
                 echo "<td>";
-                echo $utilisateur->codeI;
+                echo $inscription->codeI;
                 echo "</td>";
                 echo "<td>";
-                echo $utilisateur->validiteI;
+                echo $inscription->validiteI;
                 echo "</td>";
                 echo "<td>";
-                echo TypeU::findById($utilisateur->idTypeU)->nomTypeU;
+                echo TypeU::findById($inscription->idTypeU)->nomTypeU;
                 echo "</td>";
                 echo "<td class=\"text-center\">";
-                echo "<button type=\"button\" class=\"btn btn-danger\">Supprimer</button>";
+                echo "<form action=\"index.php\" method=\"GET\">";
+                echo "<input type=\"hidden\" name=\"a\" value=\"deleteI\">";
+                echo "<input type=\"hidden\" name=\"idI\" value=\"" . $inscription->idI . "\">";
+                echo "<button type=\"submit\" class=\"btn btn-danger\">Supprimer</button>";
+                echo "</form>";
                 echo "</td>";
             echo "</tr>";
         }

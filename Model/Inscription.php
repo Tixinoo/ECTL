@@ -89,7 +89,7 @@ class Inscription {
             $db = DataBase::getConnection();
 
             // Création de la requête préparée
-            $query = "DELETE Inscription WHERE idI = :id";
+            $query = "DELETE FROM Inscription WHERE idI = :id";
             $statement = $db->prepare($query);
             $statement->bindParam(':id', $this->idI);
 
