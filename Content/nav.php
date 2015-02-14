@@ -38,15 +38,7 @@ Menu avec tous les types de documents
             }
             ?>
         </ul>
-        <?php
-        if (in_array("1", $_SESSION['typeUs'])) {
-            echo "<h3 class=\"sub-header\">Employés</h3>";
-            echo "<ul class=\"nav nav-sidebar\">";
-            echo "<li><a href=\"index.php?a=coord\"><img src=\"Image/icon-details.png\" width=\"15\"/> Coordonnées Employés</a></li>";
-            echo "<li><a href=\"index.php?a=adduser\"><img src=\"Image/icon-users.png\" width=\"15\"/> Comptes Utilisateurs</a></li>";
-            echo "</ul>";
-        }
-        ?>
+
         <h3 class="sub-header">Portails</h3>
         <ul class="nav nav-sidebar">
             <li><a href="index.php?a=facebook"><img src="Image/icon-facebook.png" width="15"/> Facebook</a></li>
@@ -58,5 +50,14 @@ Menu avec tous les types de documents
             echo "<li><a href=\"index.php?a=accountSettings\"><img src=\"" . $_SESSION['urlAvatarU'] . "\" height=\"15\"/> Paramètres</a></li>";
             ?>
         </ul>
+                <?php
+        if (in_array("1", $_SESSION['typeUs'])) {
+            echo "<h3 class=\"sub-header\">Administration</h3>";
+            echo "<ul class=\"nav nav-sidebar\">";
+            echo "<li><a href=\"index.php?a=coord\"><img src=\"Image/icon-details.png\" width=\"15\"/> Coordonnées Employés</a></li>";
+            echo "<li><a href=\"index.php?a=adduser\"><img src=\"Image/icon-users.png\" width=\"15\"/> Comptes Utilisateurs</a></li>";
+            echo "</ul>";
+        }
+        ?>
     </div>
 </div>
