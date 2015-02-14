@@ -474,9 +474,9 @@ class Document {
             $db = DataBase::getConnection();
 
             // Création de la requête préparée
-            $query = "SELECT * FROM Publication WHERE idP = :id";
+            $query = "SELECT * FROM Publication WHERE document_idd = :id";
             $statement = $db->prepare($query);
-            $statement->bindParam(':id', $this->publication_idp);
+            $statement->bindParam(':id', $this->idD);
 
             // Exécution de la requête préparée
             $statement->execute();
@@ -485,13 +485,13 @@ class Document {
 
             // Récupération du tuple correspondant à l'id en paramètre
             $row = $statement->fetch(PDO::FETCH_ASSOC);
-
+            
             // Remplissage d'un tableau contenant les informations de la publication
             $tab["idP"] = $row['idP'];
             $tab["dateP"] = $row['dateP'];
             $tab["commentP"] = $row['commentP'];
             $tab["idU"] = $row['idU'];
-
+            
             // Retour du tableau d'document
             return $tab;
         } catch (Exception $e) {

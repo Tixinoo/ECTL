@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `Document` (
 --
 
 INSERT INTO `Document` (`idD`, `nomD`, `descD`, `contenuD`, `urlD`, `publication_idp`) VALUES
-(1, 'Nouvel Espace Collaborateur', NULL, 'Nous souhaitons la bienvenue à l''ensemble de nos collaborateurs dans ce tout nouvel espace. Vous y trouverez l''ensemble des documents que nous mettons à la disposition de nos conducteurs, les dernières nouvelles que nous leur faisons parvenir ainsi que nos différents portails sur le web. Bonne visite à tous de la part de toute l''équipe TRACTLUX :', NULL, NULL);
+(1, 'Nouvel Espace Collaborateur', NULL, 'Nous souhaitons la bienvenue à l''ensemble de nos collaborateurs dans ce tout nouvel espace. Vous y trouverez l''ensemble des documents que nous mettons à la disposition de nos conducteurs, les dernières nouvelles que nous leur faisons parvenir ainsi que nos différents portails sur le web. Bonne visite à tous de la part de toute l''équipe TRACTLUX !', NULL, NULL);
 
 -- --------------------------------------------------------
 
