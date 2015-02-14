@@ -275,7 +275,7 @@ class Utilisateur {
             $db = DataBase::getConnection();
 
             // Création de la requête préparée
-            $query = "SELECT * FROM Utilisateur";
+            $query = "SELECT * FROM Utilisateur ORDER BY nomU";
             $statement = $db->prepare($query);
 
             // Exécution de la requête préparée

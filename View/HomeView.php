@@ -45,6 +45,12 @@ class HomeView {
         include 'Content/tractlux.com.html';
         include 'Content/footer.php';
     }
+    
+    public function accountSettingsView() {
+        include 'Content/header.php';
+        include 'Content/accountsettings.php';
+        include 'Content/footer.php';
+    }
 
     /*     * ************** MÉTHODES DE TEST *************** */
 

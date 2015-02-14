@@ -20,7 +20,8 @@ class HomeController extends Controller {
             'adduser' => 'adduserAction',
             'deleteI' => 'deleteIAction',
             'deleteD' => 'deleteDAction',
-            'deleteDefinitlyD' => 'deleteDefinitlyDAction'
+            'deleteDefinitlyD' => 'deleteDefinitlyDAction',
+            'accountSettings' => 'accountSettingsAction'
         );
     }
 
@@ -61,6 +62,10 @@ class HomeController extends Controller {
     public function adduserAction() {
         $view = new UtilisateursView();
         $view->adduserView();
+    }
+    public function accountSettingsAction() {
+        $view = new HomeView();
+        $view->accountSettingsView();
     }
 
     public function deleteIAction() {

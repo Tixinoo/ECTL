@@ -41,7 +41,7 @@ class UtilisateursView {
                 echo $utilisateur->prenomU;
                 echo "</td>";
                 echo "<td>";
-                echo $utilisateur->emailU;
+                echo "<a href=\"mailto:#\">" . $utilisateur->emailU . "</a>";
                 echo "</td>"; 
                 echo "<td>";
                 echo $utilisateur->telU;

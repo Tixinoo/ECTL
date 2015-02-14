@@ -28,7 +28,7 @@
 
                         // On affiche un message, son nom d'utilisateur et un bouton pour se déconnecter
                         echo "<li><a href=\"#\">";
-                        echo "Connectés en tant que <b>" . $_SESSION['prenomU'] . " " . $_SESSION['nomU'] . "</b>";
+                        echo "<b>" . $_SESSION['prenomU'] . " " . $_SESSION['nomU'] . "</b>";
                         foreach ($_SESSION['typeUs'] as $idtypeu) {
                             echo " (";
                             $TypeU = TypeU::findById($idtypeu);

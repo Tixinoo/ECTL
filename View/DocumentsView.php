@@ -55,7 +55,18 @@ class DocumentsView {
         echo "<img src=\"Image/icon-attention.png\" width=\"25\"/><h4>" . date("d/m/Y", strtotime($singleNews->findPublication()["dateP"])) . "</h4>";
         echo "</div>";
         echo "<div class=\"col-xs-20 col-sm-10 left\">";
-        echo "<h3 class=\"page-header\">" . $singleNews->nomD . "</h3>";
+        echo "<h3 class=\"page-header\">" . $singleNews->nomD;
+        if (in_array("1", $_SESSION['typeUs'])) {
+
+            echo "<form style=\"display:inline; position: absolute; right: 0;\" action=\"index.php\" method=\"GET\">";
+
+            echo "<input type=\"hidden\" name=\"a\" value=\"deleteD\">";
+            echo "<input type=\"hidden\" name=\"idD\" value=\"" . $singleNews->idD . "\">";
+            echo "<button type=\"submit\" class=\"btn btn-danger btn-xs\">Supprimer</button>";
+
+            echo "</form>";
+        }
+        echo "</h3>";
         echo $singleNews->contenuD;
         echo "</div>";
         echo "</div>";

@@ -52,5 +52,11 @@ Menu avec tous les types de documents
             <li><a href="index.php?a=facebook"><img src="Image/icon-facebook.png" width="15"/> Facebook</a></li>
             <li><a href="index.php?a=siteweb"><img src="Image/icon-site.png" width="15"/> Site Web</a></li>
         </ul>
+        <h3 class="sub-header">Mon Compte</h3>
+        <ul class="nav nav-sidebar">
+            <?php
+            echo "<li><a href=\"index.php?a=accountSettings\"><img src=\"" . $_SESSION['urlAvatarU'] . "\" height=\"15\"/> Paramètres</a></li>";
+            ?>
+        </ul>
     </div>
 </div>
