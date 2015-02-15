@@ -24,6 +24,9 @@
                     <div id="logoECTL">
                     </div>
                     
+                    <!-- Exemple bouton + pop on over
+                    <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Titre" data-content="Contenu">nom du bouton</button>
+                     -->
 
                     <br>
 
@@ -59,3 +62,11 @@
                             </div>
                         </div>
                     </div>
+                    
+<div class="modal fade bs-news-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content oldnewscontent">
+      ...
+    </div>
+  </div>
+</div>

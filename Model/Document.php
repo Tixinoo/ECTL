@@ -83,7 +83,8 @@ class Document {
             $db = DataBase::getConnection();
 
             // Création de la requête préparée
-            $query = "UPDATE DocumentType SET idTypeD = :idC WHERE idD = :id";
+            //$query = "UPDATE DocumentType SET idTypeD = :idC WHERE idD = :id";
+            $query = "INSERT INTO DocumentType (idTypeD, idD) VALUES (:idC, :id)";
             $statement = $db->prepare($query);
             $statement->bindParam(':idC', $idTypeCorbeille);
             $statement->bindParam(':id', $this->idD);

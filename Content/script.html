@@ -11,7 +11,7 @@
 <!-- DATEPICKER -->
 <script>
     $(function () {
-        $(".datepicker").datepicker({ dateFormat: 'dd/mm/yy' });
+        $(".datepicker").datepicker({dateFormat: 'dd/mm/yy'});
     });
 </script>
 
@@ -69,4 +69,16 @@
             return false;
         });
     })
+</script>
+
+<script>
+    $(function () {
+        $('[data-toggle="popover"]').popover()
+    })
+</script>
+
+<script>
+    function displayModalNews(id) {
+        $(".oldnewscontent").html($(".contentNews" + id).html());
+    }
 </script>
