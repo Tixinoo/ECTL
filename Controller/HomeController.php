@@ -101,14 +101,17 @@ class HomeController extends Controller {
             $typeDs = $document->idTypeDs();
             if(in_array(TypeD::findByNom("News")->idTypeD, $typeDs)) {
                 header("Location: index.php");
+            } else {
+                header("Location: index.php?a=typed&idtyped=" . $document->idTypeDs()[0]);
             }
         }
-        header("Location: index.php?a=typed&idtyped=" . $document->idTypeDs()[0]);
+        //header("Location: index.php?a=typed&idtyped=" . $document->idTypeDs()[0]);
     }
 
     public function deleteDefinitlyDAction() {
         if ($_GET["idD"]) {
             $document = Document::findById($_GET['idD']);
+            unlink($document->urlD);
             $document->deleteTypes();
             $document->deleteSuppression();
             $document->deletePublication();

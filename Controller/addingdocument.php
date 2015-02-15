@@ -46,7 +46,7 @@ if (isset($_POST["idTypeD"])) {
 if ($documentOK) {
     $dossier = "../Document/";
 //$fichier = $dossier . basename($_FILES["inputFileD"]["name"]);
-    $fichier = $dossier . str_replace(" ", "-", $nomD) . ".pdf";
+    $fichier = $dossier . str_replace("/", "-", str_replace(" ", "-", $nomD)) . ".pdf";
     $envoiFichierOK = 1;
     $extension = pathinfo($fichier, PATHINFO_EXTENSION);
 
@@ -78,7 +78,7 @@ if ($documentOK) {
 /* FIN ENVOI FICHIER */
 
 if ($documentOK) {
-    $urlD = "Document/" . str_replace(" ", "-", $nomD) . ".pdf";
+    $urlD = "Document/" . str_replace("/", "-", str_replace(" ", "-", $nomD)) . ".pdf";
 }
 
 //Ajout de l'inscription dans la base
@@ -90,7 +90,7 @@ if ($documentOK) {
     $document->urlD = $urlD;
     $document->insert();
     $document->insertType($idTypeD);
-    header("Location: ../index.php");
+    header("Location: ../index.php?a=typed&idtyped=" . $idTypeD);
     // OLD:
     //echo "<p> Félicitations ! Tout s'est déroulé avec succès !<br>Un nouveau document a été importé dans l'ECTL.<br> Les détails de cet ajout sont les suivants : <ul><li>Le nouveau document aura pour titre <b>" . $nomD . "</b></li> <li>Sa description est la suivante : <b>" . $descD . "</b></li> <li>Son type est <b>" . $idTypeD . "</b></li></li>";
 } else {
