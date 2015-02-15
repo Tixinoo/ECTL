@@ -90,7 +90,7 @@ button.oldnews {
     box-shadow: 2px 2px 2px 2px #888888;
 }
 
-/* disable webkit datepicker */
+/* disable webkit datepicker*/
 input::-webkit-calendar-picker-indicator{
     display: none;
 }
@@ -98,6 +98,13 @@ input::-webkit-calendar-picker-indicator{
 input[type="date"]::-webkit-input-placeholder{ 
     visibility: hidden !important;
 }
+
+.unstyled::-webkit-inner-spin-button,
+.unstyled::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
 
 /* footer style */
 

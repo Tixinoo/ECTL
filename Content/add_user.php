@@ -18,7 +18,7 @@
                 <div class="form-group">
                     <label for="inputValiditeI" class="col-sm-4 control-label">Valide jusqu'au</label>
                     <div class="col-sm-8">
-                        <input name="validiteI" type="date" class="form-control datepicker" id="inputValiditeI">
+                        <input name="validiteI" type="text" class="form-control datepicker unstyled" id="inputValiditeI">
                     </div>
                 </div>
                 <div class="form-group">
