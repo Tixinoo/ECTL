@@ -24,8 +24,8 @@ class DocumentsView {
             }
         } else {
             foreach ($documents as $document) {
-                    Self::DocumentView($document);
-            }  
+                Self::DocumentView($document);
+            }
         }
         echo "</div>";
         include 'Content/footer.php';
@@ -239,18 +239,27 @@ class DocumentsView {
                     } else {
                         echo "<input type=\"hidden\" name=\"a\" value=\"deleteDefinitlyD\">";
                         echo "<input type=\"hidden\" name=\"idD\" value=\"" . $document->idD . "\">";
-                        echo "<button type=\"submit\" class=\"btn btn-danger btn-xs\">Détruire</button>";
+                        echo "<button type=\"submit\" class=\"btn btn-danger btn-xs\">Détruire</button> ";
+                        if (isset($_GET["idtyped"])) {
+                            echo "<input type=\"hidden\" name=\"a\" value=\"restoreD\">";
+                            echo "<input type=\"hidden\" name=\"idC\" value=\"" . $corbeille_id . "\">";
+                            echo "<input type=\"hidden\" name=\"idD\" value=\"" . $document->idD . "\">";
+                            echo "<button type=\"submit\" class=\"btn btn-success btn-xs\">Restaurer</button>";
+                        }
                     }
                     echo "</form>";
                 }
-                echo "<br><br>";
-                echo "<button onclick=\"displayModalNews(" . $document->idD . ")\" type=\"button\" class=\"btn btn-primary oldnews\" data-toggle=\"modal\" data-target=\".bs-news-modal-sm\">News : " . $document->nomD . "</button>";
+                //echo "<br><br>";
+                echo "<h4>" . $document->nomD . "</h4>";
+                echo "<div style=\"margin-bottom:5px;\" class=\"descDocument\"></div>";
+                echo "<button onclick=\"displayModalNews(" . $document->idD . ")\" type=\"button\" class=\"btn btn-primary oldnews\" data-toggle=\"modal\" data-target=\".bs-news-modal-sm\">Afficher la news</button>";
                 echo "<div style=\"display:none;\" class=\"contentNews" . $document->idD . "\">";
                 echo "<div style=\"padding:15px;\">";
                 echo "<h1 class=\"page-header\">" . $document->nomD . "</h1>";
                 echo $document->contenuD;
                 echo "</div>";
                 echo "</div>";
+                
                 break;
             case false:
                 echo "<a class=\"view-pdf\" href=\"" . $document->urlD . "\" nom=\"" . $document->nomD . "\">";
@@ -270,7 +279,13 @@ class DocumentsView {
                     } else {
                         echo "<input type=\"hidden\" name=\"a\" value=\"deleteDefinitlyD\">";
                         echo "<input type=\"hidden\" name=\"idD\" value=\"" . $document->idD . "\">";
-                        echo "<button type=\"submit\" class=\"btn btn-danger btn-xs\">Détruire</button>";
+                        echo "<button type=\"submit\" class=\"btn btn-danger btn-xs\">Détruire</button> ";
+                        if (isset($_GET["idtyped"])) {
+                            echo "<input type=\"hidden\" name=\"a\" value=\"restoreD\">";
+                            echo "<input type=\"hidden\" name=\"idC\" value=\"" . $corbeille_id . "\">";
+                            echo "<input type=\"hidden\" name=\"idD\" value=\"" . $document->idD . "\">";
+                            echo "<button type=\"submit\" class=\"btn btn-success btn-xs\">Restaurer</button>";
+                        }
                     }
                     echo "</form>";
                 }

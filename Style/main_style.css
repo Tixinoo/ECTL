@@ -58,6 +58,10 @@ min-height: 10.5em;
     	text-overflow: ellipsis;*/
 }
 
+button.oldnews {
+
+}
+
 .descDocument {
     border-top: solid lightblue 1px;
     font-size: 0.9em;

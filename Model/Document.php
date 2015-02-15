@@ -83,8 +83,31 @@ class Document {
             $db = DataBase::getConnection();
 
             // Création de la requête préparée
-            //$query = "UPDATE DocumentType SET idTypeD = :idC WHERE idD = :id";
             $query = "INSERT INTO DocumentType (idTypeD, idD) VALUES (:idC, :id)";
+            $statement = $db->prepare($query);
+            $statement->bindParam(':idC', $idTypeCorbeille);
+            $statement->bindParam(':id', $this->idD);
+
+            // Exécution de la requête préparée
+            $res = $statement->execute();
+            return $res;
+        } catch (Exception $e) {
+            $trace = $e->getTrace();
+            echo "Erreur pendant delete: $trace";
+        }
+    }
+    
+    public function restore($idTypeCorbeille) {
+        try {
+            if (!isset($this->idD)) {
+                throw new Exception(__CLASS__ . " : Clé primaire non définie : delete impossible");
+            }
+
+            // Récupération d'une connexion à la base
+            $db = DataBase::getConnection();
+
+            // Création de la requête préparée
+            $query = "DELETE FROM DocumentType WHERE idTypeD = :idC AND idD = :id";
             $statement = $db->prepare($query);
             $statement->bindParam(':idC', $idTypeCorbeille);
             $statement->bindParam(':id', $this->idD);

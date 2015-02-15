@@ -20,6 +20,7 @@ class HomeController extends Controller {
             'adduser' => 'adduserAction',
             'deleteI' => 'deleteIAction',
             'deleteD' => 'deleteDAction',
+            'restoreD' => 'restoreDAction',
             'deleteDefinitlyD' => 'deleteDefinitlyDAction',
             'accountSettings' => 'accountSettingsAction',
             'recentActions' => 'recentActionsAction'
@@ -88,6 +89,15 @@ class HomeController extends Controller {
             $document = Document::findById($_GET['idD']);
             $document->moveToTrash($_GET['idC']);
             $document->insertSuppression();
+        }
+        header("Location: index.php?a=typed&idtyped=" . $document->idTypeDs()[0]);
+    }
+    
+    public function restoreDAction() {
+        if ((isset($_GET["idD"])) && (isset($_GET["idC"]))) {
+            $document = Document::findById($_GET['idD']);
+            $document->restore($_GET['idC']);
+            $document->deleteSuppression();
         }
         header("Location: index.php?a=typed&idtyped=" . $document->idTypeDs()[0]);
     }
