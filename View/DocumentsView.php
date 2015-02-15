@@ -14,9 +14,18 @@ class DocumentsView {
         $typed = TypeD::findById($idTypeD);
         echo "<h1 class=\"page-header\"><img src=\"Image/icon-documents.png\"/>" . $typed->nomTypeD . "<small> - " . $typed->descTypeD . "</small></h1>";
         $documents = Document::findByIdTypeD($idTypeD);
+        $corbeille_id = TypeD::findByNom("Corbeille")->idTypeD;
         echo "<div class=\"row placeholders\"><br>";
-        foreach ($documents as $document) {
-            Self::DocumentView($document);
+        if ($idTypeD != $corbeille_id) {
+            foreach ($documents as $document) {
+                if (!in_array($corbeille_id, $document->idTypeDs())) {
+                    Self::DocumentView($document);
+                }
+            }
+        } else {
+            foreach ($documents as $document) {
+                    Self::DocumentView($document);
+            }  
         }
         echo "</div>";
         include 'Content/footer.php';
