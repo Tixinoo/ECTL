@@ -29,6 +29,8 @@ class UtilisateursView {
                 echo "<th>";
                 echo "<img src=\"Image/icon-telephone.png\" width=\"25\"/>";
                 echo "</th>";
+                echo "<th>";
+                echo "</th>";
             echo "</tr>";
         echo "</thead>";
         echo "<tbody>";
@@ -45,7 +47,10 @@ class UtilisateursView {
                 echo "</td>"; 
                 echo "<td>";
                 echo $utilisateur->telU;
-                echo "</td>";                
+                echo "</td>";  
+                echo "<td>";
+                echo "<img height=\"20\" src=\"" . $utilisateur->urlAvatarU . "\"/>";
+                echo "</td>";
             echo "</tr>";
         }
         echo "</tbody>";
