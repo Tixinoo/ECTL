@@ -98,6 +98,10 @@ class HomeController extends Controller {
             $document = Document::findById($_GET['idD']);
             $document->restore($_GET['idC']);
             $document->deleteSuppression();
+            $typeDs = $document->idTypeDs();
+            if(in_array(TypeD::findByNom("News")->idTypeD, $typeDs)) {
+                header("Location: index.php");
+            }
         }
         header("Location: index.php?a=typed&idtyped=" . $document->idTypeDs()[0]);
     }

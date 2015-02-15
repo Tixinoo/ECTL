@@ -14,9 +14,12 @@
         $idtypenews = TypeD::findByNom("News")->idTypeD;
         $news = Document::findByIdTypeD($idtypenews);
         $news = array_reverse($news);
+        $corbeille_id = TypeD::findByNom("Corbeille")->idTypeD;
         echo "<div class=\"row placeholders\"><br>";
         foreach ($news as $singleNews) {
-            DocumentsView::singleNewsView($singleNews);
+            if (!in_array($corbeille_id, $singleNews->idTypeDs())) {
+                DocumentsView::singleNewsView($singleNews);
+            }
         }
         echo "</div>";
         ?>

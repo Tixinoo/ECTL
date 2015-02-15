@@ -236,18 +236,22 @@ class DocumentsView {
                         echo "<input type=\"hidden\" name=\"idC\" value=\"" . $corbeille_id . "\">";
                         echo "<input type=\"hidden\" name=\"idD\" value=\"" . $document->idD . "\">";
                         echo "<button type=\"submit\" class=\"btn btn-danger btn-xs\">Supprimer</button>";
+                        echo "</form>";
                     } else {
                         echo "<input type=\"hidden\" name=\"a\" value=\"deleteDefinitlyD\">";
                         echo "<input type=\"hidden\" name=\"idD\" value=\"" . $document->idD . "\">";
                         echo "<button type=\"submit\" class=\"btn btn-danger btn-xs\">Détruire</button> ";
+                        echo "</form>";
                         if (isset($_GET["idtyped"])) {
+                            echo "<form style=\"display:inline;\" action=\"index.php\" method=\"GET\">";
                             echo "<input type=\"hidden\" name=\"a\" value=\"restoreD\">";
                             echo "<input type=\"hidden\" name=\"idC\" value=\"" . $corbeille_id . "\">";
                             echo "<input type=\"hidden\" name=\"idD\" value=\"" . $document->idD . "\">";
                             echo "<button type=\"submit\" class=\"btn btn-success btn-xs\">Restaurer</button>";
+                            echo "</form>";
                         }
                     }
-                    echo "</form>";
+                    
                 }
                 //echo "<br><br>";
                 echo "<h4>" . $document->nomD . "</h4>";
@@ -276,18 +280,21 @@ class DocumentsView {
                         echo "<input type=\"hidden\" name=\"idC\" value=\"" . $corbeille_id . "\">";
                         echo "<input type=\"hidden\" name=\"idD\" value=\"" . $document->idD . "\">";
                         echo "<button type=\"submit\" class=\"btn btn-danger btn-xs\">Supprimer</button>";
+                        echo "</form>";
                     } else {
                         echo "<input type=\"hidden\" name=\"a\" value=\"deleteDefinitlyD\">";
                         echo "<input type=\"hidden\" name=\"idD\" value=\"" . $document->idD . "\">";
                         echo "<button type=\"submit\" class=\"btn btn-danger btn-xs\">Détruire</button> ";
+                        echo "</form>";
                         if (isset($_GET["idtyped"])) {
+                            echo "<form style=\"display:inline;\" action=\"index.php\" method=\"GET\">";
                             echo "<input type=\"hidden\" name=\"a\" value=\"restoreD\">";
                             echo "<input type=\"hidden\" name=\"idC\" value=\"" . $corbeille_id . "\">";
                             echo "<input type=\"hidden\" name=\"idD\" value=\"" . $document->idD . "\">";
                             echo "<button type=\"submit\" class=\"btn btn-success btn-xs\">Restaurer</button>";
+                            echo "</form>";
                         }
                     }
-                    echo "</form>";
                 }
                 echo "<a class=\"view-pdf\" href=\"" . $document->urlD . "\" nom=\"" . $document->nomD . "\"><h4>" . $document->nomD . "</h4></a>";
                 echo "<div class=\"descDocument\"><p>" . $document->descD . "</p></div>";
