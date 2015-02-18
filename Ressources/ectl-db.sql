@@ -252,27 +252,30 @@ INSERT INTO `TypeU` (`idTypeU`, `nomTypeU`, `descTypeU`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `Utilisateur`
+-- Structure de la table `utilisateur`
 --
 
-CREATE TABLE IF NOT EXISTS `Utilisateur` (
-`idU` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `utilisateur` (
+  `actifU` tinyint(1) NOT NULL DEFAULT '1',
+  `idU` int(11) NOT NULL AUTO_INCREMENT,
   `pseudoU` varchar(20) DEFAULT NULL,
   `mdpU` varchar(150) DEFAULT NULL,
   `nomU` varchar(30) DEFAULT NULL,
   `prenomU` varchar(30) DEFAULT NULL,
   `telU` varchar(30) DEFAULT NULL,
   `emailU` varchar(50) DEFAULT NULL,
-  `urlAvatarU` varchar(200) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+  `urlAvatarU` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`idU`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
--- Contenu de la table `Utilisateur`
+-- Contenu de la table `utilisateur`
 --
 
-INSERT INTO `Utilisateur` (`idU`, `pseudoU`, `mdpU`, `nomU`, `prenomU`, `telU`, `emailU`, `urlAvatarU`) VALUES
-(1, 'Antoine', '26749d7577019e59a44aaccff22f3ac8', 'Nosal', 'Antoine', '+33632281849', 'antoine.nosal@gmail.com', 'https://media.licdn.com/mpr/mpr/shrink_500_500/p/3/005/09b/372/027fd62.jpg'),
-(7, 'Conducteur', 'd21b2a240872243d87161ed82e822a0b', 'Monsieur', 'Conducteur', '+33512345679', 'monsieur.conducteur@mail.com', 'Image/icon-user.png');
+INSERT INTO `utilisateur` (`actifU`, `idU`, `pseudoU`, `mdpU`, `nomU`, `prenomU`, `telU`, `emailU`, `urlAvatarU`) VALUES
+(1, 1, 'Antoine', '26749d7577019e59a44aaccff22f3ac8', 'Nosal', 'Antoine', '+33632281849', 'antoine.nosal@gmail.com', 'https://media.licdn.com/mpr/mpr/shrink_500_500/p/3/005/09b/372/027fd62.jpg'),
+(1, 7, 'Conducteur', 'd21b2a240872243d87161ed82e822a0b', 'Monsieur', 'Conducteur', '+33512345679', 'monsieur.conducteur@mail.com', 'Image/icon-user.png'),
+(0, 8, 'Monsieur', '8456818e93c855811de2dd4b571b6fe1', 'Monsieur', 'Monsieur', '+33525349870', 'monsieur@mail.com', 'Image/icon-user.png');
 
 -- --------------------------------------------------------
 

@@ -12,7 +12,7 @@ class UtilisateursView {
     public function coordView() {
         include 'Content/header.php';
         echo "<h1 class=\"page-header\"><img src=\"Image/icon-details.png\"/> Coordonnées des Employés</h1>";
-        $utilisateurs = Utilisateur::findAll();
+        $utilisateurs = Utilisateur::findAllActifs();
         echo "<div class=\"table-responsive\">";
         echo "<table class=\"table table-striped table-hover\">";
         echo "<thead>";
@@ -30,6 +30,9 @@ class UtilisateursView {
                 echo "<img src=\"Image/icon-telephone.png\" width=\"25\"/>";
                 echo "</th>";
                 echo "<th>";
+                echo "</th>";
+                echo "<th class=\"text-center\">";
+                echo "Action";
                 echo "</th>";
             echo "</tr>";
         echo "</thead>";
@@ -51,6 +54,13 @@ class UtilisateursView {
                 echo "<td>";
                 echo "<img height=\"20\" src=\"" . $utilisateur->urlAvatarU . "\"/>";
                 echo "</td>";
+                echo "<td class=\"text-center\">";
+                echo "<form action=\"index.php\" method=\"GET\">";
+                echo "<input type=\"hidden\" name=\"a\" value=\"deleteU\">";
+                echo "<input type=\"hidden\" name=\"idU\" value=\"" . $utilisateur->idU . "\">";
+                echo "<button type=\"submit\" class=\"btn btn-danger\">Désactiver</button>";
+                echo "</form>";
+                echo "</td>";                
             echo "</tr>";
         }
         echo "</tbody>";

@@ -121,6 +121,7 @@ if ($inscriptionOK) {
     echo "<p> Félicitations ! Votre inscription s'est réalisée avec succès !<br>Bienvenue dans l'ECTL !</li>";
     $utilisateur = new Utilisateur();
     $utilisateur->pseudoU = $pseudoU;
+    $utilisateur->actifU = true;
     $utilisateur->mdpU = md5($mdpU);
     $utilisateur->nomU = $nomU;
     $utilisateur->prenomU = $prenomU;

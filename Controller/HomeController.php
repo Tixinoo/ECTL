@@ -23,7 +23,8 @@ class HomeController extends Controller {
             'restoreD' => 'restoreDAction',
             'deleteDefinitlyD' => 'deleteDefinitlyDAction',
             'accountSettings' => 'accountSettingsAction',
-            'recentActions' => 'recentActionsAction'
+            'recentActions' => 'recentActionsAction',
+            'deleteU' => 'deleteUAction'
         );
     }
 
@@ -83,6 +84,15 @@ class HomeController extends Controller {
         }
         header("Location: index.php?a=adduser");
     }
+    
+    public function deleteUAction() {
+        if ($_GET["idU"]) {
+            $utilisateur = Utilisateur::findById($_GET['idU']);
+            $utilisateur->actifU = false;
+            $utilisateur->update();
+        }
+        header("Location: index.php?a=coord");
+    } 
 
     public function deleteDAction() {
         if ((isset($_GET["idD"])) && (isset($_GET["idC"]))) {

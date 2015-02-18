@@ -8,7 +8,7 @@ class Utilisateur {
      * Attributs d'un utilisateur
      * (correspondent aux colonnes de la table 'Utilisateur')
      */
-    private $idU, $pseudoU, $mdpU, $nomU, $prenomU, $telU, $emailU, $urlAvatarU;
+    private $idU, $actifU, $pseudoU, $mdpU, $nomU, $prenomU, $telU, $emailU, $urlAvatarU;
 
     public function __construct() {
         
@@ -55,9 +55,10 @@ class Utilisateur {
             $db = DataBase::getConnection();
 
             // Création de la requête préparée
-            $query = "UPDATE Utilisateur SET pseudoU = :pseudoU , mdpU = :mdpU, nomU = :nomU, prenomU = :prenomU, telU = :telU, emailU = :emailU, urlAvatarU = :urlAvatarU WHERE idU = :id";
+            $query = "UPDATE Utilisateur SET pseudoU = :pseudoU, actifU = :actifU, mdpU = :mdpU, nomU = :nomU, prenomU = :prenomU, telU = :telU, emailU = :emailU, urlAvatarU = :urlAvatarU WHERE idU = :id";
             $statement = $db->prepare($query);
             $statement->bindParam(':pseudoU', $this->pseudoU);
+            $statement->bindParam(':actifU', $this->actifU);
             $statement->bindParam(':mdpU', $this->mdpU);
             $statement->bindParam(':nomU', $this->nomU);
             $statement->bindParam(':prenomU', $this->prenomU);
@@ -104,6 +105,29 @@ class Utilisateur {
             echo "Erreur pendant delete: $trace";
         }
     }
+    
+    public function deleteTypes() {
+        try {
+            if (!isset($this->idU)) {
+                throw new Exception(__CLASS__ . " : Clé primaire non définie : delete impossible");
+            }
+
+            // Récupération d'une connexion à la base
+            $db = DataBase::getConnection();
+
+            // Création de la requête préparée
+            $query = "DELETE FROM UtilisateurType WHERE idU = :id";
+            $statement = $db->prepare($query);
+            $statement->bindParam(':id', $this->idU);
+
+            // Exécution de la requête préparée
+            $res = $statement->execute();
+            return $res;
+        } catch (Exception $e) {
+            $trace = $e->getTrace();
+            echo "Erreur pendant delete: $trace";
+        }
+    }
 
     /**
      * insère le tuple de la table 'Utilisateur'
@@ -118,9 +142,10 @@ class Utilisateur {
             $db = DataBase::getConnection();
 
             // Création de la requête préparée
-            $query = "INSERT INTO Utilisateur (pseudoU,mdpU,nomU,prenomU,telU,emailU,urlAvatarU) VALUES(:pseudoU,:mdpU,:nomU,:prenomU,:telU,:emailU,:urlAvatarU)";
+            $query = "INSERT INTO Utilisateur (pseudoU,actifU,mdpU,nomU,prenomU,telU,emailU,urlAvatarU) VALUES(:pseudoU,:actifU,:mdpU,:nomU,:prenomU,:telU,:emailU,:urlAvatarU)";
             $statement = $db->prepare($query);
             $statement->bindParam(':pseudoU', $this->pseudoU);
+            $statement->bindParam(':actifU', $this->actifU);
             $statement->bindParam(':mdpU', $this->mdpU);
             $statement->bindParam(':nomU', $this->nomU);
             $statement->bindParam(':prenomU', $this->prenomU);
@@ -212,6 +237,7 @@ class Utilisateur {
             // Remplissage d'un objet Utilisateur avec les informations contenues dans le tuple
             $utilisateur = new Utilisateur();
             $utilisateur->idU = $row['idU'];
+            $utilisateur->actifU = $row['actifU'];
             $utilisateur->pseudoU = $row['pseudoU'];
             $utilisateur->mdpU = $row['mdpU'];
             $utilisateur->nomU = $row['nomU'];
@@ -248,6 +274,7 @@ class Utilisateur {
             // Remplissage d'un objet Utilisateur avec les informations contenues dans le tuple
             $utilisateur = new Utilisateur();
             $utilisateur->idU = $row['idU'];
+            $utilisateur->actifU = $row['actifU'];
             $utilisateur->pseudoU = $row['pseudoU'];
             $utilisateur->mdpU = $row['mdpU'];
             $utilisateur->nomU = $row['nomU'];
@@ -287,6 +314,7 @@ class Utilisateur {
                 // Remplissage d'un objet Utilisateur avec les informations contenues dans le tuple courant
                 $utilisateur = new Utilisateur();
                 $utilisateur->idU = $row['idU'];
+                $utilisateur->actifU = $row['actifU'];
                 $utilisateur->pseudoU = $row['pseudoU'];
                 $utilisateur->mdpU = $row['mdpU'];
                 $utilisateur->nomU = $row['nomU'];
@@ -305,6 +333,43 @@ class Utilisateur {
         }
     }
 
+    public static function findAllActifs() {
+        try {
+            // Récupération d'une connexion à la base
+            $db = DataBase::getConnection();
+
+            // Création de la requête préparée
+            $query = "SELECT * FROM Utilisateur WHERE actifU = 1 ORDER BY nomU";
+            $statement = $db->prepare($query);
+
+            // Exécution de la requête préparée
+            $statement->execute();
+
+            $tab = Array();
+            // Tant que des lignes sont retournées
+            while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+                // Remplissage d'un objet Utilisateur avec les informations contenues dans le tuple courant
+                $utilisateur = new Utilisateur();
+                $utilisateur->idU = $row['idU'];
+                $utilisateur->actifU = $row['actifU'];
+                $utilisateur->pseudoU = $row['pseudoU'];
+                $utilisateur->mdpU = $row['mdpU'];
+                $utilisateur->nomU = $row['nomU'];
+                $utilisateur->prenomU = $row['prenomU'];
+                $utilisateur->telU = $row['telU'];
+                $utilisateur->emailU = $row['emailU'];
+                $utilisateur->urlAvatarU = $row['urlAvatarU'];
+                $tab[] = $utilisateur;
+            }
+
+            // Retour du tableau d'utilisateur
+            return $tab;
+        } catch (Exception $e) {
+            $trace = $e->getTrace();
+            echo "Erreur pendant findAll: $trace";
+        }
+    }
+    
     /**
      * retourne dans un tableau d'objets Utilisateur
      * tous les utilisateurs contenus dans la base
@@ -329,6 +394,7 @@ class Utilisateur {
                 // Remplissage d'un objet Utilisateur avec les informations contenues dans le tuple courant
                 $utilisateur = new Utilisateur();
                 $utilisateur->idU = $row['idU'];
+                $utilisateur->actifU = $row['actifU'];
                 $utilisateur->pseudoU = $row['pseudoU'];
                 $utilisateur->mdpU = $row['mdpU'];
                 $utilisateur->nomU = $row['nomU'];
