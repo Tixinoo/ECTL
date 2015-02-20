@@ -19,12 +19,12 @@ class DocumentsView {
         if ($idTypeD != $corbeille_id) {
             foreach ($documents as $document) {
                 if (!in_array($corbeille_id, $document->idTypeDs())) {
-                    Self::DocumentView($document);
+                    $this->DocumentView($document);
                 }
             }
         } else {
             foreach ($documents as $document) {
-                Self::DocumentView($document);
+                $this->DocumentView($document);
             }
         }
         echo "</div>";

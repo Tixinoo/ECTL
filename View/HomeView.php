@@ -73,7 +73,7 @@ class HomeView {
         $documents = Document::findAll();
         $typeds = TypeD::findAll();
         foreach ($documents as $document) {
-            Self::documentView($document);
+            $this->documentView($document);
         }
         foreach ($typeds as $typed) {
             echo $typed->nomTypeD;
